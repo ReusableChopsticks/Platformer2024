@@ -2,6 +2,8 @@ extends Node
 class_name StateMachine
 
 @export var initial_state: State
+@export var show_state_label: bool = false
+@onready var state_label: Label = $"../StateLabel"
 
 var current_state: State
 var states: Dictionary = {}
@@ -18,6 +20,11 @@ func _ready():
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
+		state_label.text = current_state.name
+	
+	# to show debug label text or not
+	state_label.visible = show_state_label
+		
 
 func _process(delta):
 	if current_state:
@@ -46,4 +53,5 @@ func on_child_transition(state, new_state_name: String):
 		current_state.exit()
 	current_state = new_state
 	new_state.enter()
+	state_label.text = current_state.name
 	#print("entering state" + new_state_name)

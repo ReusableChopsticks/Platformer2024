@@ -39,8 +39,6 @@ show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("3_2av4n")
-move_speed = 3000
-move_accel = 4000
 move_lerp = 0.065
 
 [node name="PlayerIdleState" type="Node" parent="StateMachine"]

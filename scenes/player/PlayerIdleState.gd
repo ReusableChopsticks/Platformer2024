@@ -1,8 +1,11 @@
 extends PlayerState
 class_name PlayerIdleState
 
+@export var decel_rate: int = 500
+var curr_dir = 0
+
 func enter():
-	pass
+	curr_dir = signf(player.velocity.x)
 	
 func exit():
 	pass
@@ -16,7 +19,9 @@ func physics_update(delta: float):
 	elif (Input.is_action_just_pressed("jump") and player.is_on_floor()):
 		transitioned.emit(self, "PlayerJumpState")
 	
-	player.velocity.x = lerpf(player.velocity.x, 0, 0.2)
+	
+	#player.velocity.x = lerpf(player.velocity.x, 0, 0.05)
+	friction_x(delta, curr_dir, decel_rate)
 	
 	apply_gravity(delta)
 	player.move_and_slide()
