@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerIdleState
 
-@export var decel_rate: int = 500
+@export var decel_rate: int = 1000
 var curr_dir = 0
 
 func enter():

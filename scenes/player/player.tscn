@@ -39,16 +39,13 @@ show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("3_2av4n")
-move_speed = 3000
-move_accel = 4000
-move_lerp = 0.065
+time_to_max_speed = 1.0
 
 [node name="PlayerIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_ht342")
 
 [node name="PlayerMoveState" type="Node" parent="StateMachine"]
 script = ExtResource("4_0yqxf")
-move_lerp = 0.048
 
 [node name="PlayerJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("5_7r6wt")
