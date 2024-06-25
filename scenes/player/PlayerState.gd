@@ -11,6 +11,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # The time it takes for player to accelerate to base speed
 @export_range(0.0, 1.0) var time_to_max_speed: float = 0.7
 var move_accel: int = move_speed / time_to_max_speed
+# The time it takes for player to stop from base speed (due to friction)
+@export_range(0.0, 1.0) var time_to_stop: float = 0.5
+var friction_decel: int = move_speed / time_to_stop
 #@export_range(0.0, 1.0) var move_lerp: float = 0.5
 @export var max_move_speed: int = 3000
 @export var max_fall_speed: int = 2000
@@ -34,12 +37,12 @@ func move_x(delta: float, multiplier: float = 1):
 	var vel = player.velocity.x + (multiplier * move_accel * direction * delta)
 	player.velocity.x = clampf(vel, -move_speed, move_speed)
 
-
-func friction_x(delta: float, curr_dir: int, decel_rate):
+# applies a friction force AGAINST the supplied direction (the current direction of the player)
+func friction_x(delta: float, dir: int, multiplier: float = 1):
 	if (is_zero_approx(player.velocity.x)):
 		# stop applying friction if the player has stopped
 		return
-	if (is_equal_approx(curr_dir, 1)):
-		player.velocity.x = maxf(0, player.velocity.x - (decel_rate * delta))
-	elif (is_equal_approx(curr_dir, -1)):
-		player.velocity.x = minf(0, player.velocity.x + (decel_rate * delta))
+	if (is_equal_approx(dir, 1)):
+		player.velocity.x = maxf(0, player.velocity.x - (friction_decel * delta * multiplier))
+	elif (is_equal_approx(dir, -1)):
+		player.velocity.x = minf(0, player.velocity.x + (friction_decel * delta * multiplier))
