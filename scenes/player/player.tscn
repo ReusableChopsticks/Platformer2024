@@ -40,6 +40,7 @@ show_state_label = true
 
 [node name="MoveConfig" type="Node" parent="StateMachine"]
 script = ExtResource("3_41vn7")
+move_speed = 500
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("3_2av4n")

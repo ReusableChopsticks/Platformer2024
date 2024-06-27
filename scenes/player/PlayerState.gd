@@ -30,12 +30,12 @@ func move_x(delta: float, multiplier: float = 1):
 	# apply counter force when moving in opposite direction
 	if (direction and player.velocity.x and direction != signf(player.velocity.x)):
 		vel += direction * config.move_speed * config.counter_dir_force_mult * delta
-		print("COUNTER!!!")
 	
 	player.velocity.x = clampf(vel, -config.move_speed, config.move_speed)
 
 # applies a friction force AGAINST the supplied direction (the current direction of the player)
 func friction_x(delta: float, dir: int, multiplier: float = 1):
+	var direction = signf(Input.get_axis("left", "right"))
 	if (is_zero_approx(player.velocity.x)):
 		# stop applying friction if the player has stopped
 		return
