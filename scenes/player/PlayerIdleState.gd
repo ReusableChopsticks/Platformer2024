@@ -1,7 +1,6 @@
 extends PlayerState
 class_name PlayerIdleState
 
-@export var decel_rate: int = 1000
 var curr_dir = 0
 
 func enter():
@@ -21,7 +20,7 @@ func physics_update(delta: float):
 	
 	
 	#player.velocity.x = lerpf(player.velocity.x, 0, 0.05)
-	friction_x(delta, curr_dir, decel_rate)
+	friction_x(delta, curr_dir, 1)
 	
 	apply_gravity(delta)
 	player.move_and_slide()

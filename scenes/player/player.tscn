@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=10 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
 [ext_resource type="Script" path="res://scenes/player/PlayerState.gd" id="3_2av4n"]
+[ext_resource type="Script" path="res://scenes/player/MoveConfig.gd" id="3_41vn7"]
 [ext_resource type="Script" path="res://scenes/interfaces/StateMachine.gd" id="3_ockid"]
 [ext_resource type="Script" path="res://scenes/player/PlayerMoveState.gd" id="4_0yqxf"]
 [ext_resource type="Script" path="res://scenes/player/PlayerIdleState.gd" id="4_ht342"]
@@ -37,9 +38,11 @@ script = ExtResource("3_ockid")
 initial_state = NodePath("PlayerIdleState")
 show_state_label = true
 
+[node name="MoveConfig" type="Node" parent="StateMachine"]
+script = ExtResource("3_41vn7")
+
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("3_2av4n")
-time_to_max_speed = 1.0
 
 [node name="PlayerIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_ht342")

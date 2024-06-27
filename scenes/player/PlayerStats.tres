@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://j6qai6jmysbh"]
+
+[ext_resource type="Script" path="res://scenes/player/PlayerStats.gd" id="1_anwdh"]
+
+[resource]
+script = ExtResource("1_anwdh")
+total_jumps = 100
