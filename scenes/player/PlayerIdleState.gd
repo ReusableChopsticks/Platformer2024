@@ -20,7 +20,7 @@ func physics_update(delta: float):
 	
 	
 	#player.velocity.x = lerpf(player.velocity.x, 0, 0.05)
-	friction_x(delta, curr_dir, 1)
+	friction_x(delta, 1)
 	
 	apply_gravity(delta)
 	player.move_and_slide()

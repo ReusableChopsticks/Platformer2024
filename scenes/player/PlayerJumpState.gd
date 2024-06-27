@@ -6,13 +6,11 @@ class_name PlayerJumpState
 @export_range(1, 3) var jump_release_mult: float = 2
 @export_range(0, 1) var air_move_mult: float = 0.7
 @export_range(0, 1) var air_friction_mult: float = 0.2
-var curr_dir: float = 0
 var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
 func enter():
 	player.velocity.y = jump_force
-	curr_dir = signf(player.velocity.x)
 	is_peak_reached = false
 	is_jump_released = false
 
@@ -24,7 +22,7 @@ func physics_update(delta: float):
 	if (Input.get_axis("left", "right")):
 		move_x(delta, air_move_mult)
 	else:
-		friction_x(delta, curr_dir, air_friction_mult)
+		friction_x(delta, air_friction_mult)
 	
 	if (!is_jump_released and !Input.is_action_pressed("jump")):
 		is_jump_released = true
@@ -44,8 +42,6 @@ func physics_update(delta: float):
 		apply_gravity(delta, _release_mult)
 	
 	player.move_and_slide()
-	
-	curr_dir = signf(player.velocity.x)
 
 
 #func check_grounded():
