@@ -8,14 +8,16 @@ class_name StateMachine
 var current_state: State
 var states: Dictionary = {}
 
+var history_stack: Array[String] = []
+
 # get all children states and connect to "transitioned" signal in State.gd
 func _ready():
 	for child in get_children():
 		if child is PlayerState:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
-		#else:
-			#printerr("State machine in %s has non-state child" % get_parent().name)
+		else:
+			printerr("State machine in %s has non-state child" % get_parent().name)
 	
 	if initial_state:
 		initial_state.enter()

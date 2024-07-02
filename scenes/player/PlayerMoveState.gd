@@ -11,7 +11,7 @@ func exit():
 func physics_update(delta: float):
 	if (!Input.get_axis("left", "right")):
 		transitioned.emit(self, "PlayerIdleState")
-	elif (Input.is_action_just_pressed("jump") and player.is_on_floor()):
+	elif (can_jump()):
 		transitioned.emit(self, "PlayerJumpState")
 	
 	#var direction = signf(Input.get_axis("left", "right"))

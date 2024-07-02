@@ -9,6 +9,10 @@
 position = Vector2(582, 619)
 scale = Vector2(-6.77931, 0.358071)
 
+[node name="RigidBody2D2" parent="." instance=ExtResource("1_4wkx7")]
+position = Vector2(838, 472)
+scale = Vector2(-1.29693, -0.143873)
+
 [node name="Player" parent="." instance=ExtResource("2_caiss")]
-position = Vector2(482, 231)
-scale = Vector2(0.471087, 0.471087)
+position = Vector2(800, 267)
+scale = Vector2(0.31571, 0.31571)

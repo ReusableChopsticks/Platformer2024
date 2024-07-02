@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerJumpState
 
-@export var jump_force: int = -600
+@export var jump_force: int = -500
 @export_range(0, 1.0) var jump_apex_mult: float = 0.7
 @export_range(1, 3) var jump_release_mult: float = 2
 @export_range(0, 1) var air_move_mult: float = 0.7
@@ -9,7 +9,10 @@ class_name PlayerJumpState
 var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
+
+
 func enter():
+	# apply jump force
 	player.velocity.y = jump_force
 	is_peak_reached = false
 	is_jump_released = false
@@ -35,7 +38,7 @@ func physics_update(delta: float):
 		is_peak_reached = player.velocity.y < 100
 	
 	# apply gravity multiplier after jump peak is reached
-	var _release_mult = jump_release_mult if is_jump_released else 1
+	var _release_mult = jump_release_mult if is_jump_released else 1.0
 	if (is_peak_reached):
 		apply_gravity(delta, jump_apex_mult * _release_mult)
 	else:

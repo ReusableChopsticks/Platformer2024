@@ -15,7 +15,7 @@ func update(_delta: float):
 func physics_update(delta: float):
 	if (Input.get_axis("left", "right")):
 		transitioned.emit(self, "PlayerMoveState")
-	elif (Input.is_action_just_pressed("jump") and player.is_on_floor()):
+	elif (can_jump()):
 		transitioned.emit(self, "PlayerJumpState")
 	
 	
