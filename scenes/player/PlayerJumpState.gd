@@ -18,8 +18,7 @@ func enter():
 	is_jump_released = false
 
 func physics_update(delta: float):
-	if (player.is_on_floor()):
-		transitioned.emit(self, "PlayerIdleState")
+	
 
 	# left and right movement
 	if (Input.get_axis("left", "right")):
@@ -45,6 +44,12 @@ func physics_update(delta: float):
 		apply_gravity(delta, _release_mult)
 	
 	player.move_and_slide()
+	
+	
+	if (grounded()):
+		transitioned.emit(self, "PlayerGroundedState")
+	elif (dash()):
+		transitioned.emit(self, "PlayerDashState")
 
 
 #func check_grounded():

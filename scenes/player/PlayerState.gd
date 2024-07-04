@@ -11,8 +11,14 @@ class_name PlayerState
 var jump_grace_timer: float = 0
 var jump_buffer_timer: float = 0
 
+# either -1 or 1 according to what the last direction was
+var player_facing_dir = 1
+
+var has_double_jump: bool = true
+var has_dash: bool = true
+
 func _ready():
-	print(jump_buffer_timer)
+	pass
 
 func _physics_process(delta):
 	#DEBUGGING
@@ -25,8 +31,14 @@ func _physics_process(delta):
 		jump_grace_timer = config.jump_grace_time
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = config.jump_buffer_time
-	print(player.position.y - 550)
 	
+	# update what direction player is currently facing
+	var dir = Input.get_axis("left", "right")
+	if (dir != 0):
+		player_facing_dir = dir
+		
+		
+
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 func apply_gravity(delta: float, multiplier: float = 1):
 	player.velocity.y = minf(player.velocity.y + (config.gravity * delta * multiplier), config.max_fall_speed)
@@ -56,12 +68,21 @@ func friction_x(delta: float, multiplier: float = 1):
 	elif (is_equal_approx(dir, -1)):
 		player.velocity.x = minf(0, player.velocity.x + (config.friction_decel * delta * multiplier))
 
-func can_jump():
+#region check player controls
+func grounded():
+	return player.is_on_floor()
+	
+func jump():
 	# check input
-	var can_jump = Input.is_action_pressed("jump")
+	var jump = Input.is_action_pressed("jump")
 	# check if either grace or buffer is active
-	if (can_jump):
-		can_jump = jump_grace_timer > 0
-	if (can_jump):
-		can_jump = jump_buffer_timer > 0 and player.is_on_floor()
-	return can_jump
+	if (jump):
+		jump = jump_grace_timer > 0
+	if (jump):
+		jump = jump_buffer_timer > 0 and player.is_on_floor()
+	return jump
+
+func dash():
+	return Input.is_action_pressed("dash") and has_dash
+	
+#endregion
