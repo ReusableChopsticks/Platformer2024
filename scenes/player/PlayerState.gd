@@ -6,13 +6,12 @@ class_name PlayerState
 # We store common variables and functions in here for convenience
 
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
-@onready var config: MoveConfig = $"../MoveConfig"
 
 
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 # clamps to max fall speed
 func apply_gravity(delta: float, multiplier: float = 1):
-	player.velocity.y = minf(player.velocity.y + (config.gravity * delta * multiplier), config.max_fall_speed)
+	player.velocity.y = minf(player.velocity.y + (player.gravity * delta * multiplier), player.max_fall_speed)
 
 # @description: moves player and direction gets handled for you
 # @@@ CONTRACT @@@
@@ -20,13 +19,13 @@ func apply_gravity(delta: float, multiplier: float = 1):
 func move_x(delta: float, multiplier: float = 1):
 	var direction = signf(Input.get_axis("left", "right"))
 	
-	var vel = player.velocity.x + (multiplier * config.move_accel * direction * delta)
+	var vel = player.velocity.x + (multiplier * player.move_accel * direction * delta)
 	
 	# apply counter force when moving in opposite direction
 	if (direction and player.velocity.x and direction != signf(player.velocity.x)):
-		vel += direction * config.move_speed * config.counter_dir_force_mult * delta
+		vel += direction * player.move_speed * player.counter_dir_force_mult * delta
 	
-	player.velocity.x = clampf(vel, -config.move_speed, config.move_speed)
+	player.velocity.x = clampf(vel, -player.move_speed, player.move_speed)
 
 # applies a friction force against the current velocity of the player
 func friction_x(delta: float, multiplier: float = 1):
@@ -35,9 +34,9 @@ func friction_x(delta: float, multiplier: float = 1):
 		# stop applying friction if the player has stopped
 		return
 	if (is_equal_approx(dir, 1)):
-		player.velocity.x = maxf(0, player.velocity.x - (config.friction_decel * delta * multiplier))
+		player.velocity.x = maxf(0, player.velocity.x - (player.friction_decel * delta * multiplier))
 	elif (is_equal_approx(dir, -1)):
-		player.velocity.x = minf(0, player.velocity.x + (config.friction_decel * delta * multiplier))
+		player.velocity.x = minf(0, player.velocity.x + (player.friction_decel * delta * multiplier))
 
 #region check player controls
 func idle():

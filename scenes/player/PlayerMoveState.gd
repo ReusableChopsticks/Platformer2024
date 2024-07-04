@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerMoveState
 
-# STATE: when the player is moving on the ground
+## STATE: when the player is moving either on the ground or in the air.
 
 func enter():
 	pass
@@ -12,10 +12,9 @@ func exit():
 func physics_update(delta: float):
 	if (player.is_on_floor()):
 		player.has_dash = true
-	
-	#var direction = signf(Input.get_axis("left", "right"))
-	#player.velocity.x = lerpf(player.velocity.x, direction * move_speed, move_lerp)
-	move_x(delta, 1)
+		move_x(delta)
+	else:
+		move_x(delta, player.air_friction_mult)
 	apply_gravity(delta)
 	player.move_and_slide()
 	

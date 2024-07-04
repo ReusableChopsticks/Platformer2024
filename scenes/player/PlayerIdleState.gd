@@ -1,11 +1,11 @@
 extends PlayerState
 class_name PlayerGroundedState
 
-# STATE: when the player is grounded and is not supplying any inputs
+## STATE: when the player is grounded and is not inputting any controls
 
 func enter():
 	player.has_dash = true
-	#has_double_jump = true
+	player.has_double_jump = true
 	pass
 
 func exit():
@@ -15,11 +15,7 @@ func update(_delta: float):
 	pass
 	
 func physics_update(delta: float):
-	
-	
-	
-	#player.velocity.x = lerpf(player.velocity.x, 0, 0.05)
-	friction_x(delta, 1)
+	friction_x(delta)
 	apply_gravity(delta)
 	player.move_and_slide()
 	

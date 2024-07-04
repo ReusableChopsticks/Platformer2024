@@ -1,11 +1,13 @@
 extends PlayerState
 class_name PlayerJumpState
 
+## STATE: includes the moment the player jumps until the time it lands
+## handles jump apex gravity mod and air movement controls
+
 @export var jump_force: int = -500
 @export_range(0, 1.0) var jump_apex_mult: float = 0.7
 @export_range(1, 3) var jump_release_mult: float = 2
-@export_range(0, 1) var air_move_mult: float = 0.7
-@export_range(0, 1) var air_friction_mult: float = 0.2
+
 var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
