@@ -44,13 +44,13 @@ func grounded():
 	
 func jump():
 	# check input
-	var jump = Input.is_action_pressed("jump")
+	var can_jump = Input.is_action_pressed("jump")
 	# check if either grace or buffer is active
-	if (jump):
-		jump = player.jump_grace_timer > 0
-	if (jump):
-		jump = player.jump_buffer_timer > 0 and player.is_on_floor()
-	return jump
+	if (can_jump):
+		can_jump = player.jump_grace_timer > 0
+	if (can_jump):
+		can_jump = player.jump_buffer_timer > 0 and player.is_on_floor()
+	return can_jump
 
 func dash():
 	return Input.is_action_pressed("dash") and player.has_dash
@@ -58,4 +58,8 @@ func dash():
 func wall():
 	# player is only on a wall and is holding on to it
 	return player.is_on_wall_only() and Input.get_axis("left", "right")
+
+func wall_jump():
+	var val = true
+	
 #endregion

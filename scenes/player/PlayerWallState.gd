@@ -3,8 +3,8 @@ class_name PlayerWallState
 
 ## STATE: when the player is sliding on a wall
 
-@export var wall_slide_speed: int = 100
-@export var wall_slide_accel: int = 50
+@export var wall_slide_speed: int = 300
+@export var wall_slide_accel: int = 200
 
 func enter():
 	player.velocity.y = 0

@@ -52,6 +52,10 @@ func _ready():
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
 
+func handle_grace_timer(delta: float, timer: float, time: float, reset_condition: Callable):
+	timer = maxf(0, timer - delta)
+	if (reset_condition.call()):
+		timer = time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

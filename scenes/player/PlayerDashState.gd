@@ -21,7 +21,7 @@ func enter():
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
 	
 	
-func physics_update(delta: float):
+func physics_update(_delta: float):
 	player.move_and_slide()
 
 

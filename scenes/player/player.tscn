@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=12 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/player/PlayerState.gd" id="5_vrwvw"]
 [ext_resource type="Script" path="res://scenes/player/PlayerWallState.gd" id="8_mglwi"]
 [ext_resource type="Script" path="res://scenes/player/PlayerDashState.gd" id="8_rv3dp"]
+[ext_resource type="Script" path="res://scenes/player/PlayerWallJumpState.gd" id="9_cqyve"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
 font_size = 32
@@ -57,3 +58,6 @@ script = ExtResource("8_rv3dp")
 
 [node name="PlayerWallState" type="Node" parent="StateMachine"]
 script = ExtResource("8_mglwi")
+
+[node name="PlayerWallJumpState" type="Node" parent="StateMachine"]
+script = ExtResource("9_cqyve")
