@@ -9,6 +9,11 @@
 position = Vector2(582, 619)
 scale = Vector2(-6.77931, 0.358071)
 
+[node name="RigidBody2D3" parent="." instance=ExtResource("1_4wkx7")]
+position = Vector2(1151, 545)
+rotation = 1.5708
+scale = Vector2(-6.77931, 0.358071)
+
 [node name="RigidBody2D2" parent="." instance=ExtResource("1_4wkx7")]
 position = Vector2(838, 472)
 scale = Vector2(-1.29693, -0.143873)

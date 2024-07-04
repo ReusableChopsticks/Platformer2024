@@ -54,5 +54,8 @@ func jump():
 
 func dash():
 	return Input.is_action_pressed("dash") and player.has_dash
-	
+
+func wall():
+	# player is only on a wall and is holding on to it
+	return player.is_on_wall_only() and Input.get_axis("left", "right")
 #endregion

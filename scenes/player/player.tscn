@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=11 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/player/PlayerMoveState.gd" id="4_0yqxf"]
 [ext_resource type="Script" path="res://scenes/player/PlayerJumpState.gd" id="5_7r6wt"]
 [ext_resource type="Script" path="res://scenes/player/PlayerState.gd" id="5_vrwvw"]
+[ext_resource type="Script" path="res://scenes/player/PlayerWallState.gd" id="8_mglwi"]
 [ext_resource type="Script" path="res://scenes/player/PlayerDashState.gd" id="8_rv3dp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
@@ -17,6 +18,8 @@ size = Vector2(118, 123)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a62lr")
+gravity = 1500.0
+time_to_stop = 0.1
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -59.0
@@ -48,9 +51,9 @@ script = ExtResource("4_0yqxf")
 
 [node name="PlayerJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("5_7r6wt")
-jump_force = null
-jump_apex_mult = null
-jump_release_mult = null
 
 [node name="PlayerDashState" type="Node" parent="StateMachine"]
 script = ExtResource("8_rv3dp")
+
+[node name="PlayerWallState" type="Node" parent="StateMachine"]
+script = ExtResource("8_mglwi")

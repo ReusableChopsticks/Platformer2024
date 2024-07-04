@@ -11,8 +11,6 @@ class_name PlayerJumpState
 var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
-
-
 func enter():
 	# apply jump force
 	player.velocity.y = jump_force
@@ -20,8 +18,6 @@ func enter():
 	is_jump_released = false
 
 func physics_update(delta: float):
-	
-
 	# left and right movement
 	if (Input.get_axis("left", "right")):
 		move_x(delta, player.air_move_mult)
@@ -53,8 +49,5 @@ func physics_update(delta: float):
 		transitioned.emit(self, "PlayerMoveState")
 	elif (dash()):
 		transitioned.emit(self, "PlayerDashState")
-
-
-#func check_grounded():
-	#if (player.is_on_floor()):
-		#transitioned.emit(self, "PlayerIdleState")
+	elif wall():
+		transitioned.emit(self, "PlayerWallState")

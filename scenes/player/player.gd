@@ -21,18 +21,19 @@ var friction_decel: float ## Friction deceleration value calculated from time_to
 @export_range(0, 1) var air_friction_mult: float = 0.2
 @export_subgroup("")
 
+@export_subgroup("Limits")
 ## The upper limit of move speed which cannot be exceeded, even with multipliers
 @export var max_move_speed: int = 3000
 ## The upper limit of fall speed which cannot be exceeded, even with multipliers
 @export var max_fall_speed: int = 2000
-@export_group("")
+@export_subgroup("")
 
-@export_group("Timing")
+@export_subgroup("Timing")
 ## AKA Coyote time
 @export var jump_grace_time: float = 0.1
 ## Time allowed before hitting the ground to count as a jump
 @export var jump_buffer_time: float = 0.2
-@export_group("")
+@export_subgroup("")
 
 
 #region Internal values
@@ -66,3 +67,6 @@ func _physics_process(delta):
 	var dir = Input.get_axis("left", "right")
 	if (dir != 0):
 		facing_dir = dir
+	
+	## Debugging
+	#print(velocity.x)
