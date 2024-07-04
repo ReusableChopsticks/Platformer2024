@@ -39,8 +39,8 @@ func friction_x(delta: float, multiplier: float = 1):
 		player.velocity.x = minf(0, player.velocity.x + (player.friction_decel * delta * multiplier))
 
 #region check player controls
-func idle():
-	return player.is_on_floor() and Input.get_axis("left", "right") == 0
+func grounded():
+	return player.is_on_floor()
 	
 func jump():
 	# check input

@@ -24,9 +24,9 @@ func physics_update(delta: float):
 
 	# left and right movement
 	if (Input.get_axis("left", "right")):
-		move_x(delta, air_move_mult)
+		move_x(delta, player.air_move_mult)
 	else:
-		friction_x(delta, air_friction_mult)
+		friction_x(delta, player.air_friction_mult)
 	
 	if (!is_jump_released and !Input.is_action_pressed("jump")):
 		is_jump_released = true
@@ -49,8 +49,8 @@ func physics_update(delta: float):
 	player.move_and_slide()
 	
 	
-	if (idle()):
-		transitioned.emit(self, "PlayerIdleState")
+	if (grounded()):
+		transitioned.emit(self, "PlayerMoveState")
 	elif (dash()):
 		transitioned.emit(self, "PlayerDashState")
 

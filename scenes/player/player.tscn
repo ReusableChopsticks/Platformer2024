@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=10 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
 [ext_resource type="Script" path="res://scenes/interfaces/StateMachine.gd" id="3_ockid"]
 [ext_resource type="Script" path="res://scenes/player/PlayerMoveState.gd" id="4_0yqxf"]
-[ext_resource type="Script" path="res://scenes/player/PlayerIdleState.gd" id="4_ht342"]
 [ext_resource type="Script" path="res://scenes/player/PlayerJumpState.gd" id="5_7r6wt"]
 [ext_resource type="Script" path="res://scenes/player/PlayerState.gd" id="5_vrwvw"]
 [ext_resource type="Script" path="res://scenes/player/PlayerDashState.gd" id="8_rv3dp"]
@@ -38,14 +37,11 @@ shape = SubResource("RectangleShape2D_d5in4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
-initial_state = NodePath("PlayerIdleState")
+initial_state = NodePath("PlayerMoveState")
 show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("5_vrwvw")
-
-[node name="PlayerIdleState" type="Node" parent="StateMachine"]
-script = ExtResource("4_ht342")
 
 [node name="PlayerMoveState" type="Node" parent="StateMachine"]
 script = ExtResource("4_0yqxf")
@@ -55,8 +51,6 @@ script = ExtResource("5_7r6wt")
 jump_force = null
 jump_apex_mult = null
 jump_release_mult = null
-air_move_mult = null
-air_friction_mult = null
 
 [node name="PlayerDashState" type="Node" parent="StateMachine"]
 script = ExtResource("8_rv3dp")
