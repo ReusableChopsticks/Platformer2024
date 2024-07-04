@@ -37,6 +37,7 @@ func physics_update(delta: float):
 		is_peak_reached = player.velocity.y < 100
 	
 	# apply gravity multiplier after jump peak is reached
+	# makes gravity lighter so the jump feels bouncier
 	var _release_mult = jump_release_mult if is_jump_released else 1.0
 	if (is_peak_reached):
 		apply_gravity(delta, jump_apex_mult * _release_mult)
@@ -46,8 +47,8 @@ func physics_update(delta: float):
 	player.move_and_slide()
 	
 	
-	if (grounded()):
-		transitioned.emit(self, "PlayerGroundedState")
+	if (idle()):
+		transitioned.emit(self, "PlayerIdleState")
 	elif (dash()):
 		transitioned.emit(self, "PlayerDashState")
 

@@ -1,11 +1,12 @@
 extends PlayerState
 class_name PlayerGroundedState
 
-# Acts as the grounded state.
+# STATE: when the player is grounded and is not supplying any inputs
 
 func enter():
-	has_dash = true
-	has_double_jump = true
+	player.has_dash = true
+	#has_double_jump = true
+	pass
 
 func exit():
 	pass

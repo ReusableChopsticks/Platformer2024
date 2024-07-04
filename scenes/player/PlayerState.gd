@@ -8,38 +8,9 @@ class_name PlayerState
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var config: MoveConfig = $"../MoveConfig"
 
-var jump_grace_timer: float = 0
-var jump_buffer_timer: float = 0
-
-# either -1 or 1 according to what the last direction was
-var player_facing_dir = 1
-
-var has_double_jump: bool = true
-var has_dash: bool = true
-
-func _ready():
-	pass
-
-func _physics_process(delta):
-	#DEBUGGING
-	#print("X VELOCITY: %s" % player.velocity.x)
-	
-	# update grace time (aka coyote and buffer time)
-	jump_grace_timer = maxf(0, jump_grace_timer - delta)
-	jump_buffer_timer = maxf(0, jump_buffer_timer - delta)
-	if player.is_on_floor():
-		jump_grace_timer = config.jump_grace_time
-	if Input.is_action_just_pressed("jump"):
-		jump_buffer_timer = config.jump_buffer_time
-	
-	# update what direction player is currently facing
-	var dir = Input.get_axis("left", "right")
-	if (dir != 0):
-		player_facing_dir = dir
-		
-		
 
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
+# clamps to max fall speed
 func apply_gravity(delta: float, multiplier: float = 1):
 	player.velocity.y = minf(player.velocity.y + (config.gravity * delta * multiplier), config.max_fall_speed)
 
@@ -69,20 +40,20 @@ func friction_x(delta: float, multiplier: float = 1):
 		player.velocity.x = minf(0, player.velocity.x + (config.friction_decel * delta * multiplier))
 
 #region check player controls
-func grounded():
-	return player.is_on_floor()
+func idle():
+	return player.is_on_floor() and Input.get_axis("left", "right") == 0
 	
 func jump():
 	# check input
 	var jump = Input.is_action_pressed("jump")
 	# check if either grace or buffer is active
 	if (jump):
-		jump = jump_grace_timer > 0
+		jump = player.jump_grace_timer > 0
 	if (jump):
-		jump = jump_buffer_timer > 0 and player.is_on_floor()
+		jump = player.jump_buffer_timer > 0 and player.is_on_floor()
 	return jump
 
 func dash():
-	return Input.is_action_pressed("dash") and has_dash
+	return Input.is_action_pressed("dash") and player.has_dash
 	
 #endregion
