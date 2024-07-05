@@ -20,6 +20,7 @@ size = Vector2(118, 123)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a62lr")
 gravity = 1500.0
+counter_dir_force_mult = 2.143
 time_to_stop = 0.1
 
 [node name="StateLabel" type="Label" parent="."]

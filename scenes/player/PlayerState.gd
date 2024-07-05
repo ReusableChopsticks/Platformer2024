@@ -7,10 +7,14 @@ class_name PlayerState
 
 @onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
 
-
+@export_range(0, 1.0) var jump_apex_mult: float = 0.7
+@export_range(0, 1.0) var jump_apex_range: int = 200
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 # clamps to max fall speed
 func apply_gravity(delta: float, multiplier: float = 1):
+	if (player.velocity.y > 0 and player.velocity.y < jump_apex_range):
+		multiplier *= jump_apex_mult
+		
 	player.velocity.y = minf(player.velocity.y + (player.gravity * delta * multiplier), player.max_fall_speed)
 
 # @description: moves player and direction gets handled for you
@@ -44,18 +48,18 @@ func grounded():
 	
 func jump():
 	# check if either grace or buffer is active
-	if (Input.is_action_pressed("jump")):
+	if (Input.is_action_just_pressed("jump")):
 		return player.jump_grace_timer.time_left > 0
 	else:
 		return player.jump_buffer_timer.time_left > 0 and player.is_on_floor()
 		
 
 func dash():
-	return Input.is_action_pressed("dash") and player.has_dash
+	return Input.is_action_just_pressed("dash") and player.has_dash
 
 func wall():
 	# player is only on a wall and is holding on to it
-	return player.is_on_wall_only() and Input.get_axis("left", "right")
+	return player.is_on_wall_only() and Input.get_axis("left", "right") == -player.get_wall_normal().x
 
 func wall_jump():
 	# check if either grace or buffer is active

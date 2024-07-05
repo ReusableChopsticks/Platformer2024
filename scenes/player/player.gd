@@ -26,7 +26,7 @@ var friction_decel: float ## Friction deceleration value calculated from time_to
 ## The upper limit of move speed which cannot be exceeded, even with multipliers
 @export var max_move_speed: int = 3000
 ## The upper limit of fall speed which cannot be exceeded, even with multipliers
-@export var max_fall_speed: int = 2000
+@export var max_fall_speed: int = 600
 @export_subgroup("")
 
 #region Internal values
@@ -68,4 +68,8 @@ func _physics_process(delta):
 	## Debugging
 	#print(velocity.x)
 	#print(jump_grace_timer.time_left)
-
+	if is_on_wall_only():
+		$Sprite2D.modulate = Color.BLACK
+	else:
+		$Sprite2D.modulate = Color.WHITE
+		
