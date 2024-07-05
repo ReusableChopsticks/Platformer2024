@@ -14,8 +14,8 @@ func physics_update(delta: float):
 	player.velocity.y = Calc.approach(player.velocity.y, wall_slide_speed, wall_slide_accel * delta)
 	player.move_and_slide()
 	
-	if !wall():
-		transitioned.emit(self, "PlayerMoveState")
-	elif wall_jump():
+	if wall_jump():
 		transitioned.emit(self, "PlayerWallJumpState")
+	elif !wall():
+		transitioned.emit(self, "PlayerMoveState")
 		

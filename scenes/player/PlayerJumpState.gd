@@ -14,8 +14,6 @@ var is_jump_released: bool = false
 func enter():
 	# apply jump force
 	player.velocity.y = jump_force
-	is_peak_reached = false
-	is_jump_released = false
 
 func physics_update(delta: float):
 	# left and right movement
@@ -24,16 +22,11 @@ func physics_update(delta: float):
 	else:
 		friction_x(delta, player.air_friction_mult)
 	
-	if Input.is_action_just_released("jump"):
-		is_jump_released = true
-	if is_equal_approx(player.velocity.y, 0):
-		is_peak_reached = true
+	# halve velocity when releasing jump
+	if Input.is_action_just_released("jump") and player.velocity.y < 0:
+		player.velocity.y /= 2
 	
-	if is_jump_released or is_peak_reached:
-		apply_gravity(delta, 2)
-	else:
-		apply_gravity(delta)
-		
+	apply_gravity(delta)		
 	
 	player.move_and_slide()
 	

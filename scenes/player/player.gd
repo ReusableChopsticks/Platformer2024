@@ -15,11 +15,18 @@ var move_accel: float = move_speed / time_to_max_speed ## Move acceleration valu
 @export_range(0.01, 1.0) var time_to_stop: float = 0.3
 var friction_decel: float ## Friction deceleration value calculated from time_to_stop
 
+## Gravity multiplier when at the apex of jump
+@export_range(0, 1.0) var jump_apex_mult: float = 0.7
+## When to stop applying jump apex multiplier
+@export_range(0, 1.0) var jump_apex_range: int = 200
+
 @export_subgroup("Air")
 ## Multiplier for movement force in the air
 @export_range(0, 1) var air_move_mult: float = 0.7
 ## Multiplier for air friction (which is lower than ground friction)
 @export_range(0, 1) var air_friction_mult: float = 0.2
+## Gravity multiplier when falling
+@export_range(0, 1) var fast_fall_mult: float = 1.5
 @export_subgroup("")
 
 @export_subgroup("Limits")
@@ -68,7 +75,7 @@ func _physics_process(delta):
 	## Debugging
 	#print(velocity.x)
 	#print(jump_grace_timer.time_left)
-	if is_on_wall_only():
+	if is_on_wall():
 		$Sprite2D.modulate = Color.BLACK
 	else:
 		$Sprite2D.modulate = Color.WHITE

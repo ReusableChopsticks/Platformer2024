@@ -28,12 +28,12 @@ func physics_update(delta: float):
 	apply_gravity(delta)
 	player.move_and_slide()
 
-	if (jump()):
+	if jump():
 		transitioned.emit(self, "PlayerJumpState")
-	elif (dash()):
+	elif dash():
 		transitioned.emit(self, "PlayerDashState")
-	elif wall():
-		transitioned.emit(self, "PlayerWallState")
 	elif wall_jump():
 		transitioned.emit(self, "PlayerWallJumpState")
+	elif wall():
+		transitioned.emit(self, "PlayerWallState")
 		

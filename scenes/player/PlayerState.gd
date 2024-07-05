@@ -7,13 +7,16 @@ class_name PlayerState
 
 @onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
 
-@export_range(0, 1.0) var jump_apex_mult: float = 0.7
-@export_range(0, 1.0) var jump_apex_range: int = 200
+
+
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 # clamps to max fall speed
+# also handles gravity multipliers for jump apex and fast falling
 func apply_gravity(delta: float, multiplier: float = 1):
-	if (player.velocity.y > 0 and player.velocity.y < jump_apex_range):
-		multiplier *= jump_apex_mult
+	if (player.velocity.y > 0 and player.velocity.y < player.jump_apex_range):
+		multiplier *= player.jump_apex_mult
+	if (player.velocity.y > player.jump_apex_range):
+		multiplier *= player.fast_fall_mult
 		
 	player.velocity.y = minf(player.velocity.y + (player.gravity * delta * multiplier), player.max_fall_speed)
 
