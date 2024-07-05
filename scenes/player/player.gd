@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PlayerCharacter
 
 @export_group("Movement")
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -28,14 +29,6 @@ var friction_decel: float ## Friction deceleration value calculated from time_to
 @export var max_fall_speed: int = 2000
 @export_subgroup("")
 
-@export_subgroup("Timing")
-## AKA Coyote time
-@export var jump_grace_time: float = 0.1
-## Time allowed before hitting the ground to count as a jump
-@export var jump_buffer_time: float = 0.2
-@export_subgroup("")
-
-
 #region Internal values
 # either -1 or 1 according to what the last direction was
 var facing_dir = 1
@@ -43,8 +36,8 @@ var facing_dir = 1
 var has_double_jump: bool = true
 var has_dash: bool = true
 
-var jump_grace_timer: float = 0
-var jump_buffer_timer: float = 0
+@onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
+@onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 #endregion
 
 # initial value calculations
@@ -52,20 +45,14 @@ func _ready():
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
 
-func handle_grace_timer(delta: float, timer: float, time: float, reset_condition: Callable):
-	timer = maxf(0, timer - delta)
-	if (reset_condition.call()):
-		timer = time
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	# update grace time (aka coyote and buffer time)
-	jump_grace_timer = maxf(0, jump_grace_timer - delta)
-	jump_buffer_timer = maxf(0, jump_buffer_timer - delta)
+	# Handle resetting timers
 	if is_on_floor():
-		jump_grace_timer = jump_grace_time
+		jump_grace_timer.start()
 	if Input.is_action_just_pressed("jump"):
-		jump_buffer_timer = jump_buffer_time
+		jump_buffer_timer.start()
+		
 	
 	# update what direction player is currently facing
 	var dir = Input.get_axis("left", "right")
@@ -74,3 +61,5 @@ func _physics_process(delta):
 	
 	## Debugging
 	#print(velocity.x)
+	#print(jump_grace_timer.time_left)
+

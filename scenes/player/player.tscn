@@ -61,3 +61,13 @@ script = ExtResource("8_mglwi")
 
 [node name="PlayerWallJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("9_cqyve")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="JumpGraceTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true

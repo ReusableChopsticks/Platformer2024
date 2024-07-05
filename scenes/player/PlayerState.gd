@@ -5,7 +5,7 @@ class_name PlayerState
 
 # We store common variables and functions in here for convenience
 
-@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
 
 
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
@@ -43,14 +43,12 @@ func grounded():
 	return player.is_on_floor()
 	
 func jump():
-	# check input
-	var can_jump = Input.is_action_pressed("jump")
 	# check if either grace or buffer is active
-	if (can_jump):
-		can_jump = player.jump_grace_timer > 0
-	if (can_jump):
-		can_jump = player.jump_buffer_timer > 0 and player.is_on_floor()
-	return can_jump
+	if (Input.is_action_pressed("jump")):
+		return player.jump_grace_timer.time_left > 0
+	else:
+		return player.jump_buffer_timer.time_left > 0 and player.is_on_floor()
+		
 
 func dash():
 	return Input.is_action_pressed("dash") and player.has_dash

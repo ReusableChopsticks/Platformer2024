@@ -27,7 +27,7 @@ func physics_update(delta: float):
 	
 	apply_gravity(delta)
 	player.move_and_slide()
-	
+
 	if (jump()):
 		transitioned.emit(self, "PlayerJumpState")
 	elif (dash()):
