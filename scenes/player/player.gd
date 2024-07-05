@@ -43,10 +43,10 @@ var facing_dir = 1
 var has_double_jump: bool = true
 var has_dash: bool = true
 
-@onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
+@onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
 @onready var wall_jump_grace_timer: Timer = $Timers/WallJumpGraceTimer
-@onready var wall_jump_buffer_timer: Timer = $Timers/WallJumpBufferTimer
+# note: all jump types use the same buffer timer and "consume" it when used (set time to 0)
 #endregion
 
 # initial value calculations
@@ -57,14 +57,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Handle resetting timers
-	if is_on_floor():
-		jump_grace_timer.start()
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()
+	if is_on_floor():
+		jump_grace_timer.start()
 	if is_on_wall_only():
 		wall_jump_grace_timer.start()
-	if Input.is_action_just_pressed("jump"):
-		wall_jump_buffer_timer.start()
 		
 	
 	# update what direction player is currently facing
