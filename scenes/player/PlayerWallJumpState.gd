@@ -14,6 +14,7 @@ func exit_wall_jump():
 	transitioned.emit(self, "PlayerMoveState")
 
 func enter():
+	player.jump_buffer_timer.stop()
 	get_tree().create_timer(wall_jump_time).timeout.connect(exit_wall_jump)
 	player.velocity.y = wall_jump_force
 	player.velocity.x = wall_jump_force * -player.get_wall_normal().x

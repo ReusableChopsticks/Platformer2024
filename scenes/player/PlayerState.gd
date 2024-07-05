@@ -50,16 +50,11 @@ func grounded():
 	return player.is_on_floor()
 	
 func jump():
-	var val := true
 	# check if either grace or buffer is active
 	if (Input.is_action_just_pressed("jump")):
-		val = player.jump_grace_timer.time_left > 0
+		return player.jump_grace_timer.time_left > 0
 	else:
-		# consume buffer if used
-		val = player.jump_buffer_timer.time_left > 0 and player.is_on_floor()
-		if val:
-			player.jump_buffer_timer.stop()
-	return val
+		return player.jump_buffer_timer.time_left > 0 and player.is_on_floor()
 
 func dash():
 	return Input.is_action_just_pressed("dash") and player.has_dash
@@ -69,15 +64,10 @@ func wall():
 	return player.is_on_wall_only() and Input.get_axis("left", "right") == -player.get_wall_normal().x
 
 func wall_jump():
-	var val := true
 	# check if either grace or buffer is active
 	if (Input.is_action_just_pressed("jump")):
-		val = player.wall_jump_grace_timer.time_left > 0
+		return player.wall_jump_grace_timer.time_left > 0
 	else:
-		val = player.jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
-		# consume buffer if used
-		if val:
-			player.jump_buffer_timer.stop()
+		return player.jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
 	
-	return val
 #endregion

@@ -13,6 +13,7 @@ var is_jump_released: bool = false
 
 func enter():
 	# apply jump force
+	player.jump_buffer_timer.stop()
 	player.velocity.y = jump_force
 
 func physics_update(delta: float):

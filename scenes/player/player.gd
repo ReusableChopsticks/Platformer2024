@@ -63,7 +63,7 @@ func _physics_process(delta):
 		jump_grace_timer.start()
 	if is_on_wall_only():
 		wall_jump_grace_timer.start()
-		
+	print(jump_buffer_timer.time_left)
 	
 	# update what direction player is currently facing
 	var dir = Input.get_axis("left", "right")
