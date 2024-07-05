@@ -38,6 +38,8 @@ var has_dash: bool = true
 
 @onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
+@onready var wall_jump_grace_timer: Timer = $Timers/WallJumpGraceTimer
+@onready var wall_jump_buffer_timer: Timer = $Timers/WallJumpBufferTimer
 #endregion
 
 # initial value calculations
@@ -52,6 +54,10 @@ func _physics_process(delta):
 		jump_grace_timer.start()
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()
+	if is_on_wall_only():
+		wall_jump_grace_timer.start()
+	if Input.is_action_just_pressed("jump"):
+		wall_jump_buffer_timer.start()
 		
 	
 	# update what direction player is currently facing

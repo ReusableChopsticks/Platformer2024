@@ -45,9 +45,9 @@ func physics_update(delta: float):
 	player.move_and_slide()
 	
 	
-	if (grounded()):
+	if grounded():
 		transitioned.emit(self, "PlayerMoveState")
-	elif (dash()):
+	elif dash():
 		transitioned.emit(self, "PlayerDashState")
 	elif wall():
 		transitioned.emit(self, "PlayerWallState")

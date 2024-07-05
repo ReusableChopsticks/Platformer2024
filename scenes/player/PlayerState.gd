@@ -58,6 +58,10 @@ func wall():
 	return player.is_on_wall_only() and Input.get_axis("left", "right")
 
 func wall_jump():
-	var val = true
+	# check if either grace or buffer is active
+	if (Input.is_action_just_pressed("jump")):
+		return player.wall_jump_grace_timer.time_left > 0
+	else:
+		return player.wall_jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
 	
 #endregion
