@@ -23,6 +23,9 @@ func enter():
 func physics_update(_delta: float):
 	player.move_and_slide()
 
+func exit():
+	# so the player does not jump immediately if you press jump during a dash
+	player.jump_buffer_timer.stop()
 
 func on_dash_timeout():
 	player.has_dash = false

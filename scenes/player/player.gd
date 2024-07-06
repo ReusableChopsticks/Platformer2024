@@ -40,6 +40,7 @@ var friction_decel: float ## Friction deceleration value calculated from time_to
 # either -1 or 1 according to what the last direction was
 var facing_dir = 1
 
+# These are set to true while grounded in MoveState, false when used up
 var has_double_jump: bool = true
 var has_dash: bool = true
 
@@ -63,7 +64,6 @@ func _physics_process(delta):
 		jump_grace_timer.start()
 	if is_on_wall_only():
 		wall_jump_grace_timer.start()
-	print(jump_buffer_timer.time_left)
 	
 	# update what direction player is currently facing
 	var dir = Input.get_axis("left", "right")

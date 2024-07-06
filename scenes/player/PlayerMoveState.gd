@@ -15,6 +15,7 @@ func physics_update(delta: float):
 	var friction_mult = 1
 	if (player.is_on_floor()):
 		player.has_dash = true
+		player.has_double_jump = true
 	else:		
 		friction_mult = player.air_friction_mult
 		move_mult = player.air_move_mult
@@ -36,4 +37,6 @@ func physics_update(delta: float):
 		transitioned.emit(self, "PlayerWallJumpState")
 	elif wall():
 		transitioned.emit(self, "PlayerWallState")
+	elif double_jump():
+		transitioned.emit(self, "PlayerDoubleJumpState")
 		

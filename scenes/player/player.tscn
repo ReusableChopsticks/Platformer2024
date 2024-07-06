@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=13 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/player/PlayerWallState.gd" id="8_mglwi"]
 [ext_resource type="Script" path="res://scenes/player/PlayerDashState.gd" id="8_rv3dp"]
 [ext_resource type="Script" path="res://scenes/player/PlayerWallJumpState.gd" id="9_cqyve"]
+[ext_resource type="Script" path="res://scenes/player/PlayerDoubleJump.gd" id="10_7d5nd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
 font_size = 32
@@ -44,6 +45,7 @@ shape = SubResource("RectangleShape2D_d5in4")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
 initial_state = NodePath("PlayerMoveState")
+show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("5_vrwvw")
@@ -63,6 +65,9 @@ script = ExtResource("8_mglwi")
 [node name="PlayerWallJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("9_cqyve")
 
+[node name="PlayerDoubleJumpState" type="Node" parent="StateMachine"]
+script = ExtResource("10_7d5nd")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="JumpGraceTimer" type="Timer" parent="Timers"]
@@ -70,7 +75,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="JumpBufferTimer" type="Timer" parent="Timers"]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="WallJumpGraceTimer" type="Timer" parent="Timers"]

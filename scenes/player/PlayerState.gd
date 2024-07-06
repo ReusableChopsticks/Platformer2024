@@ -69,5 +69,14 @@ func wall_jump():
 		return player.wall_jump_grace_timer.time_left > 0
 	else:
 		return player.jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
-	
+
+func double_jump():
+	if !player.has_double_jump:
+		return
+	# check if either grace or buffer is active
+	if (Input.is_action_just_pressed("jump")):
+		return player.jump_grace_timer.time_left > 0
+	else:
+		# double jump when in the air
+		return player.jump_buffer_timer.time_left > 0 and (!player.is_on_floor() and !player.is_on_wall())
 #endregion
