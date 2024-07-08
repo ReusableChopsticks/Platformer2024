@@ -20,6 +20,9 @@ func physics_update(delta: float):
 		friction_mult = player.air_friction_mult
 		move_mult = player.air_move_mult
 	
+	if idle() and player.speed_level > 1:
+		player.reset_speed_level()
+	
 	# use appropriate multiplier depending on if player is on ground or in air
 	if (Input.get_axis("left", "right")):
 		move_x(delta, move_mult)

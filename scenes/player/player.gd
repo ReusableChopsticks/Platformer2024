@@ -11,14 +11,17 @@ var move_speed: int
 var speed_level: int = 1
 @export var max_speed_level: int = 4
 
-## Percentage of move speed to apply as counter force when moving in the opposite direction (used in move_x())
+## Percentage of move speed to apply as counter force when moving in the opposite direction
+## used in move_x()
 @export_range(0, 3.0) var counter_dir_force_mult: float = 0.8
 ## The time it takes for player to accelerate to base speed
 @export_range(0.01, 1.0) var time_to_max_speed: float = 0.5
-var move_accel: float = move_speed / time_to_max_speed ## Move acceleration value calculated from time_to_max_speed
+## Move acceleration value calculated from time_to_max_speed
+var move_accel: float = move_speed / time_to_max_speed
 ## The time it takes for player to stop from base speed (due to friction)
 @export_range(0.01, 1.0) var time_to_stop: float = 0.3
-var friction_decel: float ## Friction deceleration value calculated from time_to_stop
+## Friction deceleration value calculated from time_to_stop 
+var friction_decel: float
 
 ## Gravity multiplier when at the apex of jump
 @export_range(0, 1.0) var jump_apex_mult: float = 0.7
@@ -52,22 +55,27 @@ var has_dash: bool = true
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 @onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
 @onready var wall_jump_grace_timer: Timer = $Timers/WallJumpGraceTimer
-# note: all jump types use the same buffer timer and "consume" it when used (set time to 0)
+# note: all jump types use the same buffer timer and "consume" it when used 
+# i.e. jump_buffer_timer.stop() on the state's enter function
 #endregion
+
+func calculate_forces():
+	move_speed = base_speed * speed_level
+	move_accel = move_speed / time_to_max_speed
+	friction_decel = move_speed / time_to_stop
+	print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
 	speed_level = min(speed_level + 1, max_speed_level)
-	move_speed = base_speed * speed_level
-	move_accel = move_speed / time_to_max_speed
-	friction_decel = move_speed / time_to_stop
-	
+	calculate_forces()
+
+func reset_speed_level():
+	speed_level = 1
+	calculate_forces()
 
 # initial value calculations
 func _ready():
-	move_speed = base_speed * speed_level
-	print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
-	move_accel = move_speed / time_to_max_speed
-	friction_decel = move_speed / time_to_stop
+	calculate_forces()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

@@ -8,6 +8,7 @@ class_name PlayerWallState
 
 func enter():
 	player.velocity.y = 0
+	player.reset_speed_level()
 
 func physics_update(delta: float):
 	

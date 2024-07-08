@@ -48,7 +48,10 @@ func friction_x(delta: float, multiplier: float = 1):
 #region check player controls
 func grounded():
 	return player.is_on_floor()
-	
+
+func idle():
+	return grounded and !Input.is_anything_pressed() and player.velocity.x == 0
+
 func jump():
 	# check if either grace or buffer is active
 	if (Input.is_action_just_pressed("jump")):
