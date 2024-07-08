@@ -9,13 +9,11 @@ class_name PlayerReboundState
 
 func enter():
 	if player.is_on_wall():
-		print("player is on wall")
 		player.velocity.x = player.move_speed * player.get_wall_normal().x
 		player.velocity.y = rebound_y_vel
 		## increase base speed by one on rebound
 		player.increment_speed_level()
 	elif player.is_on_floor() and Input.is_action_pressed("down"):
-		print("player is on floor and down is pressed")
 		player.velocity.y = floor_rebound_vel
 	else:
 		printerr("ERROR: entered rebound state while not on wall or floor")

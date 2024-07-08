@@ -52,6 +52,9 @@ func grounded():
 func idle():
 	return grounded and !Input.is_anything_pressed() and player.velocity.x == 0
 
+func in_air():
+	return !player.is_on_ceiling() and !player.is_on_floor() and !player.is_on_wall()
+
 func jump():
 	# check if either grace or buffer is active
 	if (Input.is_action_just_pressed("jump")):
