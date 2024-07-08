@@ -73,8 +73,8 @@ func _physics_process(delta):
 	## Debugging
 	#print(velocity.x)
 	#print(jump_grace_timer.time_left)
-	if is_on_wall():
-		$Sprite2D.modulate = Color.BLACK
-	else:
-		$Sprite2D.modulate = Color.WHITE
+	#if is_on_wall():
+		#$Sprite2D.modulate = Color.BLACK
+	#else:
+		#$Sprite2D.modulate = Color.WHITE
 		

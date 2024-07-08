@@ -22,11 +22,14 @@ func enter():
 	
 func physics_update(_delta: float):
 	player.move_and_slide()
+	if player.is_on_wall() or player.is_on_floor():
+		transitioned.emit(self, "PlayerReboundState")
+		
 
 func exit():
 	# so the player does not jump immediately if you press jump during a dash
 	player.jump_buffer_timer.stop()
+	player.has_dash = false
 
 func on_dash_timeout():
-	player.has_dash = false
 	transitioned.emit(self, "PlayerMoveState")
