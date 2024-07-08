@@ -12,6 +12,7 @@ func enter():
 		player.velocity.y = rebound_y_vel
 		print("wall rebound")
 		## TODO: increase base speed by one on rebound
+		player.increment_speed_level()
 	elif player.is_on_floor() and Input.is_action_pressed("down"):
 		player.velocity.y = -1000
 		print("floor rebound")

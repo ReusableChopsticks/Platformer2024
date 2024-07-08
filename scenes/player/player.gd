@@ -4,10 +4,15 @@ class_name PlayerCharacter
 @export_group("Movement")
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 ## The base max move speed without any multipliers
-@export var move_speed: int = 400
+@export var base_speed: int = 200
+## the calculated speed calculated using base_speed and speed_level
+var move_speed: int
+## Current speed level in range [1, max_speed_level]
+var speed_level: int = 1
+@export var max_speed_level: int = 4
+
 ## Percentage of move speed to apply as counter force when moving in the opposite direction (used in move_x())
 @export_range(0, 3.0) var counter_dir_force_mult: float = 0.8
-
 ## The time it takes for player to accelerate to base speed
 @export_range(0.01, 1.0) var time_to_max_speed: float = 0.5
 var move_accel: float = move_speed / time_to_max_speed ## Move acceleration value calculated from time_to_max_speed
@@ -50,8 +55,17 @@ var has_dash: bool = true
 # note: all jump types use the same buffer timer and "consume" it when used (set time to 0)
 #endregion
 
+func increment_speed_level():
+	speed_level = min(speed_level + 1, max_speed_level)
+	move_speed = base_speed * speed_level
+	move_accel = move_speed / time_to_max_speed
+	friction_decel = move_speed / time_to_stop
+	
+
 # initial value calculations
 func _ready():
+	move_speed = base_speed * speed_level
+	print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
 
@@ -77,4 +91,4 @@ func _physics_process(delta):
 		#$Sprite2D.modulate = Color.BLACK
 	#else:
 		#$Sprite2D.modulate = Color.WHITE
-		
+	#print(move_speed)

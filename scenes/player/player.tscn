@@ -59,6 +59,7 @@ script = ExtResource("5_7r6wt")
 
 [node name="PlayerDashState" type="Node" parent="StateMachine"]
 script = ExtResource("8_rv3dp")
+dash_time = 0.1
 
 [node name="PlayerWallState" type="Node" parent="StateMachine"]
 script = ExtResource("8_mglwi")
