@@ -24,7 +24,7 @@ position = Vector2(838, 472)
 scale = Vector2(-1.29693, -0.143873)
 
 [node name="RigidBody2D5" parent="." instance=ExtResource("1_4wkx7")]
-position = Vector2(512, 65)
+position = Vector2(670, 54)
 scale = Vector2(-0.208567, -0.340107)
 
 [node name="RigidBody2D9" parent="." instance=ExtResource("1_4wkx7")]
@@ -32,12 +32,12 @@ position = Vector2(439, 559)
 scale = Vector2(-0.208567, -0.340107)
 
 [node name="RigidBody2D8" parent="." instance=ExtResource("1_4wkx7")]
-position = Vector2(516, 183)
+position = Vector2(674, 172)
 rotation = 1.5708
 scale = Vector2(-0.208567, -0.898569)
 
 [node name="RigidBody2D6" parent="." instance=ExtResource("1_4wkx7")]
-position = Vector2(155, 313)
+position = Vector2(155, 298)
 scale = Vector2(-0.208567, 1.73989)
 
 [node name="Player" parent="." instance=ExtResource("2_caiss")]

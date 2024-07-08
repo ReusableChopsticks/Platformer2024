@@ -9,6 +9,7 @@ class_name PlayerCharacter
 var move_speed: int
 ## Current speed level in range [1, max_speed_level]
 var speed_level: int = 1
+@export var speed_increase_amount: float = 0.5
 @export var max_speed_level: int = 4
 
 ## Percentage of move speed to apply as counter force when moving in the opposite direction
@@ -34,7 +35,7 @@ var friction_decel: float
 ## Multiplier for air friction (which is lower than ground friction)
 @export_range(0, 1) var air_friction_mult: float = 0.2
 ## Gravity multiplier when falling
-@export_range(0, 1) var fast_fall_mult: float = 1.5
+@export_range(0, 5) var fast_fall_mult: float = 1.5
 @export_subgroup("")
 
 @export_subgroup("Limits")
@@ -59,11 +60,14 @@ var has_dash: bool = true
 # i.e. jump_buffer_timer.stop() on the state's enter function
 #endregion
 
+## calculate movement values every time speed_level is changed
 func calculate_forces():
-	move_speed = base_speed * speed_level
+	# for every above 1, add mult_increment to the multiplier
+	# 						   1 + speed_increase_amount(n - 1) 
+	move_speed = base_speed * (1 + (speed_increase_amount * (speed_level - 1)))
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
-	print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
+	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
 	speed_level = min(speed_level + 1, max_speed_level)
@@ -93,7 +97,7 @@ func _physics_process(delta):
 		facing_dir = dir
 	
 	## Debugging
-	#print(velocity.x)
+	#print(velocity)
 	#print(jump_grace_timer.time_left)
 	#if is_on_wall():
 		#$Sprite2D.modulate = Color.BLACK

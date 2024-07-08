@@ -26,6 +26,7 @@ gravity = 1500.0
 counter_dir_force_mult = 3.0
 time_to_stop = 0.1
 air_friction_mult = 0.308
+fast_fall_mult = 1.607
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -59.0
