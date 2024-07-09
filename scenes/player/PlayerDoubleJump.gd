@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerDoubleJumpState
 
-@export var double_jump_force: int = -300
+@export var double_jump_force: int = -400
 
 func enter():
 	player.jump_buffer_timer.stop()

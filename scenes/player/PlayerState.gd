@@ -50,7 +50,7 @@ func grounded():
 	return player.is_on_floor()
 
 func idle():
-	return grounded and !Input.is_anything_pressed() and player.velocity.x == 0
+	return grounded and !Input.is_anything_pressed() and player.velocity == Vector2.ZERO
 
 func in_air():
 	return !player.is_on_ceiling() and !player.is_on_floor() and !player.is_on_wall()

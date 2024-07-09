@@ -4,7 +4,7 @@ class_name PlayerReboundState
 @export var rebound_time: float = 0.2
 ## y velocity to apply when rebounding off a wall.
 @export var rebound_y_vel: int = -200
-@export var floor_rebound_vel: int = -700
+@export var floor_rebound_vel: int = -800
 
 
 func enter():

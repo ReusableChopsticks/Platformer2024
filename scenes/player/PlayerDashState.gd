@@ -19,7 +19,6 @@ var was_in_air := false
 
 func enter():
 	was_in_air = in_air()
-	print(was_in_air)
 	already_transitioned = false
 	var dash_speed = player.move_speed * dash_speed_mult
 	if (Input.is_action_pressed("down")):
@@ -67,5 +66,4 @@ func exit():
 
 func on_dash_timeout():
 	if not already_transitioned:
-		print("dash timeout")
 		transitioned.emit(self, "PlayerMoveState")

@@ -70,10 +70,12 @@ func calculate_forces():
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
+	modulate = Color.BLACK
 	speed_level = min(speed_level + 1, max_speed_level)
 	calculate_forces()
 
 func reset_speed_level():
+	modulate = Color.WHITE
 	speed_level = 1
 	calculate_forces()
 
