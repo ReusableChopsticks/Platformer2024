@@ -26,6 +26,8 @@ func physics_update(delta: float):
 	# halve velocity when releasing jump
 	if Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y /= 2
+		transitioned.emit(self, "PlayerMoveState")
+		return
 	
 	apply_gravity(delta)		
 	

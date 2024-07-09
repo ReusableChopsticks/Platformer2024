@@ -23,6 +23,7 @@ size = Vector2(118, 123)
 safe_margin = 0.2
 script = ExtResource("1_a62lr")
 gravity = 1500.0
+max_speed_level = 7
 counter_dir_force_mult = 3.0
 time_to_stop = 0.1
 air_friction_mult = 0.308
