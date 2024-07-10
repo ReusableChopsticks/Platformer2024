@@ -2,19 +2,15 @@ extends PlayerState
 class_name PlayerReboundState
 
 @export var rebound_time: float = 0.2
-## y velocity to apply when rebounding off a wall.
-@export var rebound_y_vel: int = -200
-@export var floor_rebound_vel: int = -800
-
 
 func enter():
 	if player.is_on_wall():
 		player.velocity.x = player.move_speed * player.get_wall_normal().x
-		player.velocity.y = rebound_y_vel
+		player.velocity.y = player.rebound_y_vel
 		## increase base speed by one on rebound
 		player.increment_speed_level()
 	elif player.is_on_floor() and Input.is_action_pressed("down"):
-		player.velocity.y = floor_rebound_vel
+		player.velocity.y = player.floor_rebound_vel
 	else:
 		printerr("ERROR: entered rebound state while not on wall or floor")
 	

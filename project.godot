@@ -21,7 +21,15 @@ Calc="*res://scenes/interfaces/Calc.gd"
 
 [display]
 
+window/size/viewport_width=256
+window/size/viewport_height=144
+window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom_font="res://themes/m5x7.ttf"
 
 [input]
 
@@ -60,3 +68,7 @@ dash={
 [physics]
 
 2d/default_gravity=1200.0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

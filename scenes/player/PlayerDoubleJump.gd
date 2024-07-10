@@ -1,12 +1,12 @@
 extends PlayerState
 class_name PlayerDoubleJumpState
 
-@export var double_jump_force: int = -400
+
 
 func enter():
 	player.jump_buffer_timer.stop()
 	player.has_double_jump = false
-	player.velocity.y = double_jump_force
+	player.velocity.y = player.double_jump_vel
 	
 func physics_update(delta: float):
 	# left and right movement

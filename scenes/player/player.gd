@@ -2,19 +2,21 @@ extends CharacterBody2D
 class_name PlayerCharacter
 
 @export_group("Movement")
-@export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 ## The base max move speed without any multipliers
 @export var base_speed: int = 200
 ## the calculated speed calculated using base_speed and speed_level
 var move_speed: int
 ## Current speed level in range [1, max_speed_level]
 var speed_level: int = 1
+## The percentage of base speed to be added on to move speed for each speed level
 @export var speed_increase_amount: float = 0.5
+## The max amount of times you can increase your speed on rebounds
 @export var max_speed_level: int = 4
+
 
 ## Percentage of move speed to apply as counter force when moving in the opposite direction
 ## used in move_x()
-@export_range(0, 3.0) var counter_dir_force_mult: float = 0.8
+@export_range(0, 5.0) var counter_dir_force_mult: float = 0.8
 ## The time it takes for player to accelerate to base speed
 @export_range(0.01, 1.0) var time_to_max_speed: float = 0.5
 ## Move acceleration value calculated from time_to_max_speed
@@ -24,10 +26,32 @@ var move_accel: float = move_speed / time_to_max_speed
 ## Friction deceleration value calculated from time_to_stop 
 var friction_decel: float
 
+
+
+@export_subgroup("Jump")
+@export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+## Time it takes to reach peak of jump
+## Used to calculate initial jump_vel
+@export var time_to_jump_peak: float = 0.3
+## Desired jump height in pixels
+@export var jump_height = 24
+## Base jump velocity
+var jump_vel: int
+## Jump velocity for wall jump
+var wall_jump_vel: int
+## Jump velocity for double jump
+var double_jump_vel: int
+## y velocity to apply when rebounding off a wall.
+var rebound_y_vel: int
+## y velocity to apply when rebounding off the floor.
+var floor_rebound_vel: int
+
 ## Gravity multiplier when at the apex of jump
 @export_range(0, 1.0) var jump_apex_mult: float = 0.7
-## When to stop applying jump apex multiplier
-@export_range(0, 1.0) var jump_apex_range: int = 200
+## What y velocity to stop applying jump apex multiplier 
+## in range [0, jump_apex_range]
+@export var jump_apex_range: int = 200
+@export_subgroup("")
 
 @export_subgroup("Air")
 ## Multiplier for movement force in the air
@@ -60,13 +84,28 @@ var has_dash: bool = true
 # i.e. jump_buffer_timer.stop() on the state's enter function
 #endregion
 
+
+func _ready():
+	calculate_forces()
+	
+	## jumping numbers according to formulas
+	# https://www.youtube.com/watch?v=hG9SzQxaCm8
+	gravity = (2 * jump_height) / (time_to_jump_peak * time_to_jump_peak)
+	jump_vel = -(2 * jump_height) / time_to_jump_peak
+	wall_jump_vel = jump_vel * 0.6
+	double_jump_vel = jump_vel * 0.6
+	rebound_y_vel = jump_vel * 0.3
+	floor_rebound_vel = jump_vel * 1.5
+
 ## calculate movement values every time speed_level is changed
 func calculate_forces():
+	## horizontal movement
 	# for every above 1, add mult_increment to the multiplier
 	# 						   1 + speed_increase_amount(n - 1) 
 	move_speed = floor(base_speed * (1 + (speed_increase_amount * (speed_level - 1))))
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
+	
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
@@ -79,9 +118,6 @@ func reset_speed_level():
 	speed_level = 1
 	calculate_forces()
 
-# initial value calculations
-func _ready():
-	calculate_forces()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):

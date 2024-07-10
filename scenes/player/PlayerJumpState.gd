@@ -4,7 +4,7 @@ class_name PlayerJumpState
 ## STATE: includes the moment the player jumps until the time it lands
 ## handles jump apex gravity mod and air movement controls
 
-@export var jump_force: int = -500
+
 #@export_range(0, 1.0) var jump_apex_mult: float = 0.7
 @export_range(1, 3) var jump_release_mult: float = 2
 
@@ -12,9 +12,10 @@ var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
 func enter():
-	# apply jump force
+	# consumer buffer
 	player.jump_buffer_timer.stop()
-	player.velocity.y = jump_force
+	# apply jump force
+	player.velocity.y = player.jump_vel
 
 func physics_update(delta: float):
 	# left and right movement

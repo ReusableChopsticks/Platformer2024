@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
-[ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="1_hup1c"]
+[ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="2_n1uhx"]
 [ext_resource type="Script" path="res://scenes/interfaces/StateMachine.gd" id="3_ockid"]
 [ext_resource type="Script" path="res://scenes/player/PlayerMoveState.gd" id="4_0yqxf"]
 [ext_resource type="Script" path="res://scenes/player/PlayerJumpState.gd" id="5_7r6wt"]
@@ -17,16 +17,17 @@ font_size = 32
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5in4"]
-size = Vector2(118, 123)
+size = Vector2(8, 8)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(0.168185, 0.168185)
 safe_margin = 0.2
 script = ExtResource("1_a62lr")
-gravity = 1500.0
+base_speed = 50
 max_speed_level = 7
-counter_dir_force_mult = 3.0
+counter_dir_force_mult = 5.0
+time_to_max_speed = 0.305
 time_to_stop = 0.1
+gravity = 1500.0
 air_friction_mult = 0.308
 fast_fall_mult = 1.607
 
@@ -41,10 +42,11 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hup1c")
+texture = ExtResource("2_n1uhx")
+region_enabled = true
+region_rect = Rect2(184, 0, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_d5in4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

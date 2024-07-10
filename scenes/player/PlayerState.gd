@@ -3,9 +3,6 @@ class_name PlayerState
 
 ### An interface for player controls and common functions.
 
-# We store common variables and functions in here for convenience
-
-#@onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
 @onready var player: PlayerCharacter = get_parent().get_parent()
 
 func _ready():
