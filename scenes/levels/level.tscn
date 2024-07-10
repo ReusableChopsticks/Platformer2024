@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqmxrctqjmthf"]
+[gd_scene load_steps=7 format=3 uid="uid://bqmxrctqjmthf"]
 
 [ext_resource type="PackedScene" uid="uid://cy75l1ckrifj7" path="res://scenes/environment/wall.tscn" id="1_4wkx7"]
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_g84wr"]
 [ext_resource type="PackedScene" uid="uid://ci5j8awqi3j8v" path="res://scenes/player/player.tscn" id="2_caiss"]
+[ext_resource type="Script" path="res://scenes/levels/Goal.gd" id="4_hh235"]
+[ext_resource type="Texture2D" uid="uid://cld0i6eyjjmi6" path="res://icon.svg" id="5_pg7c7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwd8"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_g84wr")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_4wkx7")]
 position = Vector2(582, 619)
@@ -43,3 +49,18 @@ scale = Vector2(-0.208567, 1.73989)
 [node name="Player" parent="." instance=ExtResource("2_caiss")]
 position = Vector2(142, 52)
 scale = Vector2(0.193888, 0.193888)
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(230, 77)
+scale = Vector2(2.00513, 2.00513)
+script = ExtResource("4_hh235")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal"]
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("5_pg7c7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("RectangleShape2D_nlwd8")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]

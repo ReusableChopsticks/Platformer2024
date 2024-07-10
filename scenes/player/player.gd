@@ -64,7 +64,7 @@ var has_dash: bool = true
 func calculate_forces():
 	# for every above 1, add mult_increment to the multiplier
 	# 						   1 + speed_increase_amount(n - 1) 
-	move_speed = base_speed * (1 + (speed_increase_amount * (speed_level - 1)))
+	move_speed = floor(base_speed * (1 + (speed_increase_amount * (speed_level - 1))))
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
