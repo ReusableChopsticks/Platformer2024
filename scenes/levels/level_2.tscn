@@ -6,5 +6,5 @@
 [node name="Level_2" instance=ExtResource("1_oks40")]
 
 [node name="RigidBody2D10" parent="." index="5" instance=ExtResource("1_og5o5")]
-position = Vector2(360, 298)
+position = Vector2(198, 317)
 scale = Vector2(-0.208567, -0.340107)

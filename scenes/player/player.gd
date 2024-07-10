@@ -84,7 +84,7 @@ func _ready():
 	calculate_forces()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Handle resetting timers
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()

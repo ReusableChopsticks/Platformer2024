@@ -22,6 +22,6 @@ func enter():
 	player.velocity.y = wall_jump_vel - (player.move_speed * wall_jump_vel_speed_mult)
 	player.velocity.x = player.move_speed * player.get_wall_normal().x
 
-func physics_update(delta: float):
+func physics_update(_delta: float):
 	player.move_and_slide()
 	

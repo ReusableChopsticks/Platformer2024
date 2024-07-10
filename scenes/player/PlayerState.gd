@@ -5,9 +5,11 @@ class_name PlayerState
 
 # We store common variables and functions in here for convenience
 
-@onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
+#@onready var player: PlayerCharacter = get_tree().get_nodes_in_group("Player")[0]
+@onready var player: PlayerCharacter = get_parent().get_parent()
 
-
+func _ready():
+	player = get_parent().get_parent()
 
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 # clamps to max fall speed
