@@ -140,3 +140,5 @@ func _physics_process(_delta):
 	#else:
 		#$Sprite2D.modulate = Color.WHITE
 	#print(move_speed)
+	print(Input.get_axis("left", "right"))
+	#print(Input.is_action_pressed("jump"))
