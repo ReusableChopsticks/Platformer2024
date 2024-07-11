@@ -40,8 +40,6 @@ func physics_update(delta: float):
 		transitioned.emit(self, "PlayerMoveState")
 	elif dash():
 		transitioned.emit(self, "PlayerDashState")
-	elif wall():
-		transitioned.emit(self, "PlayerWallState")
 	elif double_jump():
 		transitioned.emit(self, "PlayerDoubleJumpState")
 		
