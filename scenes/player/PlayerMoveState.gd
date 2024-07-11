@@ -12,12 +12,10 @@ func exit():
 
 func physics_update(delta: float):
 	var move_mult = 1
-	var friction_mult = 1
 	if (player.is_on_floor()):
 		player.has_dash = true
 		player.has_double_jump = true
 	else:		
-		friction_mult = player.air_friction_mult
 		move_mult = player.air_move_mult
 	
 	if idle() and player.speed_level > 1:
@@ -31,11 +29,7 @@ func physics_update(delta: float):
 		
 	
 	# use appropriate multiplier depending on if player is on ground or in air
-	if (Input.get_axis("left", "right")):
-		move_x(delta, move_mult)
-	else:
-		friction_x(delta, friction_mult)
-	
+	move_x(delta, move_mult)
 	apply_gravity(delta)
 	player.move_and_slide()
 

@@ -46,17 +46,6 @@ func physics_update(_delta: float):
 		# if wall or floor rebound, then transition to rebound state
 		already_transitioned = true
 		transitioned.emit(self, "PlayerReboundState")
-	
-	
-	#var is_rebound = false
-	#if player.is_on_wall():
-		#is_rebound = true
-	#if (player.is_on_floor() and Input.is_action_pressed("down") and was_in_air):
-		#return
-	#print("made it thorugh")
-	#
-	#already_transitioned = true
-	#transitioned.emit(self, "PlayerReboundState")
 		
 
 func exit():

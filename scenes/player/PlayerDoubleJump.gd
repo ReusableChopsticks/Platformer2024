@@ -10,11 +10,7 @@ func enter():
 	
 func physics_update(delta: float):
 	# left and right movement
-	if (Input.get_axis("left", "right")):
-		move_x(delta, player.air_move_mult)
-	else:
-		friction_x(delta, player.air_friction_mult)
-	
+	move_x(delta, player.air_move_mult)
 	apply_gravity(delta)		
 	player.move_and_slide()
 	

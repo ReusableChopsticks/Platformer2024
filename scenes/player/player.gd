@@ -56,8 +56,6 @@ var floor_rebound_vel: int
 @export_subgroup("Air")
 ## Multiplier for movement force in the air
 @export_range(0, 1) var air_move_mult: float = 0.7
-## Multiplier for air friction (which is lower than ground friction)
-@export_range(0, 1) var air_friction_mult: float = 0.2
 ## Gravity multiplier when falling
 @export_range(0, 5) var fast_fall_mult: float = 1.5
 @export_subgroup("")

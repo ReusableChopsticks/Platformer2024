@@ -1702,7 +1702,6 @@ position = Vector2(-39, -21)
 
 [node name="Player" parent="." instance=ExtResource("2_caiss")]
 position = Vector2(71, -37)
-air_friction_mult = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

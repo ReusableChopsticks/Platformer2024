@@ -24,6 +24,8 @@ func apply_gravity(delta: float, multiplier: float = 1):
 # @param weight: what to multiply the acceleration rate with, within range (0, infinity)
 func move_x(delta: float, multiplier: float = 1):
 	var direction = signf(Input.get_axis("left", "right"))
+	if !direction:
+		friction_x(delta, multiplier)
 	
 	var vel = player.velocity.x + (multiplier * player.move_accel * direction * delta)
 	
@@ -35,13 +37,13 @@ func move_x(delta: float, multiplier: float = 1):
 
 # applies a friction force against the current velocity of the player
 func friction_x(delta: float, multiplier: float = 1):
-	var dir = signf(player.velocity.x)
 	if (is_zero_approx(player.velocity.x)):
 		# stop applying friction if the player has stopped
 		return
-	if (is_equal_approx(dir, 1)):
+	var dir = sign(player.velocity.x)
+	if (dir == 1):
 		player.velocity.x = maxf(0, player.velocity.x - (player.friction_decel * delta * multiplier))
-	elif (is_equal_approx(dir, -1)):
+	elif (dir == -1):
 		player.velocity.x = minf(0, player.velocity.x + (player.friction_decel * delta * multiplier))
 
 #region check player controls
