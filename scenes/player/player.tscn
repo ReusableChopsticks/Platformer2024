@@ -50,7 +50,6 @@ shape = SubResource("RectangleShape2D_d5in4")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
 initial_state = NodePath("PlayerMoveState")
-show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("5_vrwvw")
