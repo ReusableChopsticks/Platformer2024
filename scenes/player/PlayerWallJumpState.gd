@@ -14,6 +14,7 @@ class_name PlayerWallJumpState
 
 
 func exit_wall_jump():
+	player.wall_jump_grace_timer.stop()
 	transitioned.emit(self, "PlayerMoveState")
 
 func enter():

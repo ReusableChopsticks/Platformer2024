@@ -17,6 +17,9 @@ func enter():
 	# apply jump force
 	player.velocity.y = player.jump_vel
 
+func exit():
+	player.jump_grace_timer.stop()
+
 func physics_update(delta: float):
 	# left and right movement
 	if (Input.get_axis("left", "right")):
@@ -25,8 +28,9 @@ func physics_update(delta: float):
 		friction_x(delta, player.air_friction_mult)
 	
 	# halve velocity when releasing jump
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
-		player.velocity.y /= 2
+	if Input.is_action_just_released("jump"):
+		if player.velocity.y < 0:
+			player.velocity.y /= 2
 		transitioned.emit(self, "PlayerMoveState")
 		return
 	

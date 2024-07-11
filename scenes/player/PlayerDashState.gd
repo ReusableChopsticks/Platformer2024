@@ -63,6 +63,7 @@ func exit():
 	# so the player does not jump immediately if you press jump during a dash
 	player.jump_buffer_timer.stop()
 	player.has_dash = false
+	player.velocity.x = player.facing_dir * player.move_speed
 
 func on_dash_timeout():
 	if not already_transitioned:

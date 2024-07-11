@@ -91,11 +91,11 @@ func _ready():
 	## jumping numbers according to formulas
 	# https://www.youtube.com/watch?v=hG9SzQxaCm8
 	gravity = (2 * jump_height) / (time_to_jump_peak * time_to_jump_peak)
-	jump_vel = -(2 * jump_height) / time_to_jump_peak
-	wall_jump_vel = jump_vel * 0.6
-	double_jump_vel = jump_vel * 0.6
-	rebound_y_vel = jump_vel * 0.3
-	floor_rebound_vel = jump_vel * 1.5
+	jump_vel = floor(-(2 * jump_height) / time_to_jump_peak)
+	wall_jump_vel = floor(jump_vel * 0.6)
+	double_jump_vel = floor(jump_vel * 0.6)
+	rebound_y_vel = floor(jump_vel * 0.3)
+	floor_rebound_vel = floor(jump_vel * 1.5)
 
 ## calculate movement values every time speed_level is changed
 func calculate_forces():

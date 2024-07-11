@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://scenes/player/PlayerReboundState.gd" id="11_pj1yr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
-font_size = 32
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5in4"]
@@ -24,18 +23,17 @@ safe_margin = 0.2
 script = ExtResource("1_a62lr")
 base_speed = 50
 max_speed_level = 7
-counter_dir_force_mult = 5.0
-time_to_max_speed = 0.305
+counter_dir_force_mult = 3.0
+time_to_max_speed = 0.1
 time_to_stop = 0.1
 gravity = 1500.0
-air_friction_mult = 0.308
-fast_fall_mult = 1.607
+air_move_mult = 0.2
 
 [node name="StateLabel" type="Label" parent="."]
-offset_left = -59.0
-offset_top = -115.0
-offset_right = 58.0
-offset_bottom = -70.0
+offset_left = -38.0
+offset_top = -17.0
+offset_right = 40.0
+offset_bottom = 13.0
 text = "{STATE}"
 label_settings = SubResource("LabelSettings_f682e")
 horizontal_alignment = 1
@@ -52,6 +50,7 @@ shape = SubResource("RectangleShape2D_d5in4")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
 initial_state = NodePath("PlayerMoveState")
+show_state_label = true
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("5_vrwvw")
@@ -64,7 +63,6 @@ script = ExtResource("5_7r6wt")
 
 [node name="PlayerDashState" type="Node" parent="StateMachine"]
 script = ExtResource("8_rv3dp")
-dash_time = 0.1
 
 [node name="PlayerWallState" type="Node" parent="StateMachine"]
 script = ExtResource("8_mglwi")
