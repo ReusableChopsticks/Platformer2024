@@ -19,6 +19,9 @@ func load_current_level():
 		current_level_num = 0
 	
 	#var level_path = "%s%s.tscn" % [levels_file_path, levels[current_level_num]]
+	if levels[current_level_num] == null:
+		get_tree().quit()
+	
 	current_level = levels[current_level_num].instantiate()
 	current_level.level_completed.connect(on_level_completed)
 	add_child(current_level)

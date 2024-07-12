@@ -15,8 +15,10 @@ func exit():
 func physics_update(delta: float):
 	var move_mult = 1
 	if (player.is_on_floor()):
-		player.has_dash = true
-		player.has_double_jump = true
+		if !player.has_dash:
+			player.has_dash = true
+		if !player.has_double_jump:
+			player.has_double_jump = true
 	else:		
 		move_mult = player.air_move_mult
 	

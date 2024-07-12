@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://cidaxx0njbul7" path="res://scenes/environment/spikes/spike.tscn" id="1_f0jdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlfkq"]
-size = Vector2(8, 2)
+size = Vector2(6, 2)
 
 [node name="RightSpike" instance=ExtResource("1_f0jdu")]
 rotation = -1.5708
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(1.07284e-07, 3)
+position = Vector2(-1.09792e-05, 3)
 shape = SubResource("RectangleShape2D_hlfkq")
