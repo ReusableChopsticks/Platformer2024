@@ -15,6 +15,7 @@ func _ready():
 	player = get_node("Player")
 	player_spawn_pos = player.position
 	player.player_died.connect(on_player_died)
+	$LevelName.text = name
 
 ## Handle player respawning
 func on_player_died():
@@ -22,7 +23,8 @@ func on_player_died():
 
 func on_player_died_deferred():
 	player.queue_free()
-	var new_player = player_scene.instantiate()
-	new_player.position = player_spawn_pos
-	add_child(new_player)
+	player = player_scene.instantiate()
+	player.position = player_spawn_pos
+	player.player_died.connect(on_player_died)	
+	add_child(player)
 	

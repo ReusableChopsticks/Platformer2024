@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqmxrctqjmthf"]
+[gd_scene load_steps=16 format=3 uid="uid://bqmxrctqjmthf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_g84wr"]
 [ext_resource type="PackedScene" uid="uid://ci5j8awqi3j8v" path="res://scenes/player/player.tscn" id="2_caiss"]
@@ -2673,6 +2673,8 @@ sources/5 = SubResource("TileSetScenesCollectionSource_xrd31")
 sources/6 = SubResource("TileSetScenesCollectionSource_3vjex")
 sources/7 = SubResource("TileSetScenesCollectionSource_uvskq")
 
+[sub_resource type="LabelSettings" id="LabelSettings_c1heo"]
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_g84wr")
 
@@ -2694,15 +2696,29 @@ layer_2/tile_data = PackedInt32Array(-524303, 458752, 1, -589810, 524288, 1, 589
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="LevelName" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = 66.0
+offset_right = -63.0
+offset_bottom = 79.0
+grow_vertical = 0
+scale = Vector2(0.467407, 0.467407)
+text = "[LEVEl NAME]"
+label_settings = SubResource("LabelSettings_c1heo")
+vertical_alignment = 1
+
+[connection signal="body_entered" from="TileMap/LeftSpike" to="TileMap/LeftSpike" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38446" to="TileMap/@Area2D@38446" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38447" to="TileMap/@Area2D@38447" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38448" to="TileMap/@Area2D@38448" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38449" to="TileMap/@Area2D@38449" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38450" to="TileMap/@Area2D@38450" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38451" to="TileMap/@Area2D@38451" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38452" to="TileMap/@Area2D@38452" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38453" to="TileMap/@Area2D@38453" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38454" to="TileMap/@Area2D@38454" method="_on_body_entered"]
 [connection signal="body_entered" from="TileMap/UpSpike" to="TileMap/UpSpike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116348" to="TileMap/@Area2D@116348" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116349" to="TileMap/@Area2D@116349" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116350" to="TileMap/@Area2D@116350" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116351" to="TileMap/@Area2D@116351" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116352" to="TileMap/@Area2D@116352" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116353" to="TileMap/@Area2D@116353" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116354" to="TileMap/@Area2D@116354" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116355" to="TileMap/@Area2D@116355" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116356" to="TileMap/@Area2D@116356" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116357" to="TileMap/@Area2D@116357" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@116358" to="TileMap/@Area2D@116358" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@38455" to="TileMap/@Area2D@38455" method="_on_body_entered"]

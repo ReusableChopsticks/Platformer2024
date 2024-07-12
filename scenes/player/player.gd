@@ -3,7 +3,7 @@ class_name PlayerCharacter
 
 signal player_died
 ## If the player is dead or not
-var died := false
+var has_died := false
 
 
 @export_group("Movement")
@@ -89,6 +89,8 @@ var has_dash: bool = true
 
 
 func _ready():
+	has_died = false
+	
 	calculate_forces()
 	
 	## jumping numbers according to formulas
@@ -149,7 +151,7 @@ func _physics_process(_delta):
 ## Obstacles (like spikes) are responsible for detecting
 ## when the player should die
 func die():
-	died = true
+	has_died = true
 	player_died.emit()
 
 ## Kill player when player is off screen.
