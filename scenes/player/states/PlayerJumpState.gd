@@ -12,6 +12,12 @@ var is_peak_reached: bool = false
 var is_jump_released: bool = false
 
 func enter():
+	## We set these to true here because if the player jumps,
+	## then it must have touched the ground, but may not have
+	## been detected because of grace or coyote time
+	player.has_dash = true
+	player.has_double_jump = true
+	
 	# consumer buffer
 	player.jump_buffer_timer.stop()
 	# apply jump force

@@ -24,7 +24,7 @@ Calc="*res://scenes/interfaces/Calc.gd"
 window/size/viewport_width=256
 window/size/viewport_height=144
 window/size/window_width_override=960
-window/size/window_height_override=900
+window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

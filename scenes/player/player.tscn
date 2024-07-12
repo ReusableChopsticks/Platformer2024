@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://scenes/player/states/PlayerSpawnState.gd" id="12_migby"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
-shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5in4"]
 size = Vector2(6, 6)
@@ -35,11 +34,17 @@ gravity = 1500.0
 air_move_mult = 0.2
 
 [node name="StateLabel" type="Label" parent="."]
-offset_left = -38.0
-offset_top = -17.0
-offset_right = 40.0
-offset_bottom = 13.0
-text = "{STATE}"
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -18.0
+offset_right = 0.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Player"
 label_settings = SubResource("LabelSettings_f682e")
 horizontal_alignment = 1
 autowrap_mode = 2

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://csglliwuvg5mb"]
+
+[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level.tscn" id="1_4jdpt"]
+
+[node name="Beginnings" instance=ExtResource("1_4jdpt")]
+
+[node name="Goal" parent="." index="0"]
+position = Vector2(68, 60)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(-92, 52)
+
+[node name="TutorialLabel" type="Label" parent="." index="5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -28.0
+offset_right = 97.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use arrow keys or joystick to move"
+
+[node name="TutorialLabel2" type="Label" parent="." index="6"]
+offset_left = -33.5
+offset_top = -4.0
+offset_right = 78.5
+offset_bottom = 25.0
+scale = Vector2(0.647331, 0.647331)
+text = "Collect your coffee
+to complete the level"
+horizontal_alignment = 1

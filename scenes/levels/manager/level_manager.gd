@@ -2,8 +2,8 @@ extends Node
 class_name LevelManager
 
 ## Array of the file names of each level scene (without file extension)
-@export var levels: Array[String]
-var levels_file_path: String = "res://scenes/levels/"
+@export var levels: Array[PackedScene]
+#var levels_file_path: String = "res://scenes/levels/"
 ## The index of the level the player is currently on
 var current_level_num: int = 0
 ## The level the player is currently on
@@ -18,8 +18,8 @@ func load_current_level():
 		print("LAST LEVEL REACHED: LOOPING BACK TO THE FIRST LEVEL")
 		current_level_num = 0
 	
-	var level_path = "%s%s.tscn" % [levels_file_path, levels[current_level_num]]
-	current_level = load(level_path).instantiate()
+	#var level_path = "%s%s.tscn" % [levels_file_path, levels[current_level_num]]
+	current_level = levels[current_level_num].instantiate()
 	current_level.level_completed.connect(on_level_completed)
 	add_child(current_level)
 	#get_tree().change_scene_to_file(level_path)
