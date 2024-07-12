@@ -3,7 +3,7 @@ class_name PlayerState
 
 ### An interface for player controls and common functions.
 
-@onready var player: PlayerCharacter = get_parent().get_parent()
+@onready var player: PlayerCharacter
 
 func _ready():
 	player = get_parent().get_parent()

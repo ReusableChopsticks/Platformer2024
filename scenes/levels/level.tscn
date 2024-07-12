@@ -2675,3 +2675,11 @@ layer_2/name = "Corners"
 layer_2/tile_data = PackedInt32Array(-524303, 458752, 1, -589810, 524288, 1, 589809, 458752, 2, 524302, 524288, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="TileMap/Spike" to="TileMap/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93041" to="TileMap/@Area2D@93041" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93042" to="TileMap/@Area2D@93042" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93043" to="TileMap/@Area2D@93043" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93044" to="TileMap/@Area2D@93044" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93045" to="TileMap/@Area2D@93045" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@93046" to="TileMap/@Area2D@93046" method="_on_body_entered"]

@@ -2,5 +2,9 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	if body is PlayerCharacter:
-		print("CALL PLAYER DIE")
+	## check if body entered is player
+	## and player has not already died
+	## because player may touch multiple spikes at once
+	if body is PlayerCharacter and !body.died :
+		print("death by spike")
+		body.die()

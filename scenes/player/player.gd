@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name PlayerCharacter
 
+signal player_died
+var died := false
+
+
 @export_group("Movement")
 ## The base max move speed without any multipliers
 @export var base_speed: int = 200
@@ -103,7 +107,6 @@ func calculate_forces():
 	move_speed = floor(base_speed * (1 + (speed_increase_amount * (speed_level - 1))))
 	move_accel = move_speed / time_to_max_speed
 	friction_decel = move_speed / time_to_stop
-	
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
@@ -115,7 +118,6 @@ func reset_speed_level():
 	#modulate = Color.WHITE
 	speed_level = 1
 	calculate_forces()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
@@ -133,7 +135,7 @@ func _physics_process(_delta):
 		facing_dir = dir
 	
 	## Debugging
-	#print(velocity)
+	#print(position)
 	#print(jump_grace_timer.time_left)
 	#if is_on_wall():
 		#$Sprite2D.modulate = Color.BLACK
@@ -141,3 +143,12 @@ func _physics_process(_delta):
 		#$Sprite2D.modulate = Color.WHITE
 	#print(move_speed)
 	#print(Input.is_action_pressed("jump"))
+	
+func die():
+	died = true
+	player_died.emit()
+
+## Kill player when player is off screen.
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	print("death by out of bounds")
+	die()

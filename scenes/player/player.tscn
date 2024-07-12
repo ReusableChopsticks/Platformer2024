@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=15 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="2_n1uhx"]
@@ -11,12 +11,13 @@
 [ext_resource type="Script" path="res://scenes/player/PlayerWallJumpState.gd" id="9_cqyve"]
 [ext_resource type="Script" path="res://scenes/player/PlayerDoubleJump.gd" id="10_7d5nd"]
 [ext_resource type="Script" path="res://scenes/player/PlayerReboundState.gd" id="11_pj1yr"]
+[ext_resource type="Script" path="res://scenes/player/PlayerSpawnState.gd" id="12_4i77n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5in4"]
-size = Vector2(8, 8)
+size = Vector2(8, 7)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
@@ -25,7 +26,7 @@ safe_margin = 0.2
 script = ExtResource("1_a62lr")
 base_speed = 50
 max_speed_level = 7
-counter_dir_force_mult = 3.0
+counter_dir_force_mult = 4.0
 time_to_max_speed = 0.1
 time_to_stop = 0.1
 gravity = 1500.0
@@ -48,11 +49,12 @@ region_enabled = true
 region_rect = Rect2(184, 0, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_d5in4")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
-initial_state = NodePath("PlayerMoveState")
+initial_state = NodePath("PlayerSpawnState")
 
 [node name="PlayerState" type="Node" parent="StateMachine"]
 script = ExtResource("5_vrwvw")
@@ -78,6 +80,9 @@ script = ExtResource("10_7d5nd")
 [node name="PlayerReboundState" type="Node" parent="StateMachine"]
 script = ExtResource("11_pj1yr")
 
+[node name="PlayerSpawnState" type="Node" parent="StateMachine"]
+script = ExtResource("12_4i77n")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="JumpGraceTimer" type="Timer" parent="Timers"]
@@ -95,3 +100,9 @@ one_shot = true
 [node name="WallJumpBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
