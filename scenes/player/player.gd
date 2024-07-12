@@ -5,6 +5,16 @@ signal player_died
 ## If the player is dead or not
 var has_died := false
 
+@export_group("Graphics")
+## The scene to instantiate as the player ghost.
+## This should be a Sprite2D the same dimensions as the player (or just the exact same sprite)
+@export var ghost_node: PackedScene
+@onready var ghost_timer: Timer = $Timers/GhostTimer
+## How many ghost instances to spawn per second
+@export var base_ghost_freq: int = 8
+## How long ghost instances will take to fade away
+@export var ghost_fade_time: float = 0.1
+@export_group("")
 
 @export_group("Movement")
 ## The base max move speed without any multipliers
@@ -87,7 +97,21 @@ var has_dash: bool = true
 # i.e. jump_buffer_timer.stop() on the state's enter function
 #endregion
 
+func ghost(is_ghosting: bool):
+	if is_ghosting and ghost_timer.is_stopped():
+		var time: float = 1.0 / (base_ghost_freq + speed_level - 1)
+		ghost_timer.start(time)
+		print(time)
+	elif !is_ghosting:
+		ghost_timer.stop()
 
+func _on_ghost_timer_timeout():
+	var instance: PlayerGhost = ghost_node.instantiate()
+	instance.global_position = global_position
+	## 10% of speed level is added to ghost fade time so higher speeds means longer trails
+	#instance.fade_time = ghost_fade_time + 0.1 * (speed_level - 1)
+	$GhostInstances.add_child(instance)
+	
 func _ready():
 	has_died = false
 	
@@ -137,6 +161,9 @@ func _physics_process(_delta):
 	if (dir != 0):
 		facing_dir = dir
 	
+	## Ghost effect
+	ghost(speed_level > 1)
+	
 	## Debugging
 	#print(position)
 	#print(jump_grace_timer.time_left)
@@ -158,3 +185,5 @@ func die():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	print("death by out of bounds")
 	die()
+
+

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://esuisvmjimqq"]
+
+[ext_resource type="Texture2D" uid="uid://c60q0ojhgr3qd" path="res://scenes/player/textures/6x6.png" id="1_562il"]
+[ext_resource type="Script" path="res://scenes/player/player_ghost.gd" id="2_2soqn"]
+
+[node name="PlayerGhost" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.694118)
+texture = ExtResource("1_562il")
+script = ExtResource("2_2soqn")

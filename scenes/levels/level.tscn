@@ -2709,16 +2709,3 @@ scale = Vector2(0.467407, 0.467407)
 text = "[LEVEl NAME]"
 label_settings = SubResource("LabelSettings_c1heo")
 vertical_alignment = 1
-
-[connection signal="body_entered" from="TileMap/LeftSpike" to="TileMap/LeftSpike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38446" to="TileMap/@Area2D@38446" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38447" to="TileMap/@Area2D@38447" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38448" to="TileMap/@Area2D@38448" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38449" to="TileMap/@Area2D@38449" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38450" to="TileMap/@Area2D@38450" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38451" to="TileMap/@Area2D@38451" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38452" to="TileMap/@Area2D@38452" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38453" to="TileMap/@Area2D@38453" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38454" to="TileMap/@Area2D@38454" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/UpSpike" to="TileMap/UpSpike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@38455" to="TileMap/@Area2D@38455" method="_on_body_entered"]

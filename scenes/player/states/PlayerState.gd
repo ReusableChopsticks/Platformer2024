@@ -4,9 +4,11 @@ class_name PlayerState
 ### An interface for player controls and common functions.
 
 @onready var player: PlayerCharacter
+@onready var sprite: Sprite2D
 
 func _ready():
-	player = get_parent().get_parent()
+	player = $"../.."
+	sprite = $"../../PlayerSprite"
 
 # following the kinematics formula: next_v = curr_v + accel * delta_time * mult
 # clamps to max fall speed
