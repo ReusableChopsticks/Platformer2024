@@ -1,8 +1,11 @@
 extends Node2D
 class_name Level
 
+## The base level node
+## new levels must contain a player and a goal
+## level node is responsible for instantiating a new player for respawning
+
 signal level_completed
-signal level_reset
 
 @onready var player: PlayerCharacter = get_node("Player")
 var player_spawn_pos: Vector2
@@ -13,6 +16,7 @@ func _ready():
 	player_spawn_pos = player.position
 	player.player_died.connect(on_player_died)
 
+## Handle player respawning
 func on_player_died():
 	call_deferred("on_player_died_deferred")
 

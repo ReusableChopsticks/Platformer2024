@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name PlayerCharacter
 
 signal player_died
+## If the player is dead or not
 var died := false
 
 
@@ -143,7 +144,10 @@ func _physics_process(_delta):
 		#$Sprite2D.modulate = Color.WHITE
 	#print(move_speed)
 	#print(Input.is_action_pressed("jump"))
-	
+
+## Call this when the player should die
+## Obstacles (like spikes) are responsible for detecting
+## when the player should die
 func die():
 	died = true
 	player_died.emit()

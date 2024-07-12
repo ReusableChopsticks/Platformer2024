@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr55ilwo81u31"]
+
+[ext_resource type="PackedScene" uid="uid://cidaxx0njbul7" path="res://scenes/environment/spikes/spike.tscn" id="1_4dstv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38xvd"]
+size = Vector2(8, 2)
+
+[node name="UpSpike" instance=ExtResource("1_4dstv")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_38xvd")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ts6leua6kw2"]
+
+[ext_resource type="PackedScene" uid="uid://cidaxx0njbul7" path="res://scenes/environment/spikes/spike.tscn" id="1_ysf2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptu5q"]
+size = Vector2(2, 8)
+
+[node name="LeftSpike" instance=ExtResource("1_ysf2x")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_ptu5q")
