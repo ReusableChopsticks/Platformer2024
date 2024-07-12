@@ -7,6 +7,7 @@
 size = Vector2(8, 8)
 
 [node name="Goal" type="Area2D"]
+z_index = 4
 script = ExtResource("1_k8xd8")
 metadata/_edit_group_ = true
 
