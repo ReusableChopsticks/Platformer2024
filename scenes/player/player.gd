@@ -9,11 +9,11 @@ var has_died := false
 ## The scene to instantiate as the player ghost.
 ## This should be a Sprite2D the same dimensions as the player (or just the exact same sprite)
 @export var ghost_node: PackedScene
-@onready var ghost_timer: Timer = $Timers/GhostTimer
 ## How many ghost instances to spawn per second
-@export var base_ghost_freq: int = 8
-## How long ghost instances will take to fade away
-@export var ghost_fade_time: float = 0.1
+@export var base_ghost_freq: int = 12
+
+## Controls when to spawn ghost instances based on frequency
+@onready var ghost_timer: Timer = $Timers/GhostTimer
 @export_group("")
 
 @export_group("Movement")
@@ -99,17 +99,15 @@ var has_dash: bool = true
 
 func ghost(is_ghosting: bool):
 	if is_ghosting and ghost_timer.is_stopped():
+		# increase ghost spawn frequency by 1 for each speed level
 		var time: float = 1.0 / (base_ghost_freq + speed_level - 1)
 		ghost_timer.start(time)
-		print(time)
 	elif !is_ghosting:
 		ghost_timer.stop()
 
 func _on_ghost_timer_timeout():
 	var instance: PlayerGhost = ghost_node.instantiate()
 	instance.global_position = global_position
-	## 10% of speed level is added to ghost fade time so higher speeds means longer trails
-	#instance.fade_time = ghost_fade_time + 0.1 * (speed_level - 1)
 	$GhostInstances.add_child(instance)
 	
 func _ready():

@@ -5,7 +5,9 @@ class_name PlayerMoveState
 ## This is where grounded check happens for refilling dash / double jump charge
 
 func enter():
-	pass
+	if (player.is_on_floor()):
+		player.has_dash = true
+		player.has_double_jump = true
 	
 func exit():
 	pass

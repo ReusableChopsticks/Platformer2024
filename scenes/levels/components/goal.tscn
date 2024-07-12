@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwivbymq2yfw2"]
 
 [ext_resource type="Script" path="res://scenes/levels/components/Goal.gd" id="1_k8xd8"]
-[ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="2_whak8"]
+[ext_resource type="Texture2D" uid="uid://cqst4w8rp0ppo" path="res://scenes/levels/components/coffee.png" id="2_8ys7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwd8"]
-size = Vector2(8, 8)
+size = Vector2(6, 6)
 
 [node name="Goal" type="Area2D"]
 z_index = 4
@@ -12,10 +12,8 @@ script = ExtResource("1_k8xd8")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_whak8")
-region_enabled = true
+texture = ExtResource("2_8ys7w")
 region_rect = Rect2(176, 0, 8, 8)
-region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nlwd8")
