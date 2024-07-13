@@ -11,4 +11,5 @@
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_qejvj")
+start_level_index = 6
 levels = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("4_mcfw1"), ExtResource("5_7xeba"), ExtResource("6_foc7e"), ExtResource("6_yuu78"), ExtResource("8_pcjn8"), null, null, null, null])

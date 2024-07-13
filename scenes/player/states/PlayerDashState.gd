@@ -68,6 +68,5 @@ func exit():
 		player.velocity.x = player.facing_dir * player.move_speed
 
 func on_dash_timeout():
-	print("dash timeout")
 	if not already_transitioned:
 		transitioned.emit(self, "PlayerMoveState")

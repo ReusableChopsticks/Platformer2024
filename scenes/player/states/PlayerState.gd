@@ -67,7 +67,6 @@ func jump():
 
 func dash():
 	if Input.is_action_just_pressed("dash"):
-		print(player.has_dash)
 		return player.has_dash
 	else:
 		return player.dash_buffer_timer.time_left > 0 and player.has_dash

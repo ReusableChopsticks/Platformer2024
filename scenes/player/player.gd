@@ -9,8 +9,9 @@ var has_died := false
 ## The scene to instantiate as the player ghost.
 ## This should be a Sprite2D the same dimensions as the player (or just the exact same sprite)
 @export var ghost_node: PackedScene
-## How many ghost instances to spawn per second
-@export var base_ghost_freq: int = 12
+## How many ghost instances to spawn per second.
+## NOTE: if this value is too high, no trail will spawn
+@export_range(1, 10) var base_ghost_freq: int = 10
 
 ## Controls when to spawn ghost instances based on frequency
 @onready var ghost_timer: Timer = $Timers/GhostTimer
