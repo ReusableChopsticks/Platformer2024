@@ -67,13 +67,14 @@ func jump():
 
 func dash():
 	if Input.is_action_just_pressed("dash"):
+		print(player.has_dash)
 		return player.has_dash
 	else:
 		return player.dash_buffer_timer.time_left > 0 and player.has_dash
 
 func wall():
 	# player is only on a wall and is holding on to it
-	return player.is_on_wall_only() and Input.get_axis("left", "right") == -player.get_wall_normal().x
+	return player.is_on_wall_only() and sign(Input.get_axis("left", "right")) == -player.get_wall_normal().x
 
 func wall_jump():
 	# check if either grace or buffer is active

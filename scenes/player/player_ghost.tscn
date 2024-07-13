@@ -7,7 +7,6 @@
 blend_mode = 1
 
 [node name="PlayerGhost" type="Sprite2D"]
-self_modulate = Color(1, 1, 1, 0.694118)
 material = SubResource("CanvasItemMaterial_dwcyi")
 texture = ExtResource("1_562il")
 script = ExtResource("2_2soqn")

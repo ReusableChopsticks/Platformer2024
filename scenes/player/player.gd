@@ -112,7 +112,7 @@ func ghost(is_ghosting: bool):
 func _on_ghost_timer_timeout():
 	var instance: PlayerGhost = ghost_node.instantiate()
 	instance.global_position = global_position
-	instance.modulate = modulate
+	instance.self_modulate = modulate
 	$GhostInstances.add_child(instance)
 	
 func _ready():
@@ -150,7 +150,6 @@ func increment_speed_level():
 		modulate = Color.WHITE
 
 func reset_speed_level():
-	#modulate = Color.WHITE
 	speed_level = 1
 	calculate_forces()
 	modulate = Color.WHITE
@@ -170,7 +169,7 @@ func _physics_process(_delta):
 		dash_buffer_timer.start()
 	
 	# update what direction player is currently facing
-	var dir = Input.get_axis("left", "right")
+	var dir = sign(Input.get_axis("left", "right"))
 	if (dir != 0):
 		facing_dir = dir
 	

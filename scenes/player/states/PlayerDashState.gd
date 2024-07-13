@@ -19,13 +19,19 @@ var already_transitioned := false
 ## Check if player was previously in air
 ## to prevent being able to dash jump from being stationary on floor
 var was_in_air := false
+var down_dashed := false
 
 func enter():
+	player.modulate = Color.GREEN
 	was_in_air = in_air()
 	already_transitioned = false
+	down_dashed = false
+	
 	var dash_speed = player.move_speed * dash_speed_mult
-	if (Input.is_action_pressed("down")):
+	if (Input.is_action_pressed("down") and was_in_air):
+		player.modulate = Color.PURPLE
 		player.velocity.y = dash_speed * dash_speed_mult
+		down_dashed = true
 	else:
 		#player.velocity.x = dash_speed * player.facing_dir
 		player.velocity.x = player.facing_dir * dash_speed
@@ -52,12 +58,16 @@ func physics_update(_delta: float):
 		
 
 func exit():
+	player.modulate = Color.WHITE
+	
 	# so the player does not jump immediately if you press jump during a dash
 	if disable_jump_buffer:
 		player.jump_buffer_timer.stop()
 	player.has_dash = false
-	player.velocity.x = player.facing_dir * player.move_speed
+	if not down_dashed:
+		player.velocity.x = player.facing_dir * player.move_speed
 
 func on_dash_timeout():
+	print("dash timeout")
 	if not already_transitioned:
 		transitioned.emit(self, "PlayerMoveState")
