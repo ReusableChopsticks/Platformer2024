@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://im70p1c4m2la"]
 
-[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level.tscn" id="1_dxe85"]
+[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level_templates/level.tscn" id="1_x8lh3"]
 
-[node name="Tight Gap" instance=ExtResource("1_dxe85")]
+[node name="Basic Obstacles" instance=ExtResource("1_x8lh3")]
 
 [node name="Goal" parent="." index="0"]
 position = Vector2(100, 12)

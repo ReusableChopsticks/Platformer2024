@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://kk64sujkdhrk"]
+[gd_scene load_steps=9 format=3 uid="uid://kk64sujkdhrk"]
 
 [ext_resource type="Script" path="res://scenes/levels/manager/level_manager.gd" id="1_qejvj"]
 [ext_resource type="PackedScene" uid="uid://csglliwuvg5mb" path="res://scenes/levels/world_1/beginnings.tscn" id="2_ro4rt"]
 [ext_resource type="PackedScene" uid="uid://b6whavv6ml6b4" path="res://scenes/levels/world_1/movement.tscn" id="3_3mnyf"]
 [ext_resource type="PackedScene" uid="uid://djp7yutbv1kuw" path="res://scenes/levels/world_1/baby_jumps.tscn" id="4_mcfw1"]
-[ext_resource type="PackedScene" uid="uid://im70p1c4m2la" path="res://scenes/levels/world_1/tight_gap.tscn" id="5_7xeba"]
+[ext_resource type="PackedScene" uid="uid://im70p1c4m2la" path="res://scenes/levels/world_1/basic_obstacles.tscn" id="5_7xeba"]
+[ext_resource type="PackedScene" uid="uid://dhhsr6v0xoqyo" path="res://scenes/levels/world_1/ladder_steps.tscn" id="6_foc7e"]
 [ext_resource type="PackedScene" uid="uid://mvwechq7cnmd" path="res://scenes/levels/world_1/deadly_spikes.tscn" id="6_yuu78"]
+[ext_resource type="PackedScene" uid="uid://c28dm6i4fvo4r" path="res://scenes/levels/world_1/spike_traps.tscn" id="8_pcjn8"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_qejvj")
-levels = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("4_mcfw1"), ExtResource("5_7xeba"), ExtResource("6_yuu78"), null, null, null, null, null, null])
+levels = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("4_mcfw1"), ExtResource("5_7xeba"), ExtResource("6_foc7e"), ExtResource("6_yuu78"), ExtResource("8_pcjn8"), null, null, null, null])

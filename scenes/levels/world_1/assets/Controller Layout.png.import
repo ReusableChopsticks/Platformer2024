@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkqf5jb2s6ujb"
-path="res://.godot/imported/Controller Layout.png-b92f4f305e95d13915c06043c9a07325.ctex"
+path="res://.godot/imported/Controller Layout.png-10264141b80c0358876859cddb8068be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/levels/world_1/Controller Layout.png"
-dest_files=["res://.godot/imported/Controller Layout.png-b92f4f305e95d13915c06043c9a07325.ctex"]
+source_file="res://scenes/levels/world_1/assets/Controller Layout.png"
+dest_files=["res://.godot/imported/Controller Layout.png-10264141b80c0358876859cddb8068be.ctex"]
 
 [params]
 

@@ -102,8 +102,8 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="WallJumpBufferTimer" type="Timer" parent="Timers"]
-wait_time = 0.2
+[node name="DashBufferTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
 one_shot = true
 
 [node name="GhostTimer" type="Timer" parent="Timers"]
@@ -115,6 +115,11 @@ position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.5, 0.5)
 
 [node name="GhostInstances" type="Node" parent="."]
+
+[node name="GroundCheckRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 10)
+collision_mask = 2
+hit_from_inside = true
 
 [connection signal="timeout" from="Timers/GhostTimer" to="." method="_on_ghost_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

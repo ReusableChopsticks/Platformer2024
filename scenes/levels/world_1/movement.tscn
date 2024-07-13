@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6whavv6ml6b4"]
 
-[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level.tscn" id="1_cl5sd"]
-[ext_resource type="Texture2D" uid="uid://dkqf5jb2s6ujb" path="res://scenes/levels/world_1/Controller Layout.png" id="2_ssnaf"]
+[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level_templates/level.tscn" id="1_cl5sd"]
+[ext_resource type="Texture2D" uid="uid://dkqf5jb2s6ujb" path="res://scenes/levels/world_1/assets/Controller Layout.png" id="2_ssnaf"]
 
 [node name="Movement" instance=ExtResource("1_cl5sd")]
 

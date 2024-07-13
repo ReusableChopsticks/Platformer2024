@@ -83,18 +83,22 @@ var floor_rebound_vel: int
 @export_subgroup("")
 
 #region Internal values
-# either -1 or 1 according to what the last direction was
+## either -1 or 1 according to what the last direction was
 var facing_dir = 1
 
-# These are set to true while grounded in MoveState, false when used up
+## These are set to true while grounded in MoveState, false when used up
 var has_double_jump: bool = true
 var has_dash: bool = true
 
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 @onready var jump_grace_timer: Timer = $Timers/JumpGraceTimer
 @onready var wall_jump_grace_timer: Timer = $Timers/WallJumpGraceTimer
+@onready var dash_buffer_timer: Timer = $Timers/DashBufferTimer
 # note: all jump types use the same buffer timer and "consume" it when used 
 # i.e. jump_buffer_timer.stop() on the state's enter function
+
+## Used to check if player is close to the ground to prevent double jump
+@onready var ground_ray_cast: RayCast2D = $GroundCheckRayCast
 #endregion
 
 func ghost(is_ghosting: bool):
@@ -108,6 +112,7 @@ func ghost(is_ghosting: bool):
 func _on_ghost_timer_timeout():
 	var instance: PlayerGhost = ghost_node.instantiate()
 	instance.global_position = global_position
+	instance.modulate = modulate
 	$GhostInstances.add_child(instance)
 	
 func _ready():
@@ -138,11 +143,18 @@ func increment_speed_level():
 	#modulate = Color.BLACK
 	speed_level = min(speed_level + 1, max_speed_level)
 	calculate_forces()
+	
+	if speed_level == max_speed_level:
+		modulate = Color.SKY_BLUE
+	else:
+		modulate = Color.WHITE
 
 func reset_speed_level():
 	#modulate = Color.WHITE
 	speed_level = 1
 	calculate_forces()
+	modulate = Color.WHITE
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
@@ -153,6 +165,9 @@ func _physics_process(_delta):
 		jump_grace_timer.start()
 	if is_on_wall_only():
 		wall_jump_grace_timer.start()
+	
+	if Input.is_action_just_pressed("dash"):
+		dash_buffer_timer.start()
 	
 	# update what direction player is currently facing
 	var dir = Input.get_axis("left", "right")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://bqmxrctqjmthf"]
 
-[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_g84wr"]
-[ext_resource type="PackedScene" uid="uid://ci5j8awqi3j8v" path="res://scenes/player/player.tscn" id="2_caiss"]
-[ext_resource type="PackedScene" uid="uid://bwivbymq2yfw2" path="res://scenes/levels/components/goal.tscn" id="3_e5pfq"]
-[ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="4_aoi8j"]
-[ext_resource type="PackedScene" uid="uid://dr55ilwo81u31" path="res://scenes/environment/spikes/up_spike.tscn" id="5_5qx2e"]
-[ext_resource type="PackedScene" uid="uid://8ts6leua6kw2" path="res://scenes/environment/spikes/left_spike.tscn" id="6_ll86j"]
-[ext_resource type="PackedScene" uid="uid://dipsl8o47hgfe" path="res://scenes/environment/spikes/right_spike.tscn" id="7_v4uaa"]
-[ext_resource type="PackedScene" uid="uid://dpcuu8gbho82w" path="res://scenes/environment/spikes/down_spike.tscn" id="8_jj2cy"]
+[ext_resource type="Script" path="res://scenes/levels/level_templates/level.gd" id="1_qga33"]
+[ext_resource type="PackedScene" uid="uid://bwivbymq2yfw2" path="res://scenes/levels/components/goal.tscn" id="2_c0msm"]
+[ext_resource type="PackedScene" uid="uid://ci5j8awqi3j8v" path="res://scenes/player/player.tscn" id="3_b4khv"]
+[ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="4_oiu3n"]
+[ext_resource type="PackedScene" uid="uid://dr55ilwo81u31" path="res://scenes/environment/spikes/up_spike.tscn" id="5_4yb3v"]
+[ext_resource type="PackedScene" uid="uid://dpcuu8gbho82w" path="res://scenes/environment/spikes/down_spike.tscn" id="6_wa4ca"]
+[ext_resource type="PackedScene" uid="uid://8ts6leua6kw2" path="res://scenes/environment/spikes/left_spike.tscn" id="7_28sbh"]
+[ext_resource type="PackedScene" uid="uid://dipsl8o47hgfe" path="res://scenes/environment/spikes/right_spike.tscn" id="8_lfo60"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u0o6d"]
 tile_data = PackedInt32Array(0, 1114112, 9, 65536, 1114112, 10, 1, 1179648, 9, 65537, 1179648, 10)
@@ -15,9 +15,11 @@ tile_data = PackedInt32Array(0, 1114112, 9, 65536, 1114112, 10, 1, 1179648, 9, 6
 [sub_resource type="TileMapPattern" id="TileMapPattern_as7bn"]
 tile_data = PackedInt32Array(0, 1114112, 4, 65536, 1114112, 5, 131072, 1114112, 6, 1, 1179648, 4, 65537, 1179648, 5, 131073, 1179648, 6, 2, 1245184, 4, 65538, 1245184, 5, 131074, 1245184, 6)
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_deqgw"]
+tile_data = PackedInt32Array(0, 1245184, 14, 65536, 1245184, 15, 1, 1310720, 14, 65537, 1310720, 15, 2, 1376256, 14, 65538, 1376256, 15)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssd88"]
-resource_name = "ground tiles"
-texture = ExtResource("4_aoi8j")
+texture = ExtResource("4_oiu3n")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -155,19 +157,19 @@ texture_region_size = Vector2i(8, 8)
 17:1/0 = 0
 17:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:1/0/physics_layer_0/angular_velocity = 0.0
-17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 18:1/0 = 0
 18:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:1/0/physics_layer_0/angular_velocity = 0.0
-18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 19:1/0 = 0
 19:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:1/0/physics_layer_0/angular_velocity = 0.0
-19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 20:1/0 = 0
 20:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:1/0/physics_layer_0/angular_velocity = 0.0
-20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 21:1/0 = 0
 21:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 21:1/0/physics_layer_0/angular_velocity = 0.0
@@ -235,23 +237,23 @@ texture_region_size = Vector2i(8, 8)
 17:2/0 = 0
 17:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:2/0/physics_layer_0/angular_velocity = 0.0
-17:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+17:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 2, -4, 2, -4, -4, 4, -4, 4, -2, 0, -2)
 18:2/0 = 0
 18:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:2/0/physics_layer_0/angular_velocity = 0.0
-18:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+18:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 19:2/0 = 0
 19:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:2/0/physics_layer_0/angular_velocity = 0.0
-19:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+19:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 20:2/0 = 0
 20:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:2/0/physics_layer_0/angular_velocity = 0.0
-20:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+20:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 21:2/0 = 0
 21:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 21:2/0/physics_layer_0/angular_velocity = 0.0
-21:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+21:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 2, 4, 2, 4, -4, -4, -4, -4, -2, 0, -2)
 22:2/0 = 0
 22:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 22:2/0/physics_layer_0/angular_velocity = 0.0
@@ -322,7 +324,7 @@ texture_region_size = Vector2i(8, 8)
 19:3/0 = 0
 19:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:3/0/physics_layer_0/angular_velocity = 0.0
-19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
 20:3/0 = 0
 20:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:3/0/physics_layer_0/angular_velocity = 0.0
@@ -1646,35 +1648,31 @@ texture_region_size = Vector2i(8, 8)
 18:10/0/physics_layer_0/angular_velocity = 0.0
 18:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qlbmn"]
-resource_name = "goal"
-scenes/1/scene = ExtResource("3_e5pfq")
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pmsaq"]
 resource_name = "spike"
-scenes/1/scene = ExtResource("5_5qx2e")
-scenes/2/scene = ExtResource("8_jj2cy")
-scenes/3/scene = ExtResource("6_ll86j")
-scenes/4/scene = ExtResource("7_v4uaa")
+scenes/1/scene = ExtResource("5_4yb3v")
+scenes/2/scene = ExtResource("6_wa4ca")
+scenes/3/scene = ExtResource("7_28sbh")
+scenes/4/scene = ExtResource("8_lfo60")
 
 [sub_resource type="TileSet" id="TileSet_hi78k"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_ssd88")
 sources/4 = SubResource("TileSetScenesCollectionSource_pmsaq")
-sources/1 = SubResource("TileSetScenesCollectionSource_qlbmn")
 pattern_0 = SubResource("TileMapPattern_u0o6d")
 pattern_1 = SubResource("TileMapPattern_as7bn")
+pattern_2 = SubResource("TileMapPattern_deqgw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1heo"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_g84wr")
+script = ExtResource("1_qga33")
 
-[node name="Goal" parent="." instance=ExtResource("3_e5pfq")]
+[node name="Goal" parent="." instance=ExtResource("2_c0msm")]
 position = Vector2(84, 60)
 
-[node name="Player" parent="." instance=ExtResource("2_caiss")]
+[node name="Player" parent="." instance=ExtResource("3_b4khv")]
 position = Vector2(-100, 44)
 
 [node name="TileMap" type="TileMap" parent="."]

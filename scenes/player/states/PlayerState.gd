@@ -66,7 +66,10 @@ func jump():
 		return player.jump_buffer_timer.time_left > 0 and player.is_on_floor()
 
 func dash():
-	return Input.is_action_just_pressed("dash") and player.has_dash
+	if Input.is_action_just_pressed("dash"):
+		return player.has_dash
+	else:
+		return player.dash_buffer_timer.time_left > 0 and player.has_dash
 
 func wall():
 	# player is only on a wall and is holding on to it
@@ -80,12 +83,30 @@ func wall_jump():
 		return player.jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
 
 func double_jump():
-	if !player.has_double_jump:
-		return
-	# check if either grace or buffer is active
-	if (Input.is_action_just_pressed("jump")):
-		return player.jump_grace_timer.time_left > 0
-	else:
-		# double jump when in the air
-		return player.jump_buffer_timer.time_left > 0 and (!player.is_on_floor() and !player.is_on_wall())
+	#if !player.has_double_jump:
+		#return false
+	#
+	#if (Input.is_action_just_pressed("jump")):
+		## make a ray cast to see if player is close to ground
+		#var result = player.ground_ray_cast.get_collider()
+		## prevent double jump if player is close to the ground
+		## so you don't double jump when you intend to just jump
+		#if result is TileMap:
+			#return false
+		#
+		## double jump when in the air
+		#return player.jump_buffer_timer.time_left > 0 and in_air()
+	#else:
+		#return false
+	if not player.has_double_jump:
+		return false
+		
+	if (Input.is_action_just_pressed("jump") \
+	  or player.jump_buffer_timer.time_left > 0) \
+	  and in_air():
+		## make a ray cast to see if player is close to ground
+		var result = player.ground_ray_cast.get_collider()
+		## prevent double jump if player is close to the ground
+		## so you don't double jump when you intend to just jump
+		return false if result is TileMap else true
 #endregion

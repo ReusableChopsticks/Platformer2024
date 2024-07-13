@@ -10,3 +10,6 @@ func physics_update(delta: float):
 	
 	if grounded():
 		transitioned.emit(self, "PlayerMoveState")
+		#player.has_dash = true
+		#player.has_double_jump = true
+		

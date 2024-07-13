@@ -9,6 +9,9 @@ class_name PlayerDashState
 ## What speed you dash at calculated by move_speed * dash_speed_mult
 @export_range(1, 3) var dash_speed_mult: float = 2
 var decel_rate: float
+## If player should be allowed to jump immediately after a dash
+## if they pressed jump during the dash. Set to true to disable this behaviour.
+@export var disable_jump_buffer: bool = false
 
 ## To prevent dash_timeout from getting called after
 ## already transitioning to dash rebound
@@ -50,7 +53,8 @@ func physics_update(_delta: float):
 
 func exit():
 	# so the player does not jump immediately if you press jump during a dash
-	player.jump_buffer_timer.stop()
+	if disable_jump_buffer:
+		player.jump_buffer_timer.stop()
 	player.has_dash = false
 	player.velocity.x = player.facing_dir * player.move_speed
 
