@@ -191,12 +191,25 @@ func _physics_process(_delta):
 ## Obstacles (like spikes) are responsible for detecting
 ## when the player should die
 func die():
+	if not has_died:
+		die_deferred()
+
+func die_deferred():
 	has_died = true
+	## TODO: This is a hacky death effect made by reusing the player ghost
+	## Make this into something better maybe?
+	# make so player cannot interact with anything
+	collision_mask = 0
+	visible = false
+	# spawn death after image
+	var img: PlayerGhost = ghost_node.instantiate()
+	img.global_position = global_position
+	img.self_modulate = Color.RED
+	$GhostInstances.add_child(img)
+	await get_tree().create_timer(img.fade_time).timeout
+	# emit player died after its all done
 	player_died.emit()
 
 ## Kill player when player is off screen.
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("death by out of bounds")
 	die()
-
-
