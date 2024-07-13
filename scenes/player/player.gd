@@ -158,6 +158,9 @@ func reset_speed_level():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+	if has_died:
+		return
+	
 	# Handle resetting timers
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()

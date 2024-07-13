@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c61obogb33lta"]
+
+[ext_resource type="PackedScene" uid="uid://bkgxrs3xs3exq" path="res://scenes/levels/level_templates/floor_template.tscn" id="1_7c4ge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kwpcy"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Learn to Double Jump" instance=ExtResource("1_7c4ge")]
+
+[node name="Goal" parent="." index="0"]
+position = Vector2(84, 4)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(-100, -12)
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(589815, 851968, 4, 589822, 589824, 2, 524289, 851968, 3, 524296, 589824, 2, 196584, 655360, 1, 196585, 655360, 1, 196586, 655360, 1, 196587, 786432, 1, 196588, 655360, 1, 196589, 655360, 1, 196590, 655360, 1, 196591, 786432, 1, 196592, 786432, 1, 196593, 655360, 1, 196594, 720896, 1, 196595, 720896, 1, 196596, 655360, 1, 196597, 655360, 1, 196598, 786432, 1, 196607, 720896, 1, 131072, 655360, 1, 131080, 589824, 1, 131081, 720896, 1, 131082, 786432, 1, 131083, 655360, 1, 131084, 720896, 1, 131085, 786432, 1, 131086, 786432, 1, 131087, 720896, 1, 131088, 786432, 1, 131089, 720896, 1, 131090, 720896, 1, 131091, 786432, 1, 131092, 655360, 1, 131093, 655360, 1, 131094, 720896, 1, 131095, 720896, 1, 131096, 720896, 1, 196599, 851968, 1, 196606, 589824, 1, 131073, 851968, 1, 262142, 589824, 2, 327678, 589824, 3, 393214, 589824, 2, 458750, 589824, 4, 524286, 589824, 3, 196616, 589824, 3, 262152, 589824, 4, 327688, 589824, 3, 393224, 589824, 4, 458760, 589824, 3, 262135, 851968, 2, 327671, 851968, 3, 393207, 851968, 4, 458743, 851968, 3, 524279, 851968, 4, 196609, 851968, 3, 262145, 851968, 3, 327681, 851968, 2, 393217, 851968, 4, 458753, 851968, 3)
+
+[node name="Label" type="Label" parent="." index="5"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -52.0
+offset_right = 51.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Double Jump
+by jumping in the air"
+label_settings = SubResource("LabelSettings_kwpcy")
+horizontal_alignment = 1
+vertical_alignment = 1
