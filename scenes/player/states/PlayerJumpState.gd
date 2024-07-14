@@ -22,6 +22,8 @@ func enter():
 	player.jump_buffer_timer.stop()
 	# apply jump force
 	player.velocity.y = player.jump_vel
+	
+	AudioManager.jump_sfx.play()
 
 func exit():
 	player.jump_grace_timer.stop()

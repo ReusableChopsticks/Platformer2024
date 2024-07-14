@@ -10,6 +10,8 @@ func enter():
 	player.velocity.y = player.double_jump_vel
 	transitioned.emit(self, "PlayerMoveState")
 	
+	AudioManager.double_jump_sfx.play()
+	
 #func physics_update(delta: float):
 	## left and right movement
 	#move_x(delta, player.air_move_mult)

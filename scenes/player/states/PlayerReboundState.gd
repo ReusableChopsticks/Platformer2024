@@ -4,6 +4,8 @@ class_name PlayerReboundState
 @export var rebound_time: float = 0.2
 
 func enter():
+	AudioManager.rebound_sfx.play()
+	
 	if player.is_on_wall():
 		player.velocity.x = player.move_speed * player.get_wall_normal().x
 		player.velocity.y = player.rebound_y_vel

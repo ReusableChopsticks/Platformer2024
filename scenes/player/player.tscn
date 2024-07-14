@@ -59,6 +59,15 @@ region_rect = Rect2(184, 0, 8, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d5in4")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+
+[node name="GroundCheckRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 6)
+collision_mask = 2
+hit_from_inside = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ockid")
 initial_state = NodePath("PlayerSpawnState")
@@ -113,16 +122,7 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(2.38419e-07, 2.38419e-07)
-scale = Vector2(0.5, 0.5)
-
 [node name="GhostInstances" type="Node" parent="."]
 
-[node name="GroundCheckRayCast" type="RayCast2D" parent="."]
-target_position = Vector2(0, 6)
-collision_mask = 2
-hit_from_inside = true
-
-[connection signal="timeout" from="Timers/GhostTimer" to="." method="_on_ghost_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timers/GhostTimer" to="." method="_on_ghost_timer_timeout"]

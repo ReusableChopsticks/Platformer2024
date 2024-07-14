@@ -22,6 +22,8 @@ var was_in_air := false
 var down_dashed := false
 
 func enter():
+	AudioManager.dash_sfx.play()
+	
 	player.modulate = Color.GREEN
 	was_in_air = in_air()
 	already_transitioned = false

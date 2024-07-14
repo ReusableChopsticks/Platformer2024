@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmohqxpr6dow8"]
+
+[ext_resource type="Script" path="res://scenes/audio/AudioManager.gd" id="1_nf46e"]
+[ext_resource type="AudioStream" uid="uid://b3iev3scl3p2i" path="res://scenes/player/sfx/DeathExplosion.wav" id="2_8dtxp"]
+[ext_resource type="AudioStream" uid="uid://db47uqo3jyu3y" path="res://scenes/audio/bgm/Clair de Lune Studio Version .mp3" id="3_ew6me"]
+[ext_resource type="AudioStream" uid="uid://b85yy5ohh2jyq" path="res://scenes/player/sfx/jump.wav" id="3_nv5at"]
+[ext_resource type="AudioStream" uid="uid://cvh1ia25sp84h" path="res://scenes/player/sfx/double_jump.wav" id="4_1abmy"]
+[ext_resource type="AudioStream" uid="uid://bix6lif5b1vwu" path="res://scenes/player/sfx/dash.wav" id="5_073nm"]
+[ext_resource type="AudioStream" uid="uid://bsqtp4kji6wxr" path="res://scenes/player/sfx/wall_jump.wav" id="6_4g3ga"]
+[ext_resource type="AudioStream" uid="uid://bk35a2f4t5hpi" path="res://scenes/player/sfx/rebound.wav" id="7_pce2r"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_nf46e")
+
+[node name="PlayerSFX" type="Node" parent="."]
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("2_8dtxp")
+bus = &"SFX"
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("3_nv5at")
+bus = &"SFX"
+
+[node name="DoubleJumpSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("4_1abmy")
+bus = &"SFX"
+
+[node name="DashSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("5_073nm")
+bus = &"SFX"
+
+[node name="WallJumpSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("6_4g3ga")
+bus = &"SFX"
+
+[node name="ReboundSFX" type="AudioStreamPlayer" parent="PlayerSFX"]
+stream = ExtResource("7_pce2r")
+bus = &"SFX"
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_ew6me")
+autoplay = true
+bus = &"BGM"

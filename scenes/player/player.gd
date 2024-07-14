@@ -199,6 +199,7 @@ func die():
 
 func die_deferred():
 	has_died = true
+	AudioManager.death_sfx.play()
 	## TODO: This is a hacky death effect made by reusing the player ghost
 	## Make this into something better maybe?
 	# make so player cannot interact with anything
@@ -209,6 +210,7 @@ func die_deferred():
 	img.global_position = global_position
 	img.self_modulate = Color.RED
 	$GhostInstances.add_child(img)
+	img.fade_time = 0.4
 	await get_tree().create_timer(img.fade_time).timeout
 	# emit player died after its all done
 	player_died.emit()
