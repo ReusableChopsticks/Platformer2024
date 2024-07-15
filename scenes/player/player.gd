@@ -213,6 +213,7 @@ func die_deferred():
 	## Make this into something better maybe?
 	# make so player cannot interact with anything
 	collision_mask = 0
+	collision_layer = 0
 	visible = false
 	# spawn death after image
 	var img: PlayerGhost = ghost_node.instantiate()

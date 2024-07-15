@@ -6,10 +6,12 @@ class_name Level
 ## level node is responsible for instantiating a new player for respawning
 
 signal level_completed
+signal player_respawned
 
-@onready var player: PlayerCharacter = get_node("Player")
+@onready var player: PlayerCharacter = $Player
 var player_spawn_pos: Vector2
 var player_scene = preload("res://scenes/player/player.tscn")
+
 
 func _ready():
 	player = get_node("Player")
@@ -27,4 +29,4 @@ func on_player_died_deferred():
 	player.position = player_spawn_pos
 	player.player_died.connect(on_player_died)	
 	add_child(player)
-	
+	player_respawned.emit()

@@ -6,3 +6,5 @@ extends Node
 @onready var dash_sfx: AudioStreamPlayer = $PlayerSFX/DashSFX
 @onready var wall_jump_sfx: AudioStreamPlayer = $PlayerSFX/WallJumpSFX
 @onready var rebound_sfx: AudioStreamPlayer = $PlayerSFX/ReboundSFX
+
+@onready var block_break_sfx: AudioStreamPlayer = $EnvironmentSFX/BlockBreakSFX

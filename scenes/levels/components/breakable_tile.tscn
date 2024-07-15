@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://xwmqsn7ult3g"]
+
+[ext_resource type="Texture2D" uid="uid://cih413ldakskh" path="res://scenes/levels/components/breakable_tile.png" id="1_c6oqa"]
+[ext_resource type="Script" path="res://scenes/levels/components/breakable_tile.gd" id="1_fblqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dpw0"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cervm"]
+size = Vector2(10, 8)
+
+[node name="BreakableTile" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_fblqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7dpw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c6oqa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cervm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

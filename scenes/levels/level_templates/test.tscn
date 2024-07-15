@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4rhkid6kyg4m"]
+
+[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level_templates/level.tscn" id="1_yiyp7"]
+
+[node name="TEST" instance=ExtResource("1_yiyp7")]
+
+[node name="Goal" parent="." index="0"]
+position = Vector2(-100, 44)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(-100, 4)

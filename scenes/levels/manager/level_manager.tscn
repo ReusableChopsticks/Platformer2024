@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://kk64sujkdhrk"]
+[gd_scene load_steps=34 format=3 uid="uid://kk64sujkdhrk"]
 
 [ext_resource type="Script" path="res://scenes/levels/manager/level_manager.gd" id="1_qejvj"]
 [ext_resource type="PackedScene" uid="uid://csglliwuvg5mb" path="res://scenes/levels/world_1/beginnings.tscn" id="2_ro4rt"]
@@ -27,11 +27,14 @@
 [ext_resource type="PackedScene" uid="uid://52iqah6mtw0v" path="res://scenes/levels/world_2/tumbling_down.tscn" id="23_jgl1m"]
 [ext_resource type="PackedScene" uid="uid://bm40t7gepnypn" path="res://scenes/levels/world_2/the_cocktail_shaker.tscn" id="25_fg85e"]
 [ext_resource type="PackedScene" uid="uid://btyquy6su7dnv" path="res://scenes/levels/world_2/precision_landing.tscn" id="26_6t8ya"]
-[ext_resource type="PackedScene" uid="uid://cjywxe8gy52j8" path="res://scenes/levels/world_2/get_outta_there.tscn" id="27_ij7uh"]
+[ext_resource type="PackedScene" uid="uid://cjywxe8gy52j8" path="res://scenes/levels/world_2/yeah_we_get_around.tscn" id="27_ij7uh"]
 [ext_resource type="PackedScene" uid="uid://c5lrbxqxoebwh" path="res://scenes/levels/world_2/leap_and_reach.tscn" id="28_fvl74"]
+[ext_resource type="PackedScene" uid="uid://d2imr7vvnhfo5" path="res://scenes/levels/world_2/treacherous_hops.tscn" id="30_4rox0"]
+[ext_resource type="PackedScene" uid="uid://wtxi3msd3svm" path="res://scenes/levels/world_2/thread_the_needle_but_fast.tscn" id="31_vaar5"]
+[ext_resource type="PackedScene" uid="uid://clsk035jx2uoc" path="res://scenes/levels/world_2/slam_your_head_against_the_wall.tscn" id="32_acr0g"]
+[ext_resource type="PackedScene" uid="uid://dc2dod50w21ql" path="res://scenes/levels/world_2/rebound_mastery.tscn" id="33_jwq2b"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_qejvj")
-start_world_index = 1
 world_1 = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("4_mcfw1"), ExtResource("5_7xeba"), ExtResource("6_foc7e"), ExtResource("6_yuu78"), ExtResource("8_pcjn8"), ExtResource("9_qmyju"), ExtResource("10_u0toj"), ExtResource("11_5qcp6"), ExtResource("12_4qc3x"), ExtResource("13_y2v6n"), ExtResource("14_bepjj"), ExtResource("15_sdnpe"), ExtResource("15_s2t5g"), ExtResource("17_inrg3")])
-world_2 = Array[PackedScene]([ExtResource("3_kx67w"), ExtResource("19_wss2l"), ExtResource("20_iafgb"), ExtResource("21_364d8"), ExtResource("21_q63rj"), ExtResource("23_jgl1m"), ExtResource("22_1w1ms"), ExtResource("21_am2wc"), ExtResource("25_fg85e"), ExtResource("26_6t8ya"), ExtResource("28_fvl74"), ExtResource("27_ij7uh"), null, null, null, null])
+world_2 = Array[PackedScene]([ExtResource("3_kx67w"), ExtResource("19_wss2l"), ExtResource("20_iafgb"), ExtResource("21_364d8"), ExtResource("21_q63rj"), ExtResource("23_jgl1m"), ExtResource("22_1w1ms"), ExtResource("21_am2wc"), ExtResource("25_fg85e"), ExtResource("26_6t8ya"), ExtResource("28_fvl74"), ExtResource("27_ij7uh"), ExtResource("30_4rox0"), ExtResource("31_vaar5"), ExtResource("32_acr0g"), ExtResource("33_jwq2b")])

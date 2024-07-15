@@ -67,7 +67,11 @@ func physics_update(_delta: float):
 		
 
 func exit():
-	player.modulate = Color.WHITE
+	if player.speed_level != player.max_speed_level:
+		player.modulate = Color.WHITE
+	else:
+		player.modulate = Color.SKY_BLUE
+		
 	
 	# so the player does not jump immediately if you press jump during a dash
 	if disable_jump_buffer:

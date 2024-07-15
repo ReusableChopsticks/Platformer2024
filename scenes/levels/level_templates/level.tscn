@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqmxrctqjmthf"]
+[gd_scene load_steps=21 format=3 uid="uid://bqmxrctqjmthf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_templates/level.gd" id="1_qga33"]
 [ext_resource type="PackedScene" uid="uid://bwivbymq2yfw2" path="res://scenes/levels/components/goal.tscn" id="2_c0msm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="4_oiu3n"]
 [ext_resource type="PackedScene" uid="uid://dr55ilwo81u31" path="res://scenes/environment/spikes/up_spike.tscn" id="5_4yb3v"]
 [ext_resource type="PackedScene" uid="uid://ccbw5xs6ff2rd" path="res://scenes/levels/components/ladder.tscn" id="5_hcfxk"]
+[ext_resource type="PackedScene" uid="uid://xwmqsn7ult3g" path="res://scenes/levels/components/breakable_tile.tscn" id="6_c725k"]
 [ext_resource type="PackedScene" uid="uid://dpcuu8gbho82w" path="res://scenes/environment/spikes/down_spike.tscn" id="6_wa4ca"]
 [ext_resource type="PackedScene" uid="uid://8ts6leua6kw2" path="res://scenes/environment/spikes/left_spike.tscn" id="7_28sbh"]
 [ext_resource type="PackedScene" uid="uid://dipsl8o47hgfe" path="res://scenes/environment/spikes/right_spike.tscn" id="8_lfo60"]
@@ -26,6 +27,7 @@ tile_data = PackedInt32Array(0, 589824, 1, 65536, 589824, 2, 131072, 589824, 2, 
 tile_data = PackedInt32Array(0, 589824, 2, 65536, 589824, 2, 131072, 589824, 3, 196608, 589824, 4, 262144, 589824, 2, 327680, 589824, 3, 393216, 589824, 4, 458752, 589824, 2, 524288, 589824, 3, 589824, 589824, 3, 655360, 589824, 2, 720896, 589824, 2, 786432, 589824, 2, 851968, 589824, 3, 917504, 589824, 4, 983040, 589824, 2, 1048576, 589824, 3, 1114112, 589824, 4, 1179648, 589824, 2, 1245184, 589824, 3, 1310720, 589824, 3, 1376256, 589824, 2, 1441792, 589824, 5, 1, 720896, 3, 65537, 655360, 4, 131073, 655360, 2, 196609, 720896, 3, 262145, 786432, 3, 327681, 786432, 3, 393217, 786432, 3, 458753, 720896, 3, 524289, 655360, 4, 589825, 720896, 4, 655361, 655360, 2, 720897, 720896, 3, 786433, 655360, 4, 851969, 655360, 2, 917505, 720896, 3, 983041, 786432, 3, 1048577, 786432, 3, 1114113, 786432, 3, 1179649, 720896, 3, 1245185, 655360, 4, 1310721, 720896, 4, 1376257, 655360, 2, 1441793, 720896, 5, 2, 786432, 2, 65538, 786432, 3, 131074, 720896, 3, 196610, 786432, 2, 262146, 720896, 3, 327682, 720896, 3, 393218, 655360, 3, 458754, 655360, 2, 524290, 720896, 2, 589826, 786432, 2, 655362, 655360, 2, 720898, 786432, 2, 786434, 786432, 3, 851970, 720896, 3, 917506, 786432, 2, 983042, 720896, 3, 1048578, 720896, 3, 1114114, 655360, 3, 1179650, 655360, 2, 1245186, 720896, 2, 1310722, 786432, 2, 1376258, 655360, 2, 1441794, 786432, 5, 3, 655360, 3, 65539, 720896, 4, 131075, 655360, 4, 196611, 720896, 3, 262147, 720896, 2, 327683, 720896, 4, 393219, 720896, 2, 458755, 786432, 4, 524291, 655360, 3, 589827, 655360, 3, 655363, 655360, 3, 720899, 655360, 3, 786435, 720896, 4, 851971, 655360, 4, 917507, 720896, 3, 983043, 720896, 2, 1048579, 720896, 4, 1114115, 720896, 2, 1179651, 786432, 4, 1245187, 655360, 3, 1310723, 655360, 3, 1376259, 655360, 3, 1441795, 655360, 5, 4, 851968, 2, 65540, 851968, 2, 131076, 851968, 2, 196612, 851968, 3, 262148, 851968, 2, 327684, 851968, 2, 393220, 851968, 4, 458756, 851968, 2, 524292, 851968, 2, 589828, 851968, 4, 655364, 851968, 4, 720900, 851968, 2, 786436, 851968, 2, 851972, 851968, 2, 917508, 851968, 3, 983044, 851968, 2, 1048580, 851968, 2, 1114116, 851968, 4, 1179652, 851968, 2, 1245188, 851968, 2, 1310724, 851968, 4, 1376260, 851968, 4, 1441796, 851968, 5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssd88"]
+resource_name = "1 tiles"
 texture = ExtResource("4_oiu3n")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -1656,11 +1658,12 @@ texture_region_size = Vector2i(8, 8)
 18:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_diiiy"]
-resource_name = "passable"
+resource_name = "3 special tiles"
 scenes/1/scene = ExtResource("5_hcfxk")
+scenes/2/scene = ExtResource("6_c725k")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pmsaq"]
-resource_name = "spike"
+resource_name = "2 spike"
 scenes/1/scene = ExtResource("5_4yb3v")
 scenes/2/scene = ExtResource("6_wa4ca")
 scenes/3/scene = ExtResource("7_28sbh")

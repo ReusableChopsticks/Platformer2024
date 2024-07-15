@@ -12,18 +12,3 @@ position = Vector2(-100, 28)
 
 [node name="TileMap" parent="." index="2"]
 layer_0/tile_data = PackedInt32Array(393200, 655360, 1, 393201, 786432, 1, 393202, 786432, 1, 393203, 655360, 1, 393204, 720896, 1, 393205, 720896, 1, 393206, 655360, 1, 393207, 655360, 1, 393208, 786432, 1, 393209, 720896, 1, 65525, 65536, 1, 65526, 65536, 1, 262138, 65536, 1, 262139, 65536, 1, -131065, 1114112, 8, -65529, 1114112, 8, 131079, 4, 131072, 131061, 65536, 1, 131062, 65536, 1, 327674, 65536, 1, 327675, 65536, 1, 7, 4, 65536, 196615, 655360, 1, 196616, 655360, 1, 196617, 786432, 1, 196618, 720896, 1, 196619, 786432, 1, 196620, 655360, 1, 196621, 720896, 1)
-
-[node name="Label" type="Label" parent="." index="5"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = -52.0
-offset_right = 89.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Keep going in the same direction
-to retain your speed"
-horizontal_alignment = 1
