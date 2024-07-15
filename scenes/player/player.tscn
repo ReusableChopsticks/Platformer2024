@@ -31,6 +31,7 @@ time_to_max_speed = 0.1
 time_to_stop = 0.1
 gravity = 1500.0
 air_move_mult = 0.2
+fast_fall_mult = 1.8
 max_move_speed = 600
 max_fall_speed = 130
 

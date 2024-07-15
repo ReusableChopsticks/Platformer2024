@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp2ejfmp76gk6"]
+
+[ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level_templates/level.tscn" id="1_mdmgo"]
+
+[node name="Unstable Ground" instance=ExtResource("1_mdmgo")]
+
+[node name="Goal" parent="." index="0"]
+position = Vector2(100, -4)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(-92, 12)
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(262128, 65536, 1, 131057, 1, 131072, 262129, 65536, 1, 262130, 65536, 1, 262131, 65536, 1, 262132, 65536, 1, 262133, 65536, 1, 262134, 65536, 1, 262135, 65536, 1, 131074, 1, 131072, 131075, 1, 131072)

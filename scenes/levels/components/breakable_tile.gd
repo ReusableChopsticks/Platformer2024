@@ -12,8 +12,10 @@ func _ready():
 	level.player_respawned.connect(respawn)
 
 func _on_area_2d_body_entered(body):
+	## Break if player is standing on top
 	if body is PlayerCharacter:
 		break_block.call_deferred()
+
 
 func break_block():
 	$Area2D/CollisionShape2D.disabled = true
