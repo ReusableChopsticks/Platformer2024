@@ -21,6 +21,8 @@ var current_level: Level
 ## How many levels player has completed
 var levels_completed_count := 0
 
+var completion_time: float = 0
+
 func _ready():
 	# subtract one so when calling load_next_level, it loads the current one
 	level_index = start_level_index - 1
