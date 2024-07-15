@@ -26,7 +26,6 @@ safe_margin = 0.2
 script = ExtResource("1_a62lr")
 ghost_node = ExtResource("2_h2nj3")
 base_speed = 50
-speed_increase_amount = 0.7
 counter_dir_force_mult = 4.0
 time_to_max_speed = 0.1
 time_to_stop = 0.1
@@ -90,6 +89,7 @@ wall_slide_speed = 80
 
 [node name="PlayerWallJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("9_8isqv")
+wall_jump_vel_speed_mult = 0.3
 
 [node name="PlayerDoubleJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("10_3xrrm")

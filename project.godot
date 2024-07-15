@@ -15,6 +15,10 @@ run/main_scene="res://scenes/levels/manager/level_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://scenes/audio/default_bus_layout.tres"
+
 [autoload]
 
 Calc="*res://scenes/interfaces/Calc.gd"

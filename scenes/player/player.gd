@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name PlayerCharacter
 
 signal player_died
+## The player state machine which holds reference to the current state
+@onready var states: StateMachine = $StateMachine
 ## If the player is dead or not
 var has_died := false
 
@@ -128,7 +130,7 @@ func _ready():
 	wall_jump_vel = floor(jump_vel * 0.6)
 	double_jump_vel = floor(jump_vel * 0.6)
 	rebound_y_vel = floor(jump_vel * 0.3)
-	floor_rebound_vel = floor(jump_vel * 1.5)
+	floor_rebound_vel = floor(jump_vel * 1.2)
 
 ## calculate movement values every time speed_level is changed
 func calculate_forces():
@@ -200,6 +202,9 @@ func die():
 func die_deferred():
 	has_died = true
 	AudioManager.death_sfx.play()
+	
+	## Disable ghost effect
+	ghost_timer.stop()
 	## TODO: This is a hacky death effect made by reusing the player ghost
 	## Make this into something better maybe?
 	# make so player cannot interact with anything

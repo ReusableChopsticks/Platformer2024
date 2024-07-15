@@ -27,7 +27,7 @@ func physics_update(delta: float):
 		player.reset_speed_level()
 	## to retain speed, player must be moving in the direction of last wall rebound
 	## speed is retained on wall jumps
-	elif player.get_wall_normal().x != sign(player.velocity.x) and \
+	elif sign(player.get_wall_normal().x) != sign(player.velocity.x) and \
 	  player.wall_jump_grace_timer.is_stopped() and \
 	  player.speed_level > 1:
 		player.reset_speed_level()

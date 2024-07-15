@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccbw5xs6ff2rd"]
+
+[ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="1_7x2rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvkcj"]
+size = Vector2(8, 8)
+
+[node name="Ladder" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yvkcj")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7x2rl")
+region_enabled = true
+region_rect = Rect2(136, 96, 8, 8)
