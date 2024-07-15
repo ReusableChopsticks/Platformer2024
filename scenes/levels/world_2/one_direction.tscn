@@ -27,6 +27,3 @@ grow_vertical = 2
 text = "Keep going in the same direction
 to retain your speed"
 horizontal_alignment = 1
-
-[connection signal="body_entered" from="TileMap/UpSpike" to="TileMap/UpSpike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/DownSpike" to="TileMap/DownSpike" method="_on_body_entered"]

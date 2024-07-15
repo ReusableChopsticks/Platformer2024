@@ -88,6 +88,8 @@ var floor_rebound_vel: int
 #region Internal values
 ## either -1 or 1 according to what the last direction was
 var facing_dir = 1
+## Keep track of last rebound dir so rebounds must alternate walls
+var last_rebound_dir = 0
 
 ## These are set to true while grounded in MoveState, false when used up
 var has_double_jump: bool = true
@@ -154,6 +156,8 @@ func increment_speed_level():
 
 func reset_speed_level():
 	speed_level = 1
+	## Reset last rebound so player can use any wall again to start
+	last_rebound_dir = 0
 	calculate_forces()
 	modulate = Color.WHITE
 	

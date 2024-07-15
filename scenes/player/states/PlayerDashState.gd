@@ -21,6 +21,8 @@ var already_transitioned := false
 var was_in_air := false
 var down_dashed := false
 
+var last_wall_normal := 0
+
 func enter():
 	AudioManager.dash_sfx.play()
 	
@@ -42,12 +44,17 @@ func enter():
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
 	
 	
+	
 func physics_update(_delta: float):
 	player.move_and_slide()
 	
 	## conditions to transition into rebound
 	# check for wall rebound first
-	if player.is_on_wall() or \
+	if \
+	(
+		player.is_on_wall() and \
+		player.get_wall_normal().x != player.last_rebound_dir
+	) or \
 	# these three conditions below check for a valid downward dash rebound
 	(
 		player.is_on_floor() and \
