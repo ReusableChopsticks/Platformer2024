@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://lvcgmddli4g0" path="res://scenes/UI/arrow_right.png" id="4_24cb6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_046ee"]
-bg_color = Color(1, 1, 1, 0.372549)
+bg_color = Color(0.167356, 0.167356, 0.167356, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioy3h"]
 bg_color = Color(0, 0, 0, 0)
@@ -16,9 +16,8 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d32yy"]
-content_margin_top = 1.0
-content_margin_bottom = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o82x8"]
+bg_color = Color(0.119835, 0.119835, 0.119835, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pif44"]
 content_margin_top = 1.0
@@ -198,14 +197,14 @@ Button/colors/icon_hover_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/h_separation = 4
+Button/constants/h_separation = 10
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_e6orr")
 Button/styles/focus = SubResource("StyleBoxFlat_046ee")
 Button/styles/hover = SubResource("StyleBoxFlat_ioy3h")
-Button/styles/normal = SubResource("StyleBoxEmpty_d32yy")
+Button/styles/normal = SubResource("StyleBoxFlat_o82x8")
 Button/styles/pressed = SubResource("StyleBoxEmpty_pif44")
 HScrollBar/styles/grabber = SubResource("StyleBoxFlat_18kea")
 HSlider/icons/grabber = ExtResource("2_0afqi")

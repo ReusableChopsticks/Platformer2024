@@ -8,6 +8,8 @@ class_name LevelManager
 @export var world_1: Array[PackedScene]
 @export var world_2: Array[PackedScene]
 
+var endscreen = preload("res://scenes/UI/end_screen.tscn")
+var endscreen_node = null
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
 ## Array of world arrays
@@ -20,19 +22,19 @@ var world_index: int = 0
 ## The level the player is currently on
 var current_level: Level
 
-var start_time: int = 0
-var end_time: int = 0
-
+var start_time: int = -1
+var end_time: int = -1
+var completion_time := -1
 
 signal quit_level
 
 func _ready():
 	level_index = start_level_index
 	world_index = start_world_index
+	start_time = Time.get_ticks_msec()
 
 func quit_to_main_menu():
-	current_level.queue_free()
-	current_level = null
+	unload_current_level()
 	player_stats.level_unlocked = max(player_stats.level_unlocked, get_current_level_id())
 
 func get_current_level_id():
@@ -47,17 +49,24 @@ func load_current_level():
 	if current_level:
 		current_level.queue_free()
 	
-	if quit_if_empty():
-		get_tree().quit()
+	if last_level_reached():
+		show_endscreen()
 		return
 	
-	#print(str(world_index) + " " + str(level_index))
+	## Reset the start time
 	if level_index == 0 and world_index == 0:
 		start_time = Time.get_ticks_msec()
+	else:
+		start_time = -1 # invalid because not from the beginning
 	
 	current_level = worlds[world_index][level_index].instantiate()
 	current_level.level_completed.connect(on_level_completed)
 	add_child(current_level)
+
+func unload_current_level():
+	if current_level:
+		current_level.queue_free()
+		current_level = null
 
 func load_next_level():
 	level_index += 1
@@ -75,19 +84,31 @@ func load_level(world_index: int, level_index: int):
 	self.level_index = level_index
 	load_current_level()
 
-func quit_if_empty():
+func last_level_reached():
 	if world_index >= worlds.size():
 		print("Last level completed")
 		end_time = Time.get_ticks_msec()
+		completion_time = end_time - start_time
 		return true
 	elif not worlds[world_index][level_index]:
 		print("Level %s in world %s is not assigned in LevelManager" % [str(level_index), str(world_index)])
 		return true
 	return false
 
+func show_endscreen():
+	unload_current_level()
+	endscreen_node = endscreen.instantiate()
+	add_child(endscreen_node)
+	endscreen_node.quit_to_main_menu.connect(_on_endscreen_quit_level)
+
 func on_level_completed(level_name):
 	print("Just completed level: %s" % level_name)
 	call_deferred("load_next_level")
 
 func _on_pause_menu_quit_level():
+	quit_level.emit()
+
+func _on_endscreen_quit_level():
+	endscreen_node.queue_free()
+	endscreen_node = null
 	quit_level.emit()
