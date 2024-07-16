@@ -34,12 +34,6 @@ func load_current_level():
 	if current_level:
 		current_level.queue_free()
 	
-	## If last world's level completed, move on to the next world
-	if level_index >= worlds[world_index].size():
-		print("LAST LEVEL REACHED: MOVING TO NEXT WORLD")
-		world_index += 1
-		level_index = 0
-	
 	if quit_if_empty():
 		get_tree().quit()
 		return
@@ -53,6 +47,13 @@ func load_current_level():
 func load_next_level():
 	level_index += 1
 	levels_completed_count += 1
+	
+	## If last world's level completed, move on to the next world
+	if level_index >= worlds[world_index].size():
+		print("LAST LEVEL REACHED: MOVING TO NEXT WORLD")
+		world_index += 1
+		level_index = 0
+	
 	load_current_level()
 
 func load_level(world_index: int, level_index: int):

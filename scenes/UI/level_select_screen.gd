@@ -11,12 +11,14 @@ func _ready():
 	var level_index := 0
 	var world_index := 0
 	var root: TreeItem = tree.create_item()
-	
 	tree.hide_root = true
+	
+	## A tree of worlds and levels
+	## Each level lead has a button with an id corresponding to level num
 	for world in level_manager.worlds:
 		world_index += 1
 		var world_leaf: TreeItem = tree.create_item(root)
-		world_leaf.set_text(world_index, "World %s" % str(world_index))
+		world_leaf.set_text(0, "World %s" % str(world_index))
 		
 		for level in world:
 			level_index += 1
@@ -33,4 +35,14 @@ func _process(delta):
 
 
 func _on_tree_button_clicked(item, column, id, mouse_button_index):
-	print("%s %s" % [str(column), str(id)])
+	#print("%s %s" % [str(column), str(id)])
+	## Figure out what 
+	var i = 0
+	var world_index = 0
+	while i + level_manager.worlds[world_index].size() < id:
+		i += level_manager.worlds[world_index].size()
+		world_index += 1
+	
+	print("WORLD: %s     id: %s" % [str(world_index), str(id)])
+	
+	level_manager.load_level(world_index, id - i)

@@ -18,7 +18,6 @@ theme = ExtResource("2_28jxk")
 
 [node name="Tree" type="Tree" parent="MarginContainer"]
 layout_mode = 2
-columns = 3
 column_titles_visible = true
 select_mode = 2
 
