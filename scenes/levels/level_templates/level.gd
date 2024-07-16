@@ -21,9 +21,9 @@ func _ready():
 
 ## Handle player respawning
 func on_player_died():
-	call_deferred("on_player_died_deferred")
+	call_deferred("respawn_player")
 
-func on_player_died_deferred():
+func respawn_player():
 	player.queue_free()
 	player = player_scene.instantiate()
 	player.position = player_spawn_pos
