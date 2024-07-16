@@ -19,16 +19,16 @@ var level_index: int = 0
 var world_index: int = 0
 ## The level the player is currently on
 var current_level: Level
-var completion_time: float = 0
+
+var start_time: int = 0
+var end_time: int = 0
 
 
 signal quit_level
 
 func _ready():
-	# subtract one so when calling load_next_level, it loads the current one
 	level_index = start_level_index
 	world_index = start_world_index
-	#load_current_level()
 
 func quit_to_main_menu():
 	current_level.queue_free()
@@ -51,7 +51,9 @@ func load_current_level():
 		get_tree().quit()
 		return
 	
-	print(str(world_index) + " " + str(level_index))
+	#print(str(world_index) + " " + str(level_index))
+	if level_index == 0 and world_index == 0:
+		start_time = Time.get_ticks_msec()
 	
 	current_level = worlds[world_index][level_index].instantiate()
 	current_level.level_completed.connect(on_level_completed)
@@ -76,6 +78,7 @@ func load_level(world_index: int, level_index: int):
 func quit_if_empty():
 	if world_index >= worlds.size():
 		print("Last level completed")
+		end_time = Time.get_ticks_msec()
 		return true
 	elif not worlds[world_index][level_index]:
 		print("Level %s in world %s is not assigned in LevelManager" % [str(level_index), str(world_index)])

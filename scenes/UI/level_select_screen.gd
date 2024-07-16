@@ -18,6 +18,7 @@ func _on_visibility_changed():
 
 ## Creates and refreshes tree
 func create_tree():
+	tree.grab_focus()
 	tree.clear()
 	var level_index := 0
 	var world_index := 0
@@ -64,3 +65,8 @@ func _on_tree_button_clicked(item, column, id, mouse_button_index):
 
 func _on_back_button_pressed():
 	back_pressed.emit()
+
+
+
+func _on_tree_item_activated():
+	print("woe is me")

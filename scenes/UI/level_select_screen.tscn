@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5muk44ol1dku"]
+[gd_scene load_steps=5 format=3 uid="uid://b5muk44ol1dku"]
 
 [ext_resource type="Script" path="res://scenes/UI/level_select_screen.gd" id="1_42f8i"]
 [ext_resource type="Texture2D" uid="uid://bmav8j1p2aj5t" path="res://scenes/UI/play_button.png" id="2_1jxx0"]
 [ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_28jxk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rk7i"]
+font_size = 8
 
 [node name="LevelSelectScreen" type="CanvasLayer" node_paths=PackedStringArray("tree")]
 script = ExtResource("1_42f8i")
@@ -32,13 +35,25 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 12.56
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 scroll_horizontal_enabled = false
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Tree")
+focus_neighbor_bottom = NodePath("../Tree")
 text = "   Back"
 alignment = 0
 
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Note: Only usable with mouse (click the 'play' button). This UI is not interactable for controllers because I just found out Godot does not support UI inputs for trees!!!"
+label_settings = SubResource("LabelSettings_5rk7i")
+autowrap_mode = 3
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_clicked" from="MarginContainer/VBoxContainer/Tree" to="." method="_on_tree_button_clicked"]
+[connection signal="item_activated" from="MarginContainer/VBoxContainer/Tree" to="." method="_on_tree_item_activated"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
