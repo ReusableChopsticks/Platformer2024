@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var level_manager = $".."
 @export var halt_game: bool = true
 
+signal quit_level
+
 func _ready():
 	visible = false
 	%ResumeButton.grab_focus()
@@ -39,3 +41,8 @@ func _on_retry_button_pressed():
 	AudioManager.death_sfx.play()
 	visible = false
 	get_tree().paused = false
+
+func _on_quit_button_pressed():
+	get_tree().paused = false
+	hide()
+	quit_level.emit()

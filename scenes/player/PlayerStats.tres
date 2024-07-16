@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_anwdh")
 total_jumps = 100
+latest_level_unlocked = 0

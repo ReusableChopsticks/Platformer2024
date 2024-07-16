@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvyorip3h0cce" path="res://scenes/UI/main_menu.tscn" id="4_tw1be"]
 
 [node name="GameManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_txjhw")
 
 [node name="LevelManager" parent="." instance=ExtResource("1_0l7pw")]
@@ -15,6 +16,7 @@ visible = false
 
 [node name="MenuScreen" parent="." instance=ExtResource("4_tw1be")]
 
+[connection signal="quit_level" from="LevelManager" to="." method="_on_level_manager_quit_level"]
 [connection signal="back_pressed" from="LevelSelectScreen" to="." method="_on_level_select_screen_back_pressed"]
 [connection signal="credits_pressed" from="MenuScreen" to="." method="_on_menu_screen_credits_pressed"]
 [connection signal="level_select_pressed" from="MenuScreen" to="." method="_on_menu_screen_level_select_pressed"]

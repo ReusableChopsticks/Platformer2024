@@ -1,15 +1,25 @@
 extends CanvasLayer
 
 
-@onready var level_manager: LevelManager = $"../LevelManager"
-
 @export var tree: Tree
 @export var button_texture: Texture2D
 
+@onready var level_manager: LevelManager = $"../LevelManager"
+var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
+
 signal back_pressed
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	create_tree()
+
+
+func _on_visibility_changed():
+	if visible == true:
+		create_tree()
+
+## Creates and refreshes tree
+func create_tree():
+	tree.clear()
 	var level_index := 0
 	var world_index := 0
 	var root: TreeItem = tree.create_item()
@@ -25,20 +35,21 @@ func _ready():
 		for level in world:
 			level_index += 1
 			var level_leaf: TreeItem = tree.create_item(world_leaf)
-			# we have to instantiate the level node to get its name *crying emoji*
-			var level_node: Level = level.instantiate()
-			level_leaf.set_text(0, "%s: %s" % [str(level_index), level_node.name])
-			level_leaf.add_button(0, button_texture, level_index - 1)
-			level_node.queue_free()
-			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+			if level_index - 1 > player_stats.latest_level_unlocked:
+				level_leaf.set_text(0, "LOCKED")
+			else:
+				# we have to instantiate the level node to get its name 
+				# *insert crying emoji*
+				var level_node: Level = level.instantiate()
+				level_leaf.set_text(0, "%s: %s" % [str(level_index), level_node.name])
+				level_leaf.add_button(0, button_texture, level_index - 1)
+				level_node.queue_free()
 
-
+## When you click play on a level
 func _on_tree_button_clicked(item, column, id, mouse_button_index):
 	#print("%s %s" % [str(column), str(id)])
-	## Figure out what 
+	## Figure out the world and level index for that world
+	## a level is in based on its ID
 	var i = 0
 	var world_index = 0
 	while i + level_manager.worlds[world_index].size() <= id:
@@ -48,6 +59,7 @@ func _on_tree_button_clicked(item, column, id, mouse_button_index):
 	#print("WORLD: %s     id: %s" % [str(world_index), str(id)])
 	
 	level_manager.load_level(world_index, id - i)
+	AudioManager.clair_de_lune.play()
 	visible = false
 
 

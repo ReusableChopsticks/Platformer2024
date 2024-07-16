@@ -8,6 +8,7 @@ class_name LevelManager
 @export var world_1: Array[PackedScene]
 @export var world_2: Array[PackedScene]
 
+var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
 ## Array of world arrays
 @onready var worlds := [world_1, world_2]
@@ -20,14 +21,20 @@ var world_index: int = 0
 var current_level: Level
 ## How many levels player has completed
 var levels_completed_count := 0
-
 var completion_time: float = 0
+
+
+signal quit_level
 
 func _ready():
 	# subtract one so when calling load_next_level, it loads the current one
 	level_index = start_level_index
 	world_index = start_world_index
 	#load_current_level()
+
+func quit_to_main_menu():
+	current_level.queue_free()
+	current_level = null
 
 func load_current_level():
 	## Unload the current level
@@ -48,6 +55,8 @@ func load_next_level():
 	level_index += 1
 	levels_completed_count += 1
 	
+	player_stats.latest_level_unlocked = max(level_index, player_stats.latest_level_unlocked)
+	
 	## If last world's level completed, move on to the next world
 	if level_index >= worlds[world_index].size():
 		print("LAST LEVEL REACHED: MOVING TO NEXT WORLD")
@@ -60,7 +69,6 @@ func load_level(world_index: int, level_index: int):
 	self.world_index = world_index
 	self.level_index = level_index
 	load_current_level()
-	
 
 func quit_if_empty():
 	if world_index >= worlds.size():
@@ -70,8 +78,10 @@ func quit_if_empty():
 		print("Level %s in world %s is not assigned in LevelManager" % [str(level_index), str(world_index)])
 		return true
 	return false
-	
 
 func on_level_completed(level_name):
 	print("Just completed level: %s" % level_name)
 	call_deferred("load_next_level")
+
+func _on_pause_menu_quit_level():
+	quit_level.emit()
