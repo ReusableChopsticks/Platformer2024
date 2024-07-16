@@ -29,6 +29,7 @@ func _ready():
 	world_index = start_world_index
 	load_next_level()
 
+
 func load_next_level():
 	## Unload the current level
 	if current_level:

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5muk44ol1dku"]
+
+[ext_resource type="Script" path="res://scenes/UI/level_select_screen.gd" id="1_42f8i"]
+
+[node name="LevelSelectScreen" type="CanvasLayer"]
+script = ExtResource("1_42f8i")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tree" type="Tree" parent="MarginContainer"]
+layout_mode = 2
+columns = 3
+column_titles_visible = true
+select_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Tree"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="MarginContainer/Tree"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button3" type="Button" parent="MarginContainer/Tree"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button4" type="Button" parent="MarginContainer/Tree"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button5" type="Button" parent="MarginContainer/Tree"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
