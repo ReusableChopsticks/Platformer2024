@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://kk64sujkdhrk"]
+[gd_scene load_steps=49 format=3 uid="uid://kk64sujkdhrk"]
 
 [ext_resource type="Script" path="res://scenes/levels/manager/level_manager.gd" id="1_qejvj"]
 [ext_resource type="PackedScene" uid="uid://csglliwuvg5mb" path="res://scenes/levels/world_1/beginnings.tscn" id="2_ro4rt"]
@@ -62,6 +62,7 @@ bg_color = Color(0.384664, 0.464652, 0.859799, 1)
 bg_color = Color(0.503408, 0.562315, 0.859799, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2qk6p"]
+color = Color(0.581464, 0.581464, 0.581464, 1)
 
 [sub_resource type="Theme" id="Theme_2teyy"]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -93,36 +94,6 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ipc6h")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_g1s4u")
 HSlider/styles/slider = SubResource("StyleBoxLine_2qk6p")
 Label/font_sizes/font_size = 24
-
-[sub_resource type="Theme" id="Theme_b8767"]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/h_separation = 4
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/fonts/font = ExtResource("39_qp6aw")
-Button/styles/focus = SubResource("StyleBoxEmpty_tiaex")
-Button/styles/hover = SubResource("StyleBoxFlat_ioy3h")
-Button/styles/normal = SubResource("StyleBoxEmpty_d32yy")
-Button/styles/pressed = SubResource("StyleBoxEmpty_pif44")
-HSlider/icons/grabber = ExtResource("40_wpvlg")
-HSlider/icons/grabber_disabled = ExtResource("40_wpvlg")
-HSlider/icons/grabber_highlight = ExtResource("40_wpvlg")
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ipc6h")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_g1s4u")
-HSlider/styles/slider = SubResource("StyleBoxLine_2qk6p")
-Label/font_sizes/font_size = 12
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_qejvj")
@@ -161,12 +132,12 @@ horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="PauseMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_b8767")
 theme_override_constants/h_separation = 15
 columns = 2
 
 [node name="MusicSliderLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Music
 "
 horizontal_alignment = 1
@@ -180,6 +151,7 @@ value = 0.8
 
 [node name="SoundSliderLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Sound"
 horizontal_alignment = 1
 
@@ -205,3 +177,6 @@ text = "Retry"
 layout_mode = 2
 text = "Quit
 "
+
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="PauseMenu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/GridContainer/SoundSlider" to="PauseMenu" method="_on_sound_slider_value_changed"]

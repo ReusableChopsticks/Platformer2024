@@ -43,6 +43,7 @@ bus = &"SFX"
 
 [node name="Clair De Lune" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_ew6me")
+autoplay = true
 bus = &"BGM"
 
 [node name="EnvironmentSFX" type="Node" parent="."]
