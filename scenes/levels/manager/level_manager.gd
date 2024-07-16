@@ -29,14 +29,10 @@ func _ready():
 	world_index = start_world_index
 	load_next_level()
 
-
-func load_next_level():
+func load_current_level():
 	## Unload the current level
 	if current_level:
 		current_level.queue_free()
-	
-	level_index += 1
-	levels_completed_count += 1
 	
 	## If last world's level completed, move on to the next world
 	if level_index >= worlds[world_index].size():
@@ -53,7 +49,16 @@ func load_next_level():
 	current_level = worlds[world_index][level_index].instantiate()
 	current_level.level_completed.connect(on_level_completed)
 	add_child(current_level)
-	#get_tree().change_scene_to_file(level_path)
+
+func load_next_level():
+	level_index += 1
+	levels_completed_count += 1
+	load_current_level()
+
+func load_level(world_index: int, level_index: int):
+	self.world_index = world_index
+	self.level_index = level_index
+	load_current_level()
 	
 
 func quit_if_empty():
