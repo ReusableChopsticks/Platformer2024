@@ -89,7 +89,7 @@ text = "Retry"
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../RetryButton")
-focus_neighbor_bottom = NodePath("../../GridContainer/MusicSliderLabel")
+focus_neighbor_bottom = NodePath("../../GridContainer/MusicSlider")
 text = "Quit
 "
 
