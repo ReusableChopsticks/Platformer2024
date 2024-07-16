@@ -1,12 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5muk44ol1dku"]
 
 [ext_resource type="Script" path="res://scenes/UI/level_select_screen.gd" id="1_42f8i"]
+[ext_resource type="Texture2D" uid="uid://bmav8j1p2aj5t" path="res://scenes/UI/play_button.png" id="2_1jxx0"]
 [ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_28jxk"]
-[ext_resource type="Texture2D" uid="uid://bclb8rtjlunx1" path="res://scenes/UI/8x8_button_frame.png" id="2_qp7ku"]
 
-[node name="LevelSelectScreen" type="CanvasLayer"]
+[node name="LevelSelectScreen" type="CanvasLayer" node_paths=PackedStringArray("tree")]
 script = ExtResource("1_42f8i")
-button_texture = ExtResource("2_qp7ku")
+tree = NodePath("MarginContainer/VBoxContainer/Tree")
+button_texture = ExtResource("2_1jxx0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -16,34 +25,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_28jxk")
 
-[node name="Tree" type="Tree" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-column_titles_visible = true
-select_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/Tree"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 12.56
+scroll_horizontal_enabled = false
 
-[node name="Button2" type="Button" parent="MarginContainer/Tree"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "back"
 
-[node name="Button3" type="Button" parent="MarginContainer/Tree"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button4" type="Button" parent="MarginContainer/Tree"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button5" type="Button" parent="MarginContainer/Tree"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[connection signal="button_clicked" from="MarginContainer/Tree" to="." method="_on_tree_button_clicked"]
+[connection signal="button_clicked" from="MarginContainer/VBoxContainer/Tree" to="." method="_on_tree_button_clicked"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

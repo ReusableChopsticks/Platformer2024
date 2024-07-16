@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvyorip3h0cce"]
 
-[ext_resource type="Script" path="res://scenes/UI/menu_screen.gd" id="1_ghbob"]
-[ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_7xqe5"]
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_3sq52"]
+[ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_etkad"]
 
 [node name="MenuScreen" type="CanvasLayer"]
-script = ExtResource("1_ghbob")
+script = ExtResource("1_3sq52")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.20333, 0.20079, 0.29634, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_7xqe5")
+theme = ExtResource("2_etkad")
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
@@ -31,6 +31,12 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Untitled Platformer 2024"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "by ReusableChopsticks"
+horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -46,3 +52,5 @@ text = "Credits
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -2,9 +2,11 @@ extends CanvasLayer
 
 
 @onready var level_manager: LevelManager = $"../LevelManager"
-@onready var tree: Tree = $MarginContainer/Tree
 
+@export var tree: Tree
 @export var button_texture: Texture2D
+
+signal back_pressed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,10 +41,15 @@ func _on_tree_button_clicked(item, column, id, mouse_button_index):
 	## Figure out what 
 	var i = 0
 	var world_index = 0
-	while i + level_manager.worlds[world_index].size() < id:
+	while i + level_manager.worlds[world_index].size() <= id:
 		i += level_manager.worlds[world_index].size()
 		world_index += 1
 	
-	print("WORLD: %s     id: %s" % [str(world_index), str(id)])
+	#print("WORLD: %s     id: %s" % [str(world_index), str(id)])
 	
 	level_manager.load_level(world_index, id - i)
+	visible = false
+
+
+func _on_back_button_pressed():
+	back_pressed.emit()

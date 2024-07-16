@@ -25,9 +25,9 @@ var completion_time: float = 0
 
 func _ready():
 	# subtract one so when calling load_next_level, it loads the current one
-	level_index = start_level_index - 1
+	level_index = start_level_index
 	world_index = start_world_index
-	load_next_level()
+	#load_current_level()
 
 func load_current_level():
 	## Unload the current level
