@@ -19,8 +19,6 @@ var level_index: int = 0
 var world_index: int = 0
 ## The level the player is currently on
 var current_level: Level
-## How many levels player has completed
-var levels_completed_count := 0
 var completion_time: float = 0
 
 
@@ -35,6 +33,14 @@ func _ready():
 func quit_to_main_menu():
 	current_level.queue_free()
 	current_level = null
+	player_stats.level_unlocked = max(player_stats.level_unlocked, get_current_level_id())
+
+func get_current_level_id():
+	var id = 0
+	for i in range(world_index):
+		id += worlds[i].size()
+	id += level_index
+	return id
 
 func load_current_level():
 	## Unload the current level
@@ -53,9 +59,6 @@ func load_current_level():
 
 func load_next_level():
 	level_index += 1
-	levels_completed_count += 1
-	
-	player_stats.latest_level_unlocked = max(level_index, player_stats.latest_level_unlocked)
 	
 	## If last world's level completed, move on to the next world
 	if level_index >= worlds[world_index].size():

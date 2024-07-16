@@ -35,7 +35,7 @@ func create_tree():
 		for level in world:
 			level_index += 1
 			var level_leaf: TreeItem = tree.create_item(world_leaf)
-			if level_index - 1 > player_stats.latest_level_unlocked:
+			if level_index - 1 > player_stats.level_unlocked:
 				level_leaf.set_text(0, "LOCKED")
 			else:
 				# we have to instantiate the level node to get its name 

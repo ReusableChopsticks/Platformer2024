@@ -106,6 +106,8 @@ var has_dash: bool = true
 @onready var ground_ray_cast: RayCast2D = $GroundCheckRayCast
 #endregion
 
+var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
+
 func ghost(is_ghosting: bool):
 	if is_ghosting and ghost_timer.is_stopped():
 		# increase ghost spawn frequency by 1 for each speed level
@@ -205,6 +207,7 @@ func die():
 
 func die_deferred():
 	has_died = true
+	player_stats.total_deaths += 1
 	AudioManager.death_sfx.play()
 	
 	## Disable ghost effect
