@@ -14,7 +14,9 @@ func _ready():
 	%ResumeButton.grab_focus()
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	## Toggle visible on pressing escape and a level is currently loaded
+	## (spaghetti code time because this node is always processing!!!)
+	if event.is_action_pressed("ui_cancel") and level_manager.get_child_count() > 1:
 		visible = !visible
 		if visible:
 			%ResumeButton.grab_focus()

@@ -12,7 +12,6 @@ signal back_pressed
 func _ready():
 	create_tree()
 
-
 func _on_visibility_changed():
 	if visible == true:
 		create_tree()
