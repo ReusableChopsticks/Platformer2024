@@ -10,6 +10,7 @@ extends Node
 
 ##region Other SFX
 @onready var block_break_sfx: AudioStreamPlayer = $EnvironmentSFX/BlockBreakSFX
+@onready var level_complete_sfx: AudioStreamPlayer = $EnvironmentSFX/GoalSFX
 ##endregion
 
 ##region BGM

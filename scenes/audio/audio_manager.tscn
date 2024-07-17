@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmohqxpr6dow8"]
+[gd_scene load_steps=11 format=3 uid="uid://cmohqxpr6dow8"]
 
 [ext_resource type="Script" path="res://scenes/audio/AudioManager.gd" id="1_nf46e"]
 [ext_resource type="AudioStream" uid="uid://b3iev3scl3p2i" path="res://scenes/player/sfx/DeathExplosion.wav" id="2_8dtxp"]
-[ext_resource type="AudioStream" uid="uid://db47uqo3jyu3y" path="res://scenes/audio/bgm/Clair de Lune Studio Version .mp3" id="3_ew6me"]
 [ext_resource type="AudioStream" uid="uid://b85yy5ohh2jyq" path="res://scenes/player/sfx/jump.wav" id="3_nv5at"]
 [ext_resource type="AudioStream" uid="uid://cvh1ia25sp84h" path="res://scenes/player/sfx/double_jump.wav" id="4_1abmy"]
 [ext_resource type="AudioStream" uid="uid://bix6lif5b1vwu" path="res://scenes/player/sfx/dash.wav" id="5_073nm"]
 [ext_resource type="AudioStream" uid="uid://bsqtp4kji6wxr" path="res://scenes/player/sfx/wall_jump.wav" id="6_4g3ga"]
 [ext_resource type="AudioStream" uid="uid://bk35a2f4t5hpi" path="res://scenes/player/sfx/rebound.wav" id="7_pce2r"]
+[ext_resource type="AudioStream" uid="uid://cik86d3gygvlk" path="res://scenes/audio/bgm/Arabesque No. 1. Andantino con moto.mp3" id="8_cfldm"]
 [ext_resource type="AudioStream" uid="uid://bkpvb0jbsu8jm" path="res://scenes/levels/components/block_break.wav" id="9_pqi00"]
+[ext_resource type="AudioStream" uid="uid://fo0fycqd7tvp" path="res://scenes/levels/components/level_complete.wav" id="10_rnp2s"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -43,10 +44,13 @@ bus = &"SFX"
 [node name="Music" type="Node" parent="."]
 
 [node name="Clair De Lune" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_ew6me")
+stream = ExtResource("8_cfldm")
 bus = &"BGM"
 
 [node name="EnvironmentSFX" type="Node" parent="."]
 
 [node name="BlockBreakSFX" type="AudioStreamPlayer" parent="EnvironmentSFX"]
 stream = ExtResource("9_pqi00")
+
+[node name="GoalSFX" type="AudioStreamPlayer" parent="EnvironmentSFX"]
+stream = ExtResource("10_rnp2s")
