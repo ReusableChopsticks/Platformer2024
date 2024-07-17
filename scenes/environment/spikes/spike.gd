@@ -6,5 +6,4 @@ func _on_body_entered(body):
 	## and player has not already died
 	## because player may touch multiple spikes at once
 	if body is PlayerCharacter and !body.has_died :
-		print("death by spike")
 		body.die()
