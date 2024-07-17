@@ -78,26 +78,16 @@ func wall():
 func wall_jump():
 	# check if either grace or buffer is active
 	if (Input.is_action_just_pressed("jump")):
-		return player.wall_jump_grace_timer.time_left > 0
+		var has_grace = player.wall_jump_grace_timer.time_left > 0
+		## Player is facing in correct direction for a wall jump (but the inverse for shorter code)
+		## This is so coyote time does not act when trying to double jump
+		## after sliding off a wall and trying to jump forward
+		var input_matches_wall = !sign(Input.get_axis("left", "right")) == -player.get_wall_normal().x
+		return has_grace and input_matches_wall
 	else:
 		return player.jump_buffer_timer.time_left > 0 and player.is_on_wall_only()
 
 func double_jump():
-	#if !player.has_double_jump:
-		#return false
-	#
-	#if (Input.is_action_just_pressed("jump")):
-		## make a ray cast to see if player is close to ground
-		#var result = player.ground_ray_cast.get_collider()
-		## prevent double jump if player is close to the ground
-		## so you don't double jump when you intend to just jump
-		#if result is TileMap:
-			#return false
-		#
-		## double jump when in the air
-		#return player.jump_buffer_timer.time_left > 0 and in_air()
-	#else:
-		#return false
 	if not player.has_double_jump:
 		return false
 		
