@@ -2,16 +2,19 @@ extends CanvasLayer
 
 var lvl_select = preload("res://scenes/UI/level_select_screen.tscn")
 
+var first_input := true
+
 signal start_pressed
 signal level_select_pressed
 signal credits_pressed
 
-func _ready():
-	focus()
+func _input(event):
+	if first_input:
+		focus()
+		first_input = false
 
 func focus():
 	%StartButton.grab_focus()
-
 
 func _on_start_button_pressed():
 	#AudioManager.clair_de_lune.play()
