@@ -14,7 +14,16 @@ func _ready():
 		%Time.text = "INVALID"
 		%TimeNote.show()
 	else:
-		%Time.text = str(level_manager.completion_time / 1000) + "s"
+		%Time.text = str(level_manager.completion_time / 1000.0) + "s "
+		
+		## Update best time
+		if level_manager.completion_time < player_stats.best_time:
+			player_stats.best_time = level_manager.completion_time
+			%Time.text += "(New best!)"
+		elif player_stats.best_time == -1: # no time set yet
+			player_stats.best_time = level_manager.completion_time
+			%Time.text += "(New best!)"
+	
 	$AnimationPlayer.play("cutscene")
 
 func _on_main_menu_button_pressed():

@@ -6,4 +6,4 @@ extends Resource
 ## according to the total levels completed
 @export var level_unlocked: int = 0
 
-
+@export var best_time: float = -1
