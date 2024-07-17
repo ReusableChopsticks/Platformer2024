@@ -10,6 +10,7 @@ signal level_select_pressed
 signal credits_pressed
 
 func _ready():
+	print(Calc.format_minutes(105021))
 	update_display()
 
 func update_display():

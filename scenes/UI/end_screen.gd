@@ -19,10 +19,10 @@ func _ready():
 		## Update best time
 		if level_manager.completion_time < player_stats.best_time:
 			player_stats.best_time = level_manager.completion_time
-			%Time.text += "(New best!)"
+			%Time.text += "   (New best!)"
 		elif player_stats.best_time == -1: # no time set yet
 			player_stats.best_time = level_manager.completion_time
-			%Time.text += "(New best!)"
+			%Time.text += "   (New best!)"
 	
 	$AnimationPlayer.play("cutscene")
 

@@ -335,7 +335,7 @@ label_settings = SubResource("LabelSettings_pb7xg")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 30
+theme_override_constants/h_separation = 10
 columns = 2
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
