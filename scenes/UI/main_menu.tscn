@@ -21,43 +21,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_etkad")
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_right = 64
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Untitled Platformer 2024"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MyName" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "by ReusableChopsticks"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../LevelSelectButton")
 text = "Start"
 
-[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
 text = "Level Select"
 
-[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../LevelSelectButton")
 text = "Credits
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="visibility_changed" from="MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_visibility_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

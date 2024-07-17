@@ -39,9 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://du0a1qv77su4e" path="res://scenes/UI/pause_menu.tscn" id="38_y71go"]
 
 [node name="LevelManager" type="Node"]
+process_mode = 1
 script = ExtResource("1_qejvj")
-start_level_index = 19
-start_world_index = 1
 world_1 = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("5_7xeba"), ExtResource("6_foc7e"), ExtResource("6_yuu78"), ExtResource("8_pcjn8"), ExtResource("9_qmyju"), ExtResource("10_u0toj"), ExtResource("11_5qcp6"), ExtResource("12_4qc3x"), ExtResource("13_y2v6n"), ExtResource("14_bepjj"), ExtResource("15_sdnpe"), ExtResource("15_s2t5g"), ExtResource("17_inrg3")])
 world_2 = Array[PackedScene]([ExtResource("3_kx67w"), ExtResource("19_wss2l"), ExtResource("20_iafgb"), ExtResource("21_364d8"), ExtResource("21_q63rj"), ExtResource("23_jgl1m"), ExtResource("22_1w1ms"), ExtResource("21_am2wc"), ExtResource("25_fg85e"), ExtResource("27_bv8cx"), ExtResource("26_6t8ya"), ExtResource("29_cckmw"), ExtResource("28_fvl74"), ExtResource("30_4rox0"), ExtResource("32_jv6c1"), ExtResource("27_ij7uh"), ExtResource("31_vaar5"), ExtResource("32_acr0g"), ExtResource("33_312m2"), ExtResource("33_jwq2b")])
 

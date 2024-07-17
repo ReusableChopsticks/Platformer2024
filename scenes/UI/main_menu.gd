@@ -10,7 +10,7 @@ func _ready():
 	focus()
 
 func focus():
-	$MarginContainer/VBoxContainer/StartButton.grab_focus()
+	%StartButton.grab_focus()
 
 
 func _on_start_button_pressed():

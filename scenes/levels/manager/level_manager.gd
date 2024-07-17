@@ -31,7 +31,6 @@ signal quit_level
 func _ready():
 	level_index = start_level_index
 	world_index = start_world_index
-	start_time = Time.get_ticks_msec()
 
 func quit_to_main_menu():
 	unload_current_level()
