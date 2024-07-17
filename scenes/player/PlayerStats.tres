@@ -7,3 +7,4 @@ script = ExtResource("1_anwdh")
 total_jumps = 100
 total_deaths = 0
 level_unlocked = 0
+best_time = -1.0

@@ -15,3 +15,11 @@ func approach(start, end, step):
 		return end
 	return result
  
+func format_minutes(milliseconds: float):
+	if milliseconds == -1:
+		return "Not set yet!"
+	
+	var total_sec = milliseconds / 1000.0
+	var min = total_sec / 60
+	var sec = total_sec - (total_sec / 60.0)
+	return "%sm %ss"

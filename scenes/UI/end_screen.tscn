@@ -379,7 +379,7 @@ label_settings = SubResource("LabelSettings_m5s3s")
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-text = "Main Menu"
+text = "   Main Menu"
 alignment = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

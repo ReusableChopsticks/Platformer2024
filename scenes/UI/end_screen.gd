@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-## Must be instantiated as a child to LevelManager
+## Must be instantiated as a child of LevelManager
 
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
@@ -14,7 +14,7 @@ func _ready():
 		%Time.text = "INVALID"
 		%TimeNote.show()
 	else:
-		%Time.text = str(level_manager.completion_time / 1000.0) + "s "
+		%Time.text = Calc.format_minutes(level_manager.completion_time)
 		
 		## Update best time
 		if level_manager.completion_time < player_stats.best_time:
