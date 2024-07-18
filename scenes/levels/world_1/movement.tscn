@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6whavv6ml6b4"]
+[gd_scene load_steps=4 format=3 uid="uid://b6whavv6ml6b4"]
 
 [ext_resource type="PackedScene" uid="uid://bqmxrctqjmthf" path="res://scenes/levels/level_templates/level.tscn" id="1_cl5sd"]
 [ext_resource type="Texture2D" uid="uid://dkqf5jb2s6ujb" path="res://scenes/levels/world_1/assets/Controller Layout.png" id="2_ssnaf"]
+[ext_resource type="PackedScene" uid="uid://djjmp2k1r2cuo" path="res://scenes/levels/components/speed_barrier.tscn" id="3_e3vri"]
 
 [node name="Movement" instance=ExtResource("1_cl5sd")]
 
@@ -47,3 +48,6 @@ scale = Vector2(1.31536, 1.31536)
 texture = ExtResource("2_ssnaf")
 region_enabled = true
 region_rect = Rect2(0, 12, 12, 12)
+
+[node name="SpeedBarrier" parent="." index="8" instance=ExtResource("3_e3vri")]
+position = Vector2(0, 52)

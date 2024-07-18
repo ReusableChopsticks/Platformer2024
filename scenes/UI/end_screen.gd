@@ -31,5 +31,5 @@ func _on_main_menu_button_pressed():
 	quit_to_main_menu.emit()
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	%MainMenuButton.grab_focus()

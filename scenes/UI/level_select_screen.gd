@@ -46,7 +46,7 @@ func create_tree():
 				level_node.queue_free()
 
 ## When you click play on a level
-func _on_tree_button_clicked(item, column, id, mouse_button_index):
+func _on_tree_button_clicked(_item, _column, id, _mouse_button_index):
 	#print("%s %s" % [str(column), str(id)])
 	## Figure out the world and level index for that world
 	## a level is in based on its ID

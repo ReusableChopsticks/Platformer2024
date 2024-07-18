@@ -44,7 +44,6 @@ func get_current_level_id():
 	return id
 
 func load_current_level():
-	print(level_index, world_index)
 	## Unload the current level
 	if current_level:
 		current_level.queue_free()
@@ -77,9 +76,9 @@ func load_next_level():
 	
 	load_current_level()
 
-func load_level(world_index: int, level_index: int):
-	self.world_index = world_index
-	self.level_index = level_index
+func load_level(load_world_index: int, load_level_index: int):
+	world_index = load_world_index
+	level_index = load_level_index
 	
 	## If player is not starting from the beginning
 	if world_index != 0 and level_index != 0:
@@ -108,7 +107,7 @@ func show_endscreen():
 	world_index = 0
 
 func on_level_completed(level_name):
-	print("Just completed level: %s" % level_name)
+	#print("Just completed level: %s" % level_name)
 	call_deferred("load_next_level")
 
 func _on_pause_menu_quit_level():
