@@ -4,6 +4,9 @@ var init_col_layer
 var init_col_mask
 var not_broken = true
 
+## The speed level you are required to be at to dash through and break
+@export_range(1, 3) var speed_level: int = 1
+
 func _ready():
 	init_col_layer = $StaticBody2D.collision_layer
 	init_col_mask = $StaticBody2D.collision_mask
@@ -26,18 +29,7 @@ func _on_area_2d_body_entered(body):
 			enable_col()
 		else:
 			break_barrier()
-	
-	## TODO: just break through 
-	#print("boyd entered")
-	#if body is PlayerCharacter:
-		#if not body.states.current_state is PlayerReboundState:
-			#print("not dashing but is instead " + body.states.current_state.name)
-			#return
-		#if body.speed_level == 1:
-			#print("not fast enough")
-			#return
-		#print("valid")
-		#break_barrier()
+
 
 func _on_area_2d_body_exited(body):
 	if body is PlayerCharacter and not_broken:

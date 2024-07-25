@@ -28,7 +28,7 @@ var move_speed: int
 var speed_level: int = 1
 ## The percentage of base speed to be added on to move speed for each speed level
 @export var speed_increase_amount: float = 0.5
-## The max amount of times you can increase your speed on rebounds
+## The max amount of times you can increase your speed on rebounds + 1
 @export var max_speed_level: int = 4
 
 
@@ -106,6 +106,13 @@ var has_dash: bool = true
 @onready var ground_ray_cast: RayCast2D = $GroundCheckRayCast
 #endregion
 
+const SPEED_COLOUR = {
+	1: Color.WHITE,
+	2: Color.LEMON_CHIFFON,
+	3: Color.PALE_GREEN,
+	4: Color.SKY_BLUE
+}
+
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
 func ghost(is_ghosting: bool):
@@ -150,18 +157,18 @@ func increment_speed_level():
 	#modulate = Color.BLACK
 	speed_level = min(speed_level + 1, max_speed_level)
 	calculate_forces()
-	
-	if speed_level == max_speed_level:
-		modulate = Color.SKY_BLUE
-	else:
-		modulate = Color.WHITE
+	modulate = SPEED_COLOUR[speed_level]
+	#if speed_level == max_speed_level:
+		#modulate = Color.SKY_BLUE
+	#else:
+		#modulate = Color.WHITE
 
 func reset_speed_level():
 	speed_level = 1
 	## Reset last rebound so player can use any wall again to start
 	last_rebound_dir = 0
 	calculate_forces()
-	modulate = Color.WHITE
+	modulate = SPEED_COLOUR[speed_level]
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
