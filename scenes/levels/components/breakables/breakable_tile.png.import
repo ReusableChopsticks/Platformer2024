@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cplusys4lpgjt"
-path="res://.godot/imported/SpeedBarriers.png-6646d428ca8a825fdab7bf5ee2284152.ctex"
+uid="uid://cih413ldakskh"
+path="res://.godot/imported/breakable_tile.png-9c05ec729aeed33795cb916f99e0836b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/levels/components/SpeedBarriers.png"
-dest_files=["res://.godot/imported/SpeedBarriers.png-6646d428ca8a825fdab7bf5ee2284152.ctex"]
+source_file="res://scenes/levels/components/breakables/breakable_tile.png"
+dest_files=["res://.godot/imported/breakable_tile.png-9c05ec729aeed33795cb916f99e0836b.ctex"]
 
 [params]
 

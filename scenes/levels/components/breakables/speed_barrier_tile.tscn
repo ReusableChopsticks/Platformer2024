@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bev82ynekgeol"]
+
+[ext_resource type="Script" path="res://scenes/levels/components/breakables/speed_barrier.gd" id="1_216rg"]
+[ext_resource type="Texture2D" uid="uid://e25vlvll2ydb" path="res://scenes/levels/components/breakables/BreakableDash.png" id="2_wpobr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmbt4"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbe4"]
+size = Vector2(18, 18)
+
+[node name="SpeedBarrierTile" type="Node2D"]
+script = ExtResource("1_216rg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_pmbt4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lxbe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wpobr")
+region_rect = Rect2(4, 0, 4, 24)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

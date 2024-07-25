@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cih413ldakskh"
-path="res://.godot/imported/breakable_tile.png-6cd8395f287199b343e4ac253bca4897.ctex"
+uid="uid://e25vlvll2ydb"
+path="res://.godot/imported/BreakableDash.png-a74fc7ac73d8d9a9c5a2091e53705658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/levels/components/breakable_tile.png"
-dest_files=["res://.godot/imported/breakable_tile.png-6cd8395f287199b343e4ac253bca4897.ctex"]
+source_file="res://scenes/levels/components/breakables/BreakableDash.png"
+dest_files=["res://.godot/imported/BreakableDash.png-a74fc7ac73d8d9a9c5a2091e53705658.ctex"]
 
 [params]
 

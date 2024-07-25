@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7v87dbl7erxt" path="res://scenes/environment/tiles.png" id="4_oiu3n"]
 [ext_resource type="PackedScene" uid="uid://dr55ilwo81u31" path="res://scenes/environment/spikes/up_spike.tscn" id="5_4yb3v"]
 [ext_resource type="PackedScene" uid="uid://ccbw5xs6ff2rd" path="res://scenes/levels/components/ladder.tscn" id="5_hcfxk"]
-[ext_resource type="PackedScene" uid="uid://xwmqsn7ult3g" path="res://scenes/levels/components/breakable_tile.tscn" id="6_c725k"]
+[ext_resource type="PackedScene" uid="uid://xwmqsn7ult3g" path="res://scenes/levels/components/breakables/breakable_tile.tscn" id="6_c725k"]
 [ext_resource type="PackedScene" uid="uid://dpcuu8gbho82w" path="res://scenes/environment/spikes/down_spike.tscn" id="6_wa4ca"]
 [ext_resource type="PackedScene" uid="uid://8ts6leua6kw2" path="res://scenes/environment/spikes/left_spike.tscn" id="7_28sbh"]
 [ext_resource type="PackedScene" uid="uid://dipsl8o47hgfe" path="res://scenes/environment/spikes/right_spike.tscn" id="8_lfo60"]

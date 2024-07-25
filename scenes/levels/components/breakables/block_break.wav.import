@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bkpvb0jbsu8jm"
-path="res://.godot/imported/block_break.wav-46d017459f02d27d8f6eda171177f68d.sample"
+path="res://.godot/imported/block_break.wav-8fd3a64a2688cadd0863646915bc7f6f.sample"
 
 [deps]
 
-source_file="res://scenes/levels/components/block_break.wav"
-dest_files=["res://.godot/imported/block_break.wav-46d017459f02d27d8f6eda171177f68d.sample"]
+source_file="res://scenes/levels/components/breakables/block_break.wav"
+dest_files=["res://.godot/imported/block_break.wav-8fd3a64a2688cadd0863646915bc7f6f.sample"]
 
 [params]
 

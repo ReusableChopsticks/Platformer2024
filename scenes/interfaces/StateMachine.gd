@@ -8,8 +8,6 @@ class_name StateMachine
 var current_state: State
 var states: Dictionary = {}
 
-var history_stack: Array[String] = []
-
 # get all children states and connect to "transitioned" signal in State.gd
 func _ready():
 	for child in get_children():

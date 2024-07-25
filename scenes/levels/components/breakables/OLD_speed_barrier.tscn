@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djjmp2k1r2cuo"]
 
-[ext_resource type="Script" path="res://scenes/levels/components/speed_barrier.gd" id="1_ctdux"]
-[ext_resource type="Texture2D" uid="uid://cplusys4lpgjt" path="res://scenes/levels/components/SpeedBarriers.png" id="1_kfy8f"]
+[ext_resource type="Script" path="res://scenes/levels/components/breakables/speed_barrier.gd" id="1_vddhu"]
+[ext_resource type="Texture2D" uid="uid://cplusys4lpgjt" path="res://scenes/levels/components/breakables/OLD_SpeedBarriers.png" id="2_qvr76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmbt4"]
 size = Vector2(4, 24)
@@ -10,7 +10,7 @@ size = Vector2(4, 24)
 size = Vector2(6, 24)
 
 [node name="SpeedBarrier" type="Node2D"]
-script = ExtResource("1_ctdux")
+script = ExtResource("1_vddhu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -25,7 +25,7 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_lxbe4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kfy8f")
+texture = ExtResource("2_qvr76")
 region_enabled = true
 region_rect = Rect2(4, 0, 4, 24)
 

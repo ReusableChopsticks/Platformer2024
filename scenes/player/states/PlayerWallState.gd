@@ -34,4 +34,3 @@ func physics_update(delta: float):
 		transitioned.emit(self, "PlayerWallJumpState")
 	elif !wall():
 		transitioned.emit(self, "PlayerMoveState")
-		

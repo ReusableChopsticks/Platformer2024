@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bsqtp4kji6wxr" path="res://scenes/player/sfx/wall_jump.wav" id="6_4g3ga"]
 [ext_resource type="AudioStream" uid="uid://bk35a2f4t5hpi" path="res://scenes/player/sfx/rebound.wav" id="7_pce2r"]
 [ext_resource type="AudioStream" uid="uid://cik86d3gygvlk" path="res://scenes/audio/bgm/Arabesque No. 1. Andantino con moto.mp3" id="8_cfldm"]
-[ext_resource type="AudioStream" uid="uid://bkpvb0jbsu8jm" path="res://scenes/levels/components/block_break.wav" id="9_pqi00"]
+[ext_resource type="AudioStream" uid="uid://bkpvb0jbsu8jm" path="res://scenes/levels/components/breakables/block_break.wav" id="9_pqi00"]
 [ext_resource type="AudioStream" uid="uid://fo0fycqd7tvp" path="res://scenes/levels/components/level_complete.wav" id="10_rnp2s"]
 
 [node name="AudioManager" type="Node"]
