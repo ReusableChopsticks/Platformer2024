@@ -9,6 +9,7 @@ class_name LevelManager
 @export var world_2: Array[PackedScene]
 
 var endscreen = preload("res://scenes/UI/end_screen.tscn")
+# the instantiated endscreen scene
 var endscreen_node = null
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
@@ -21,7 +22,10 @@ var level_index: int = 0
 var world_index: int = 0
 ## The level the player is currently on
 var current_level: Level
+## The total amount of levels, calculated in the ready function
+var total_level_count := 0
 
+## -1 signifies invalid time and is checked in time calculations
 var start_time: int = -1
 var end_time: int = -1
 var completion_time := -1
@@ -31,10 +35,17 @@ signal quit_level
 func _ready():
 	level_index = start_level_index
 	world_index = start_world_index
+	for world in worlds:
+		total_level_count += world.size()
 
 func quit_to_main_menu():
 	unload_current_level()
+	unlock_level()
+
+## Updates player_stats to unlock the furthest level reached so far
+func unlock_level():
 	player_stats.level_unlocked = max(player_stats.level_unlocked, get_current_level_id())
+	
 
 func get_current_level_id():
 	var id = 0
@@ -56,6 +67,7 @@ func load_current_level():
 	if start_time == -1 and level_index == 0 and world_index == 0:
 		start_time = Time.get_ticks_msec()
 	
+	unlock_level()
 	current_level = worlds[world_index][level_index].instantiate()
 	current_level.level_completed.connect(on_level_completed)
 	add_child(current_level)
@@ -86,6 +98,7 @@ func load_level(load_world_index: int, load_level_index: int):
 	
 	load_current_level()
 
+## Check if last level has been reached or not
 func last_level_reached():
 	if world_index >= worlds.size():
 		print("Last level completed")
