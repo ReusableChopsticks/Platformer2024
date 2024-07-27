@@ -24,5 +24,8 @@ func physics_update(delta: float):
 	apply_gravity(delta)
 	player.move_and_slide()
 
+#func exit():
+	#player.velocity.x = clampf(player.velocity.x, -player.move_speed, player.move_speed)
+
 func on_rebound_timeout():
 	transitioned.emit(self, "PlayerMoveState")

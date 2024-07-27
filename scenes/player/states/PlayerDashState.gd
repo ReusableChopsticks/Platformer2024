@@ -21,6 +21,7 @@ var already_transitioned := false
 var was_in_air := false
 var down_dashed := false
 var last_wall_normal := 0
+var dash_dir = 0
 
 func calculate_dash_speed():
 	return player.move_speed * dash_speed_mult
@@ -31,6 +32,7 @@ func enter():
 	was_in_air = in_air()
 	already_transitioned = false
 	down_dashed = false
+	dash_dir = player.facing_dir
 	
 	if (Input.is_action_pressed("down") and was_in_air):
 		player.modulate = Color.PURPLE
@@ -38,7 +40,7 @@ func enter():
 		down_dashed = true
 	else:
 		#player.velocity.x = dash_speed * player.facing_dir
-		player.velocity.x = calculate_dash_speed() * player.facing_dir
+		player.velocity.x = calculate_dash_speed() * dash_dir
 		player.velocity.y = 0
 	#decel_rate = absf(player.velocity.x / stopping_time)
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
@@ -47,9 +49,9 @@ func enter():
 	
 func physics_update(_delta: float):
 	## If dashing in wrong direction from last rebound, cancel speed
-	if player.last_rebound_dir == -sign(Input.get_axis("left", "right")):
+	if player.last_rebound_dir == -dash_dir:
 		player.reset_speed_level()
-		player.velocity.x = calculate_dash_speed() * player.facing_dir
+		player.velocity.x = calculate_dash_speed() * dash_dir
 		
 	player.move_and_slide()
 	
