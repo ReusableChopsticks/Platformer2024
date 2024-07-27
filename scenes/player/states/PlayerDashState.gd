@@ -45,27 +45,39 @@ func enter():
 	#decel_rate = absf(player.velocity.x / stopping_time)
 	
 	## If dashing in wrong direction from last wall, cancel speed
-	if player.get_wall_normal().x == -dash_dir:
+	if player.last_rebound_dir == -dash_dir:
 		player.reset_speed_level()
-		print("SPEED RESET")
+		print("SPEED RESET: dash wrong dir from last wall")
 		player.velocity.x = calculate_dash_speed() * dash_dir
 	
 	## Start dash timer
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
-	
-	
-	
+
+
+var prev_vel
+var phase_through = false
 func physics_update(_delta: float):
-	
-		
+	prev_vel = player.velocity
 	player.move_and_slide()
+	
+	for i in range(player.get_slide_collision_count()):
+		var coll = player.get_slide_collision(i).get_collider().get_parent()
+		#print(coll.name)
+		if coll is SpeedBarrierTile:
+			coll.break_barrier()
+			player.velocity = prev_vel
+			phase_through = true
+	
+	if phase_through:
+		return
 	
 	## conditions to transition into rebound
 	# check for wall rebound first
+	# must be on wall opposite to last wall contact
 	if \
 	(
 		player.is_on_wall() and \
-		player.get_wall_normal().x != player.last_rebound_dir
+		sign(player.get_wall_normal().x) != player.last_rebound_dir
 	) or \
 	# these three conditions below check for a valid downward dash rebound
 	(
@@ -77,8 +89,10 @@ func physics_update(_delta: float):
 		already_transitioned = true
 		transitioned.emit(self, "PlayerReboundState")
 		
+		
 
 func exit():
+	phase_through = false
 	# so the player does not jump immediately if you press jump during a dash
 	if disable_jump_buffer:
 		player.jump_buffer_timer.stop()

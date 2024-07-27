@@ -7,7 +7,7 @@ func enter():
 	AudioManager.rebound_sfx.play()
 	
 	if player.is_on_wall():
-		var wall_normal = player.get_wall_normal().x
+		var wall_normal = sign(player.get_wall_normal().x)
 		player.last_rebound_dir = wall_normal
 		player.velocity.x = player.move_speed * wall_normal
 		player.velocity.y = player.rebound_y_vel

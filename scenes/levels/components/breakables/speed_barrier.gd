@@ -1,4 +1,5 @@
 extends Node2D
+class_name SpeedBarrierTile
 
 ## The speed level you are required to be at to dash through and break
 # (numbers match up exactly with actual player speed values)

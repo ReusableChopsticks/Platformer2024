@@ -18,8 +18,7 @@ func exit_wall_jump():
 	transitioned.emit(self, "PlayerMoveState")
 
 func enter():
-	player.last_rebound_dir = 0
-	
+	player.last_rebound_dir = sign(player.get_wall_normal().x)
 	AudioManager.wall_jump_sfx.play()
 	
 	player.jump_buffer_timer.stop()

@@ -14,7 +14,7 @@ var time_elapsed: float = 0
 var speed_resetted = false
 
 func enter():
-	player.last_rebound_dir = 0
+	player.last_rebound_dir = sign(player.get_wall_normal().x)
 	player.velocity.y = 0
 	speed_resetted = false
 	time_elapsed = 0
@@ -26,6 +26,7 @@ func physics_update(delta: float):
 	if lose_speed_on_wall:
 		if (not speed_resetted and time_elapsed > speed_grace_time):
 			player.reset_speed_level()
+			print("RESET SPEED: lost on wall")
 			speed_resetted = true
 	
 	player.velocity.y = Calc.approach(player.velocity.y, wall_slide_speed, wall_slide_accel * delta)
