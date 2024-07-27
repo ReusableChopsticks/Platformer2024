@@ -43,15 +43,20 @@ func enter():
 		player.velocity.x = calculate_dash_speed() * dash_dir
 		player.velocity.y = 0
 	#decel_rate = absf(player.velocity.x / stopping_time)
+	
+	## If dashing in wrong direction from last wall, cancel speed
+	if player.get_wall_normal().x == -dash_dir:
+		player.reset_speed_level()
+		print("SPEED RESET")
+		player.velocity.x = calculate_dash_speed() * dash_dir
+	
+	## Start dash timer
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
 	
 	
 	
 func physics_update(_delta: float):
-	## If dashing in wrong direction from last rebound, cancel speed
-	if player.last_rebound_dir == -dash_dir:
-		player.reset_speed_level()
-		player.velocity.x = calculate_dash_speed() * dash_dir
+	
 		
 	player.move_and_slide()
 	

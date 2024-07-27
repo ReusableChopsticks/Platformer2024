@@ -14,6 +14,7 @@ var time_elapsed: float = 0
 var speed_resetted = false
 
 func enter():
+	player.last_rebound_dir = 0
 	player.velocity.y = 0
 	speed_resetted = false
 	time_elapsed = 0
