@@ -30,7 +30,10 @@ var speed_level: int = 1
 @export var speed_increase_amount: float = 0.5
 ## The max amount of times you can increase your speed on rebounds + 1
 @export var max_speed_level: int = 4
-
+## Used specifically for speed barriers to track when to destroy speed 4 barriers.
+## True when player is already at max speed, then rebounds off a wall
+## and subsequent rebounds. False otherwise
+var rebounded_at_max_speed := false
 
 ## Percentage of move speed to apply as counter force when moving in the opposite direction
 ## used in move_x()
@@ -154,12 +157,16 @@ func calculate_forces():
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
-	speed_level = min(speed_level + 1, max_speed_level)
+	if speed_level == max_speed_level:
+		rebounded_at_max_speed = true
+	else:
+		speed_level += 1
+	#speed_level = min(speed_level + 1, max_speed_level)
 	calculate_forces()
 	modulate = SPEED_COLOUR[speed_level]
 
-
 func reset_speed_level():
+	rebounded_at_max_speed = false
 	speed_level = 1
 	## Reset last rebound so player can use any wall again to start
 	last_rebound_dir = 0

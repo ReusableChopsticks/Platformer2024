@@ -19,7 +19,6 @@ func _ready():
 	init_col_layer = $StaticBody2D.collision_layer
 	init_col_mask = $StaticBody2D.collision_mask
 	modulate = SPEED_COLOUR[speed_level]
-	disable_col()
 	level.player_respawned.connect(respawn)
 
 func enable_col():
@@ -29,35 +28,42 @@ func disable_col():
 	$StaticBody2D.collision_layer = 0
 	$StaticBody2D.collision_mask = 0
 
+## Check what speed the player is at after rebounding and destroy accordingly
+## Because this check happens after the rebound and speed recalculation,
+## we offset by 1 from the speed to check
+## and use a special variable for speed level 4 barriers.
 func _on_area_2d_body_entered(body):
 	if body is PlayerCharacter:
-		#if not (body.states.current_state is PlayerDashState or body.states.current_state is PlayerReboundState):
-		#if not (body.states.current_state is PlayerReboundState):
-		if not (body.states.current_state is PlayerDashState):
+		if not (body.states.current_state is PlayerReboundState):
 			print("Not Dash/Rebound but instead " + body.states.current_state.name)
-			enable_col()
-		elif body.speed_level < speed_level:
+			return
+		if body.speed_level < speed_level + 1 and speed_level < 4:
 			print("Not fast enough")
-			enable_col()
-		else:
-			break_barrier()
+			return
+		if speed_level == 4 and not body.rebounded_at_max_speed:
+			print("Not fast enough (MAX SPEED)")
+			return
+		
+		break_barrier()
 
 
 func _on_area_2d_body_exited(body):
-	if body is PlayerCharacter and not_broken:
-		disable_col()
+	#if body is PlayerCharacter and not_broken:
+		#disable_col()
+	pass
 
-
+## Barrier break animation and collision toggling
 func break_barrier():
 	not_broken = false
-	$StaticBody2D.collision_layer = 0
-	$StaticBody2D.collision_mask = 0
+	disable_col()
 	$Area2D.collision_layer = 0
 	$Area2D.collision_mask = 0
 	AudioManager.block_break_sfx.play()
 	get_tree().create_tween().tween_property(self, "modulate", Color.TRANSPARENT, 0.1)
 
 func respawn():
+	not_broken = true
 	modulate = SPEED_COLOUR[speed_level]
+	enable_col()
 	$Area2D.collision_layer = 2
 	$Area2D.collision_mask = 1
