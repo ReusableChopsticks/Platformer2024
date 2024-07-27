@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvfrba2x06dw2"]
+
+[ext_resource type="PackedScene" uid="uid://bev82ynekgeol" path="res://scenes/levels/components/breakables/speed_barrier_tile.tscn" id="1_mlfvq"]
+
+[node name="Speed3BarrierTile" instance=ExtResource("1_mlfvq")]
+speed_level = 3

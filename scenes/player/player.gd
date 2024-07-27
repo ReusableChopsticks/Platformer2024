@@ -154,14 +154,10 @@ func calculate_forces():
 	#print(str(base_speed) + " * " + str(speed_level) + " = " + str(move_speed))
 
 func increment_speed_level():
-	#modulate = Color.BLACK
 	speed_level = min(speed_level + 1, max_speed_level)
 	calculate_forces()
 	modulate = SPEED_COLOUR[speed_level]
-	#if speed_level == max_speed_level:
-		#modulate = Color.SKY_BLUE
-	#else:
-		#modulate = Color.WHITE
+
 
 func reset_speed_level():
 	speed_level = 1
@@ -203,6 +199,7 @@ func _physics_process(_delta):
 	#else:
 		#$Sprite2D.modulate = Color.WHITE
 	#print(move_speed)
+	#print(velocity.x)
 	#print(Input.is_action_pressed("jump"))
 
 ## Call this when the player should die

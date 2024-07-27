@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l7xs316p58y2"
-path="res://.godot/imported/RebounderCover.png-ce47fb15e16e4a23fe26085e0f6348f6.ctex"
+uid="uid://dpkwyjtq6vp0l"
+path="res://.godot/imported/RebounderIcon.png-38144a52cc03b7e39ec2812e9361276e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RebounderCover.png"
-dest_files=["res://.godot/imported/RebounderCover.png-ce47fb15e16e4a23fe26085e0f6348f6.ctex"]
+source_file="res://exports/RebounderIcon.png"
+dest_files=["res://.godot/imported/RebounderIcon.png-38144a52cc03b7e39ec2812e9361276e.ctex"]
 
 [params]
 

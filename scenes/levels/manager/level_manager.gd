@@ -4,9 +4,10 @@ class_name LevelManager
 ## For testing
 @export var start_level_index: int = 0
 @export var start_world_index: int = 0
-## Array of the file names of each level scene (without file extension)
+## Array of packed scenes of levels
 @export var world_1: Array[PackedScene]
 @export var world_2: Array[PackedScene]
+@export var world_3: Array[PackedScene]
 
 var endscreen = preload("res://scenes/UI/end_screen.tscn")
 # the instantiated endscreen scene
@@ -14,7 +15,7 @@ var endscreen_node = null
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
 ## Array of world arrays
-@onready var worlds := [world_1, world_2]
+@onready var worlds := [world_1, world_2, world_3]
 ## The index of the level the player is currently on
 ## in the world they are in. i.e., the value of this
 ## for level 1 of world 2 would still be 0. 

@@ -3,6 +3,7 @@ extends Node2D
 ## The speed level you are required to be at to dash through and break
 # (numbers match up exactly with actual player speed values)
 @export_range(2, 4) var speed_level: int = 2
+@onready var level: Level = get_parent().get_parent()
 
 var init_col_layer
 var init_col_mask
@@ -19,6 +20,7 @@ func _ready():
 	init_col_mask = $StaticBody2D.collision_mask
 	modulate = SPEED_COLOUR[speed_level]
 	disable_col()
+	level.player_respawned.connect(respawn)
 
 func enable_col():
 	$StaticBody2D.collision_layer = init_col_layer
@@ -29,8 +31,10 @@ func disable_col():
 
 func _on_area_2d_body_entered(body):
 	if body is PlayerCharacter:
-		if not body.states.current_state is PlayerDashState:
-			print("Not Dash but instead " + body.states.current_state.name)
+		#if not (body.states.current_state is PlayerDashState or body.states.current_state is PlayerReboundState):
+		#if not (body.states.current_state is PlayerReboundState):
+		if not (body.states.current_state is PlayerDashState):
+			print("Not Dash/Rebound but instead " + body.states.current_state.name)
 			enable_col()
 		elif body.speed_level < speed_level:
 			print("Not fast enough")
@@ -52,3 +56,8 @@ func break_barrier():
 	$Area2D.collision_mask = 0
 	AudioManager.block_break_sfx.play()
 	get_tree().create_tween().tween_property(self, "modulate", Color.TRANSPARENT, 0.1)
+
+func respawn():
+	modulate = SPEED_COLOUR[speed_level]
+	$Area2D.collision_layer = 2
+	$Area2D.collision_mask = 1

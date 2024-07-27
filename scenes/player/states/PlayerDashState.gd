@@ -20,25 +20,25 @@ var already_transitioned := false
 ## to prevent being able to dash jump from being stationary on floor
 var was_in_air := false
 var down_dashed := false
-
 var last_wall_normal := 0
+
+func calculate_dash_speed():
+	return player.move_speed * dash_speed_mult
 
 func enter():
 	AudioManager.dash_sfx.play()
 	
-	player.modulate = Color.GREEN
 	was_in_air = in_air()
 	already_transitioned = false
 	down_dashed = false
 	
-	var dash_speed = player.move_speed * dash_speed_mult
 	if (Input.is_action_pressed("down") and was_in_air):
 		player.modulate = Color.PURPLE
-		player.velocity.y = dash_speed * dash_speed_mult
+		player.velocity.y = calculate_dash_speed() * dash_speed_mult
 		down_dashed = true
 	else:
 		#player.velocity.x = dash_speed * player.facing_dir
-		player.velocity.x = player.facing_dir * dash_speed
+		player.velocity.x = calculate_dash_speed() * player.facing_dir
 		player.velocity.y = 0
 	#decel_rate = absf(player.velocity.x / stopping_time)
 	get_tree().create_timer(dash_time).timeout.connect(on_dash_timeout)
@@ -46,6 +46,11 @@ func enter():
 	
 	
 func physics_update(_delta: float):
+	## If dashing in wrong direction from last rebound, cancel speed
+	if player.last_rebound_dir == -sign(Input.get_axis("left", "right")):
+		player.reset_speed_level()
+		player.velocity.x = calculate_dash_speed() * player.facing_dir
+		
 	player.move_and_slide()
 	
 	## conditions to transition into rebound
@@ -67,18 +72,13 @@ func physics_update(_delta: float):
 		
 
 func exit():
-	if player.speed_level != player.max_speed_level:
-		player.modulate = Color.WHITE
-	else:
-		player.modulate = Color.SKY_BLUE
-		
-	
 	# so the player does not jump immediately if you press jump during a dash
 	if disable_jump_buffer:
 		player.jump_buffer_timer.stop()
 	player.has_dash = false
+	# reset back to move speed
 	if not down_dashed:
-		player.velocity.x = player.facing_dir * player.move_speed
+		player.velocity.x = clampf(player.velocity.x, -player.move_speed, player.move_speed)
 
 func on_dash_timeout():
 	if not already_transitioned:

@@ -14,8 +14,8 @@ config/name="Rebounder"
 config/description="A platformer game where you can dash into walls to rebound and gain speed. Made by ReusableChopsticks, 2024."
 run/main_scene="res://scenes/levels/game_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://RebounderCover.png"
-config/icon="res://RebounderIcon.png"
+boot_splash/image="res://exports/RebounderCover.png"
+config/icon="res://exports/RebounderIcon.png"
 
 [audio]
 

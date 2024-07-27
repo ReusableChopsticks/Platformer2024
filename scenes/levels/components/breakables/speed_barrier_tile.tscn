@@ -7,7 +7,7 @@
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbe4"]
-size = Vector2(18, 18)
+size = Vector2(14, 14)
 
 [node name="SpeedBarrierTile" type="Node2D"]
 script = ExtResource("1_216rg")

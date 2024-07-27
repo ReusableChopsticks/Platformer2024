@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqmxrctqjmthf"]
+[gd_scene load_steps=24 format=3 uid="uid://bqmxrctqjmthf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_templates/level.gd" id="1_qga33"]
 [ext_resource type="PackedScene" uid="uid://bwivbymq2yfw2" path="res://scenes/levels/components/goal.tscn" id="2_c0msm"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://xwmqsn7ult3g" path="res://scenes/levels/components/breakables/breakable_tile.tscn" id="6_c725k"]
 [ext_resource type="PackedScene" uid="uid://dpcuu8gbho82w" path="res://scenes/environment/spikes/down_spike.tscn" id="6_wa4ca"]
 [ext_resource type="PackedScene" uid="uid://8ts6leua6kw2" path="res://scenes/environment/spikes/left_spike.tscn" id="7_28sbh"]
+[ext_resource type="PackedScene" uid="uid://bev82ynekgeol" path="res://scenes/levels/components/breakables/speed_barrier_tile.tscn" id="7_ysg31"]
 [ext_resource type="PackedScene" uid="uid://dipsl8o47hgfe" path="res://scenes/environment/spikes/right_spike.tscn" id="8_lfo60"]
+[ext_resource type="PackedScene" uid="uid://cvfrba2x06dw2" path="res://scenes/levels/components/breakables/speed_3_barrier_tile.tscn" id="8_nqe12"]
+[ext_resource type="PackedScene" uid="uid://webfgdkevc8k" path="res://scenes/levels/components/breakables/speed_4_barrier_tile.tscn" id="9_swypw"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u0o6d"]
 tile_data = PackedInt32Array(0, 1114112, 9, 65536, 1114112, 10, 1, 1179648, 9, 65537, 1179648, 10)
@@ -1661,6 +1664,9 @@ texture_region_size = Vector2i(8, 8)
 resource_name = "3 special tiles"
 scenes/1/scene = ExtResource("5_hcfxk")
 scenes/2/scene = ExtResource("6_c725k")
+scenes/3/scene = ExtResource("7_ysg31")
+scenes/4/scene = ExtResource("8_nqe12")
+scenes/5/scene = ExtResource("9_swypw")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pmsaq"]
 resource_name = "2 spike"
