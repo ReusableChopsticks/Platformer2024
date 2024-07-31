@@ -1,6 +1,11 @@
 extends Node2D
 class_name SpeedBarrierTile
 
+## NOTE: 
+## Due to how Godot detects static body collisions ahead of areas,
+## part of the code to make these breakable blocks work is located
+## in the player Dash state. The functions here are called there.
+
 ## The speed level you are required to be at to dash through and break
 # (numbers match up exactly with actual player speed values)
 @export_range(2, 4) var speed_level: int = 2

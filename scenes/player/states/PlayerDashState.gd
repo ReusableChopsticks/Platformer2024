@@ -35,7 +35,7 @@ func enter():
 	dash_dir = player.facing_dir
 	
 	if (Input.is_action_pressed("down") and was_in_air):
-		player.modulate = Color.PURPLE
+		#player.modulate = Color.PURPLE
 		player.velocity.y = calculate_dash_speed() * dash_speed_mult
 		down_dashed = true
 	else:
@@ -59,15 +59,15 @@ var phase_through = false
 func physics_update(_delta: float):
 	prev_vel = player.velocity
 	player.move_and_slide()
-	
 	for i in range(player.get_slide_collision_count()):
 		var coll = player.get_slide_collision(i).get_collider().get_parent()
 		#print(coll.name)
-		if coll is SpeedBarrierTile:
+		if coll is SpeedBarrierTile and coll.speed_level <= player.speed_level:
 			coll.break_barrier()
 			player.velocity = prev_vel
 			phase_through = true
-	
+	# if breaking through barrier, early return to prevent rebound
+	# NOTE: this code cant make player break a barrier and rebound in the same dash!
 	if phase_through:
 		return
 	
