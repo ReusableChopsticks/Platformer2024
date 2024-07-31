@@ -34,40 +34,6 @@ func disable_col():
 	$StaticBody2D.collision_layer = 0
 	$StaticBody2D.collision_mask = 0
 
-## Check what speed the player is at after rebounding and destroy accordingly
-## Because this check happens after the rebound and speed recalculation,
-## we offset by 1 from the speed to check
-## and use a special variable for speed level 4 barriers.
-func _on_area_2d_body_entered(body):
-	#if body is PlayerCharacter:
-		#if not (body.states.current_state is PlayerReboundState):
-			#print("Not Dash/Rebound but instead " + body.states.current_state.name)
-			#return
-		#if body.speed_level < speed_level + 1 and speed_level < 4:
-			#print("Not fast enough")
-			#return
-		#if speed_level == 4 and not body.rebounded_at_max_speed:
-			#print("Not fast enough (MAX SPEED)")
-			#return
-		#
-		#break_barrier()
-	pass
-
-
-func _on_area_2d_body_exited(body):
-	if body is PlayerCharacter:
-		if not (body.states.current_state is PlayerReboundState):
-			#print("Not Dash/Rebound but instead " + body.states.current_state.name)
-			return
-		if body.speed_level < speed_level + 1 and speed_level < 4:
-			#print("Not fast enough")
-			return
-		if speed_level == 4 and not body.rebounded_at_max_speed:
-			#print("Not fast enough (MAX SPEED)")
-			return
-		
-		break_barrier()
-
 ## Barrier break animation and collision toggling
 func break_barrier():
 	not_broken = false
