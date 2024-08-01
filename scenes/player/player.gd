@@ -52,6 +52,7 @@ var friction_decel: float
 @export var time_to_jump_peak: float = 0.3
 ## Desired jump height in pixels
 @export var jump_height = 24
+
 ## Base jump velocity
 var jump_vel: int
 ## Jump velocity for wall jump
@@ -68,6 +69,9 @@ var floor_rebound_vel: int
 ## What y velocity to stop applying jump apex multiplier 
 ## in range [0, jump_apex_range]
 @export var jump_apex_range: int = 200
+
+## Multiplier for rebound jump
+@export_range(1, 2) var floor_rebound_vel_mult: float = 1.4
 @export_subgroup("")
 
 @export_subgroup("Air")
@@ -140,7 +144,7 @@ func _ready():
 	wall_jump_vel = floor(jump_vel * 0.6)
 	double_jump_vel = floor(jump_vel * 0.6)
 	rebound_y_vel = floor(jump_vel * 0.3)
-	floor_rebound_vel = floor(jump_vel * 1.2)
+	floor_rebound_vel = floor(jump_vel * floor_rebound_vel_mult)
 
 ## calculate movement values every time speed_level is changed
 func calculate_forces():
