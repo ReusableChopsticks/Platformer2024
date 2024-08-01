@@ -55,21 +55,16 @@ func enter():
 
 
 var prev_vel
-var phase_through = false
 func physics_update(_delta: float):
 	prev_vel = player.velocity
 	player.move_and_slide()
 	for i in range(player.get_slide_collision_count()):
 		var coll = player.get_slide_collision(i).get_collider().get_parent()
-		#print(coll.name)
+		# if breaking through barrier, early return to prevent rebound
 		if coll is SpeedBarrierTile and coll.speed_level <= player.speed_level:
 			coll.break_barrier()
 			player.velocity = prev_vel
-			phase_through = true
-	# if breaking through barrier, early return to prevent rebound
-	# NOTE: this code cant make player break a barrier and rebound in the same dash!
-	if phase_through:
-		return
+			return
 	
 	## conditions to transition into rebound
 	# check for wall rebound first
@@ -92,7 +87,6 @@ func physics_update(_delta: float):
 		
 
 func exit():
-	phase_through = false
 	# so the player does not jump immediately if you press jump during a dash
 	if disable_jump_buffer:
 		player.jump_buffer_timer.stop()
