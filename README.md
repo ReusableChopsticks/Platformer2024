@@ -1,5 +1,10 @@
 # Platformer2024
-Getting back into Godot again and I want to start fresh
+Getting back into Godot again and I want to start fresh.
+
+A game where you slam your head against walls to gain speed.
+
+### Build 0.1 demo footage:
+https://www.youtube.com/watch/AtxdL89do5s
 
 ## CREDITS:
 - Environment tilemap "adve" made by Egor Dorichev taken from https://egordorichev.itch.io/adve
