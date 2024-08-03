@@ -1,21 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://miebhri8apg5"]
+[gd_scene load_steps=5 format=3 uid="uid://miebhri8apg5"]
 
 [ext_resource type="PackedScene" uid="uid://kk64sujkdhrk" path="res://scenes/levels/manager/level_manager.tscn" id="1_0l7pw"]
 [ext_resource type="Script" path="res://scenes/levels/game_manager.gd" id="1_txjhw"]
 [ext_resource type="PackedScene" uid="uid://b5muk44ol1dku" path="res://scenes/UI/level_select_screen.tscn" id="2_73gac"]
-[ext_resource type="PackedScene" uid="uid://vdu61j17kbu0" path="res://scenes/levels/world_3/learn_to_rebound_jump.tscn" id="3_4y1lb"]
 [ext_resource type="PackedScene" uid="uid://cvyorip3h0cce" path="res://scenes/UI/main_menu.tscn" id="4_tw1be"]
-[ext_resource type="PackedScene" uid="uid://sjftolbomrjc" path="res://scenes/levels/world_3/this_feature_messes_up_old_levels.tscn" id="4_xe0hc"]
-[ext_resource type="PackedScene" uid="uid://cfmwm8ipl0kno" path="res://scenes/levels/world_3/but_that_is_ok.tscn" id="5_qu0p2"]
-[ext_resource type="PackedScene" uid="uid://dljdy83hid7yp" path="res://scenes/levels/world_3/breakthrough.tscn" id="6_do3ll"]
 
 [node name="GameManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_txjhw")
 
 [node name="LevelManager" parent="." instance=ExtResource("1_0l7pw")]
-start_world_index = 2
-world_3 = Array[PackedScene]([ExtResource("3_4y1lb"), ExtResource("4_xe0hc"), ExtResource("5_qu0p2"), ExtResource("6_do3ll"), null, null])
 
 [node name="LevelSelectScreen" parent="." instance=ExtResource("2_73gac")]
 visible = false

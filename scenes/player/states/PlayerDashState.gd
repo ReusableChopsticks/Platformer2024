@@ -45,7 +45,7 @@ func enter():
 	#decel_rate = absf(player.velocity.x / stopping_time)
 	
 	## If dashing in wrong direction from last wall, cancel speed
-	if player.last_rebound_dir == -dash_dir:
+	if player.last_rebound_dir == -dash_dir and not Input.is_action_pressed("down"):
 		player.reset_speed_level()
 		print("SPEED RESET: dash wrong dir from last wall")
 		player.velocity.x = calculate_dash_speed() * dash_dir
