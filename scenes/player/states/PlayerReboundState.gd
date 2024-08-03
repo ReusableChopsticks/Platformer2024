@@ -15,6 +15,8 @@ func enter():
 		player.increment_speed_level()
 	elif player.is_on_floor() and Input.is_action_pressed("down"):
 		player.velocity.y = player.floor_rebound_vel
+		player.has_dash = true
+		player.has_double_jump = true
 	else:
 		printerr("ERROR: entered rebound state while not on wall or floor")
 	
