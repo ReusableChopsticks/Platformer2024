@@ -10,6 +10,7 @@ size = Vector2(8, 8)
 size = Vector2(10, 8)
 
 [node name="SpeedBarrierTile" type="Node2D"]
+z_index = 1
 script = ExtResource("1_216rg")
 metadata/_edit_horizontal_guides_ = [-26.0]
 
