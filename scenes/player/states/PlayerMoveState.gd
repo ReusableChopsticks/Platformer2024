@@ -32,9 +32,9 @@ func physics_update(delta: float):
 	elif sign(player.last_rebound_dir) != sign(player.velocity.x) and \
 	  player.wall_jump_grace_timer.is_stopped() and \
 	  player.speed_level > 1:
-		print("RESET SPEED: last rebound doesnt equal vel")
-		print(str(sign(player.last_rebound_dir)) + " " + str(sign(player.velocity.x)))
-		print("player.wall_jump_grace_timer.is_stopped()? " + str(player.wall_jump_grace_timer.is_stopped()))
+		#print("RESET SPEED: last rebound doesnt equal vel")
+		#print(str(sign(player.last_rebound_dir)) + " " + str(sign(player.velocity.x)))
+		#print("player.wall_jump_grace_timer.is_stopped()? " + str(player.wall_jump_grace_timer.is_stopped()))
 		player.reset_speed_level()
 	
 	# use appropriate multiplier depending on if player is on ground or in air

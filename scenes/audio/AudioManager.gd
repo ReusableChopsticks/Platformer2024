@@ -17,6 +17,11 @@ extends Node
 @onready var clair_de_lune: AudioStreamPlayer = $"Music/Clair De Lune"
 ##endregion
 
+##region UI
+@onready var button_hover_sfx: AudioStreamPlayer = $"UI/ButtonHoverSFX"
+@onready var yay_sfx: AudioStreamPlayer = $"UI/YaySFX"
+##endregion
+
 ##region Variables
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
 @onready var BGM_BUS_ID = AudioServer.get_bus_index("BGM")

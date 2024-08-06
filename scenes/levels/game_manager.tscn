@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://miebhri8apg5"]
+[gd_scene load_steps=6 format=3 uid="uid://miebhri8apg5"]
 
 [ext_resource type="PackedScene" uid="uid://kk64sujkdhrk" path="res://scenes/levels/manager/level_manager.tscn" id="1_0l7pw"]
 [ext_resource type="Script" path="res://scenes/levels/game_manager.gd" id="1_txjhw"]
 [ext_resource type="PackedScene" uid="uid://b5muk44ol1dku" path="res://scenes/UI/level_select_screen.tscn" id="2_73gac"]
 [ext_resource type="PackedScene" uid="uid://cvyorip3h0cce" path="res://scenes/UI/main_menu.tscn" id="4_tw1be"]
+[ext_resource type="PackedScene" uid="uid://cqhdn82d0wjm1" path="res://scenes/UI/credits.tscn" id="5_wpyuy"]
 
 [node name="GameManager" type="Node"]
 process_mode = 3
@@ -16,8 +17,12 @@ visible = false
 
 [node name="MenuScreen" parent="." instance=ExtResource("4_tw1be")]
 
+[node name="Credits" parent="." instance=ExtResource("5_wpyuy")]
+visible = false
+
 [connection signal="quit_level" from="LevelManager" to="." method="_on_level_manager_quit_level"]
 [connection signal="back_pressed" from="LevelSelectScreen" to="." method="_on_level_select_screen_back_pressed"]
 [connection signal="credits_pressed" from="MenuScreen" to="." method="_on_menu_screen_credits_pressed"]
 [connection signal="level_select_pressed" from="MenuScreen" to="." method="_on_menu_screen_level_select_pressed"]
 [connection signal="start_pressed" from="MenuScreen" to="." method="_on_menu_screen_start_pressed"]
+[connection signal="back_pressed" from="Credits" to="." method="_on_credits_back_pressed"]

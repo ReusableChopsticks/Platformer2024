@@ -37,6 +37,7 @@ func create_tree():
 			var level_leaf: TreeItem = tree.create_item(world_leaf)
 			if level_index - 1 > player_stats.level_unlocked:
 				level_leaf.set_text(0, "LOCKED")
+				level_leaf.set_tooltip_text(0, " ")
 			else:
 				# we have to instantiate the level node to get its name 
 				# *insert crying emoji*
@@ -65,4 +66,3 @@ func _on_tree_button_clicked(_item, _column, id, _mouse_button_index):
 
 func _on_back_button_pressed():
 	back_pressed.emit()
-

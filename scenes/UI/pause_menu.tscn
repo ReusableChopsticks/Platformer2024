@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://du0a1qv77su4e"]
+[gd_scene load_steps=4 format=3 uid="uid://du0a1qv77su4e"]
 
 [ext_resource type="Script" path="res://scenes/UI/PauseMenu.gd" id="1_rjc0l"]
 [ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_nlmfe"]
+[ext_resource type="Script" path="res://scenes/UI/ButtonHoverSounds.gd" id="3_ljmw8"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -86,6 +87,7 @@ focus_neighbor_top = NodePath("../../../GridContainer/SoundSlider")
 focus_neighbor_bottom = NodePath("../RetryButton")
 theme_override_font_sizes/font_size = 12
 text = "Resume"
+script = ExtResource("3_ljmw8")
 
 [node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -93,6 +95,7 @@ focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 12
 text = "Retry"
+script = ExtResource("3_ljmw8")
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -101,6 +104,7 @@ focus_neighbor_bottom = NodePath("../../../GridContainer/MusicSlider")
 theme_override_font_sizes/font_size = 12
 text = "Quit
 "
+script = ExtResource("3_ljmw8")
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]

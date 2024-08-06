@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvyorip3h0cce"]
+[gd_scene load_steps=6 format=3 uid="uid://cvyorip3h0cce"]
 
 [ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_3sq52"]
 [ext_resource type="Theme" uid="uid://dnn08y6crlm3c" path="res://themes/main_theme.tres" id="2_etkad"]
+[ext_resource type="Script" path="res://scenes/UI/ButtonHoverSounds.gd" id="3_0qkk0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k8u4e"]
 font_size = 12
@@ -60,18 +61,21 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../LevelSelectButton")
 text = "Start"
+script = ExtResource("3_0qkk0")
 
 [node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
 text = "Level Select"
+script = ExtResource("3_0qkk0")
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../LevelSelectButton")
 text = "Credits
 "
+script = ExtResource("3_0qkk0")
 
 [node name="BestTimeLabel" type="Label" parent="."]
 offset_left = 13.0

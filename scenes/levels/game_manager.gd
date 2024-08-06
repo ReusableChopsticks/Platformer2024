@@ -4,12 +4,13 @@ class_name GameManager
 @onready var main_menu = $MenuScreen
 @onready var level_select = $LevelSelectScreen
 @onready var level_manager: LevelManager = $LevelManager
+@onready var credits = $Credits
 
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
 func _on_menu_screen_credits_pressed():
-	pass # Replace with function body.
-	
+	credits.show()
+	main_menu.hide()
 
 func _on_menu_screen_level_select_pressed():
 	main_menu.hide()
@@ -33,3 +34,8 @@ func _on_level_manager_quit_level():
 	AudioManager.clair_de_lune.stop()	
 	main_menu.show()
 	main_menu.focus()
+
+
+func _on_credits_back_pressed():
+	credits.hide()
+	main_menu.show()
