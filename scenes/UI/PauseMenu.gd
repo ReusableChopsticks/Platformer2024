@@ -50,4 +50,5 @@ func _on_retry_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().paused = false
 	hide()
+	player_stats.save_game()
 	quit_level.emit()

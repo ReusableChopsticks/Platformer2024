@@ -8,6 +8,15 @@ class_name GameManager
 
 var player_stats: Resource = preload("res://scenes/player/PlayerStats.tres")
 
+func _ready():
+	player_stats.load_game()
+
+## Save game before closing the app
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		player_stats.save_game()
+		get_tree().quit()
+
 func _on_menu_screen_credits_pressed():
 	credits.show()
 	main_menu.hide()
