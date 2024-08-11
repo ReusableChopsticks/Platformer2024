@@ -19,6 +19,7 @@ func _on_area_2d_body_entered(body):
 
 func break_block():
 	$Area2D/CollisionShape2D.disabled = true
+	$LightOccluder2D.occluder_light_mask = 0
 	AudioManager.block_break_sfx.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, break_time)
@@ -31,3 +32,4 @@ func respawn():
 	modulate = Color.WHITE
 	collision_layer = init_layer
 	collision_mask = init_mask
+	$LightOccluder2D.occluder_light_mask = 1	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xwmqsn7ult3g"]
+[gd_scene load_steps=6 format=3 uid="uid://xwmqsn7ult3g"]
 
 [ext_resource type="Texture2D" uid="uid://cih413ldakskh" path="res://scenes/levels/components/breakables/breakable_tile.png" id="1_c6oqa"]
 [ext_resource type="Script" path="res://scenes/levels/components/breakables/breakable_tile.gd" id="1_fblqx"]
@@ -8,6 +8,9 @@ size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cervm"]
 size = Vector2(10, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_154pc"]
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [node name="BreakableTile" type="StaticBody2D"]
 collision_layer = 2
@@ -25,5 +28,8 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_cervm")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_154pc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
