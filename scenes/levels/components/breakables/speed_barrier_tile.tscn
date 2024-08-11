@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bev82ynekgeol"]
+[gd_scene load_steps=6 format=3 uid="uid://bev82ynekgeol"]
 
 [ext_resource type="Script" path="res://scenes/levels/components/breakables/speed_barrier.gd" id="1_216rg"]
 [ext_resource type="Texture2D" uid="uid://e25vlvll2ydb" path="res://scenes/levels/components/breakables/BreakableDash.png" id="2_wpobr"]
@@ -8,6 +8,9 @@ size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbe4"]
 size = Vector2(10, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bxa0r"]
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [node name="SpeedBarrierTile" type="Node2D"]
 z_index = 1
@@ -29,6 +32,9 @@ shape = SubResource("RectangleShape2D_lxbe4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wpobr")
 region_rect = Rect2(4, 0, 4, 24)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_bxa0r")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

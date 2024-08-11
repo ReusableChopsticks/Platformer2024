@@ -30,9 +30,11 @@ func _ready():
 func enable_col():
 	$StaticBody2D.collision_layer = init_col_layer
 	$StaticBody2D.collision_mask = init_col_mask
+	$LightOccluder2D.occluder_light_mask = 1
 func disable_col():
 	$StaticBody2D.collision_layer = 0
 	$StaticBody2D.collision_mask = 0
+	$LightOccluder2D.occluder_light_mask = 0
 
 ## Barrier break animation and collision toggling
 func break_barrier():

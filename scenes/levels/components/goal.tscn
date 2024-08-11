@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwivbymq2yfw2"]
+[gd_scene load_steps=9 format=3 uid="uid://bwivbymq2yfw2"]
 
 [ext_resource type="Script" path="res://scenes/levels/components/Goal.gd" id="1_k8xd8"]
 [ext_resource type="Texture2D" uid="uid://cqst4w8rp0ppo" path="res://scenes/levels/components/coffee.png" id="2_8ys7w"]
+[ext_resource type="Texture2D" uid="uid://dm6axllj6rgir" path="res://scenes/environment/2d_lights_and_shadows_neutral_point_light.webp" id="3_fgttw"]
 
 [sub_resource type="Animation" id="Animation_mcdym"]
 length = 0.001
@@ -41,10 +42,14 @@ _data = {
 "goal_idle": SubResource("Animation_wthac")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m184r"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwd8"]
 size = Vector2(4, 4)
 
 [node name="Goal" type="Node2D"]
+light_mask = 0
 z_index = 4
 script = ExtResource("1_k8xd8")
 metadata/_edit_group_ = true
@@ -55,14 +60,30 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
 position = Vector2(0, -1)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+light_mask = 0
+material = SubResource("CanvasItemMaterial_m184r")
 texture = ExtResource("2_8ys7w")
 region_rect = Rect2(176, 0, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
 shape = SubResource("RectangleShape2D_nlwd8")
+
+[node name="PointLightLarge" type="PointLight2D" parent="."]
+color = Color(1, 0.498859, 0, 1)
+shadow_enabled = true
+texture = ExtResource("3_fgttw")
+
+[node name="PointLightSmall" type="PointLight2D" parent="."]
+color = Color(1, 0.498859, 0, 1)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("3_fgttw")
+texture_scale = 0.2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

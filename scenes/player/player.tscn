@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci5j8awqi3j8v"]
+[gd_scene load_steps=17 format=3 uid="uid://ci5j8awqi3j8v"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a62lr"]
 [ext_resource type="PackedScene" uid="uid://esuisvmjimqq" path="res://scenes/player/player_ghost.tscn" id="2_h2nj3"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://scenes/player/states/PlayerSpawnState.gd" id="12_migby"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f682e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2beca"]
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5in4"]
 size = Vector2(6, 6)
@@ -53,6 +56,7 @@ autowrap_mode = 2
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
+material = SubResource("CanvasItemMaterial_2beca")
 texture = ExtResource("2_srda6")
 region_rect = Rect2(184, 0, 8, 8)
 

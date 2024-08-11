@@ -1,17 +1,13 @@
-[gd_scene load_steps=53 format=3 uid="uid://kk64sujkdhrk"]
+[gd_scene load_steps=49 format=3 uid="uid://kk64sujkdhrk"]
 
 [ext_resource type="Script" path="res://scenes/levels/manager/level_manager.gd" id="1_qejvj"]
 [ext_resource type="PackedScene" uid="uid://csglliwuvg5mb" path="res://scenes/levels/world_1/beginnings.tscn" id="2_ro4rt"]
 [ext_resource type="PackedScene" uid="uid://b6whavv6ml6b4" path="res://scenes/levels/world_1/movement.tscn" id="3_3mnyf"]
 [ext_resource type="PackedScene" uid="uid://y7uync10ycvo" path="res://scenes/levels/world_2/learn_to_rebound.tscn" id="3_kx67w"]
-[ext_resource type="PackedScene" uid="uid://im70p1c4m2la" path="res://scenes/levels/world_1/basic_obstacles.tscn" id="5_7xeba"]
-[ext_resource type="PackedScene" uid="uid://mvwechq7cnmd" path="res://scenes/levels/world_1/deadly_spikes.tscn" id="6_yuu78"]
 [ext_resource type="PackedScene" uid="uid://c61obogb33lta" path="res://scenes/levels/world_1/learn_to_double_jump.tscn" id="9_qmyju"]
-[ext_resource type="PackedScene" uid="uid://0mcw2qk6xhk6" path="res://scenes/levels/world_1/pillar_hopping.tscn" id="10_u0toj"]
 [ext_resource type="PackedScene" uid="uid://deuj32iuabpxa" path="res://scenes/levels/world_1/learn_to_dash.tscn" id="11_5qcp6"]
 [ext_resource type="PackedScene" uid="uid://cefly3mb61jbq" path="res://scenes/levels/world_1/underpass.tscn" id="12_4qc3x"]
 [ext_resource type="PackedScene" uid="uid://27lwwy6ggk0g" path="res://scenes/levels/world_1/learn_to_wall_jump.tscn" id="13_y2v6n"]
-[ext_resource type="PackedScene" uid="uid://cpo0lsoe34h0" path="res://scenes/levels/world_1/climb_over_boxes.tscn" id="14_bepjj"]
 [ext_resource type="PackedScene" uid="uid://dxequeilvnjs8" path="res://scenes/levels/world_1/v_2_in_my_gym.tscn" id="15_s2t5g"]
 [ext_resource type="PackedScene" uid="uid://d3gkmif5mhlcm" path="res://scenes/levels/world_1/sliiiiide.tscn" id="15_sdnpe"]
 [ext_resource type="PackedScene" uid="uid://cfx6ykfh2t3qh" path="res://scenes/levels/world_1/the_final_fundamentals_test.tscn" id="17_inrg3"]
@@ -56,7 +52,9 @@
 [node name="LevelManager" type="Node"]
 process_mode = 1
 script = ExtResource("1_qejvj")
-world_1 = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("5_7xeba"), ExtResource("6_yuu78"), ExtResource("9_qmyju"), ExtResource("10_u0toj"), ExtResource("11_5qcp6"), ExtResource("12_4qc3x"), ExtResource("13_y2v6n"), ExtResource("14_bepjj"), ExtResource("15_sdnpe"), ExtResource("15_s2t5g"), ExtResource("17_inrg3")])
+start_level_index = 11
+start_world_index = 2
+world_1 = Array[PackedScene]([ExtResource("2_ro4rt"), ExtResource("3_3mnyf"), ExtResource("9_qmyju"), ExtResource("11_5qcp6"), ExtResource("12_4qc3x"), ExtResource("13_y2v6n"), ExtResource("15_sdnpe"), ExtResource("15_s2t5g"), ExtResource("17_inrg3")])
 world_2 = Array[PackedScene]([ExtResource("3_kx67w"), ExtResource("19_wss2l"), ExtResource("20_iafgb"), ExtResource("21_364d8"), ExtResource("21_q63rj"), ExtResource("23_jgl1m"), ExtResource("22_1w1ms"), ExtResource("21_am2wc"), ExtResource("25_fg85e"), ExtResource("27_bv8cx"), ExtResource("26_6t8ya"), ExtResource("28_fvl74"), ExtResource("30_4rox0"), ExtResource("32_jv6c1"), ExtResource("27_ij7uh"), ExtResource("29_cckmw"), ExtResource("31_vaar5"), ExtResource("32_acr0g"), ExtResource("33_jwq2b")])
 world_3 = Array[PackedScene]([ExtResource("36_k26aj"), ExtResource("37_wa1ri"), ExtResource("37_vlhit"), ExtResource("38_gb7vy"), ExtResource("40_n83bp"), ExtResource("40_asnq3"), ExtResource("39_ro2vf"), ExtResource("42_ocgc7"), ExtResource("36_0jkgh"), ExtResource("45_ik7bq"), ExtResource("46_bquvq"), ExtResource("45_q66h7"), ExtResource("48_n0p4e"), ExtResource("42_6s35f"), ExtResource("48_7vy13"), ExtResource("50_uavmt"), ExtResource("52_48ujw"), ExtResource("52_vjtml")])
 
